@@ -227,7 +227,7 @@
     "mobile": "+306944824855",
     "role": "participant",
     "dietary": "",
-    "photo": "img/photos/katerina-meimaroglou.jpg"
+    "photo": "img/photos/katerina-meimaroglou.png"
   },
   {
     "name": "Margie Glentzaki",
@@ -657,7 +657,7 @@
     "mobile": "+420733783307",
     "role": "participant",
     "dietary": "",
-    "photo": "img/photos/irena-galova.jpg"
+    "photo": "img/photos/irena-galova.png"
   },
   {
     "name": "Stepan Motejzik",
@@ -677,6 +677,6 @@
     "mobile": "+421917342598",
     "role": "participant",
     "dietary": "vegan",
-    "photo": "img/photos/veronika-paluskova.jpg"
+    "photo": "img/photos/veronika-paluskova.png"
   }
 ]
