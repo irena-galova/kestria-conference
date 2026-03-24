@@ -1,0 +1,16 @@
+{
+  "name": "kestria-presentations",
+  "version": "1.0.0",
+  "description": "Kestria presentation decks (Marp)",
+  "private": true,
+  "scripts": {
+    "build": "marp *.md --theme themes/kestria.css -o dist/",
+    "build:html": "marp *.md --theme themes/kestria.css -o dist/ --html",
+    "build:pdf": "marp *.md --theme themes/kestria.css -o dist/ --pdf",
+    "build:all": "npm run build:html && npm run build:pdf",
+    "serve": "marp -s . --theme themes/kestria.css"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^3.4.0"
+  }
+}

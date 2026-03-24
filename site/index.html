@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kestria Global Conference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Noto+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav" id="mainNav">
+    <div class="nav__brand">
+      <a href="#hero"><img src="img/logo-white.png" class="nav__logo" alt="Kestria"></a>
+    </div>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#hero" data-section="hero">Home</a></li>
+      <li><a href="#agenda" data-section="agenda">Agenda</a></li>
+      <li><a href="#myseat" data-section="myseat">My Seat</a></li>
+      <li><a href="#speakers" data-section="speakers">Speakers</a></li>
+      <li><a href="#directory" data-section="directory">Participants</a></li>
+      <li><a href="#info" data-section="info">Info</a></li>
+      <li><a href="#traveltips" data-section="traveltips">Travel Tips</a></li>
+      <li><a href="#gallery" data-section="gallery">Gallery</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero__content">
+      <h1 class="hero__theme" id="heroTheme">Go Beyond</h1>
+      <p class="hero__tagline-main" id="heroTaglineMain">Connecting Minds, Shaping Success</p>
+      <p class="hero__meta" id="heroMeta"></p>
+      <a href="#agenda" class="btn btn--secondary">View Agenda</a>
+    </div>
+  </section>
+
+  <!-- ===== MY SEAT ===== -->
+  <section class="section section--warm myseat" id="myseat">
+    <div class="container">
+      <h2 class="section__title">My Seat</h2>
+      <p class="myseat__intro" id="myseatIntro">Select your name to see your table assignments for each session.</p>
+      <div class="myseat__picker" id="myseatPicker">
+        <div class="search-box">
+          <svg class="search-box__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="myseatSearch" class="search-box__input" placeholder="Type your name&hellip;" autocomplete="off">
+        </div>
+        <ul class="myseat__suggestions" id="myseatSuggestions"></ul>
+      </div>
+      <div class="myseat__card" id="myseatCard" hidden></div>
+    </div>
+  </section>
+
+  <!-- ===== AGENDA ===== -->
+  <section class="section section--light" id="agenda">
+    <div class="container">
+      <h2 class="section__title">Agenda</h2>
+      <div class="day-tabs" id="dayTabs" role="tablist"></div>
+      <div class="day-meta" id="dayMeta"></div>
+      <div class="timeline" id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- ===== SPEAKERS ===== -->
+  <section class="section section--warm" id="speakers">
+    <div class="container">
+      <h2 class="section__title">Speakers &amp; Partners</h2>
+      <div class="speaker-grid" id="speakerGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== PARTICIPANTS ===== -->
+  <section class="section section--light" id="directory">
+    <div class="container">
+      <h2 class="section__title">Participants</h2>
+      <div class="directory-controls">
+        <div class="search-box">
+          <svg class="search-box__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="searchInput" class="search-box__input" placeholder="Search by name or country&hellip;">
+        </div>
+        <select id="countryFilter" class="country-filter">
+          <option value="">All countries</option>
+        </select>
+      </div>
+      <p class="directory-count" id="directoryCount"></p>
+      <div class="participant-grid" id="participantGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== PRACTICAL INFO ===== -->
+  <section class="section section--dark" id="info">
+    <div class="container">
+      <h2 class="section__title section__title--light">Practical Information</h2>
+      <div class="info-grid" id="infoGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== TRAVEL TIPS ===== -->
+  <section class="section section--light" id="traveltips">
+    <div class="container">
+      <h2 class="section__title">Travel Tips</h2>
+      <div class="travel-tips__grid" id="travelTipsGrid"></div>
+      <div class="sightseeing" id="sightseeingSection">
+        <h3 class="sightseeing__title">Top 6 sightseeing (central Budapest)</h3>
+        <div class="sightseeing__grid" id="sightseeingGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PHOTO GALLERY ===== -->
+  <section class="section section--warm" id="gallery">
+    <div class="container">
+      <h2 class="section__title">Gallery</h2>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
+    <button class="lightbox__prev" id="lightboxPrev" aria-label="Previous">&lsaquo;</button>
+    <button class="lightbox__next" id="lightboxNext" aria-label="Next">&rsaquo;</button>
+    <img class="lightbox__img" id="lightboxImg" alt="">
+    <div class="lightbox__counter" id="lightboxCounter"></div>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <img src="img/logo-white.png" class="footer__logo" alt="Kestria">
+      <p>&copy; <span id="footerYear"></span> Kestria &middot; <a href="https://www.kestria.com" target="_blank" rel="noopener">www.kestria.com</a></p>
+    </div>
+  </footer>
+
+  <script src="data/embedded.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

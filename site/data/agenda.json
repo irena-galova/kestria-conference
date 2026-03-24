@@ -1,0 +1,324 @@
+{
+  "days": [
+    {
+      "dayNumber": 1,
+      "label": "Day 1",
+      "dateLabel": "May 14th",
+      "location": "Roxy (rooftop), Pullman Hotel",
+      "dressCode": "Business attire",
+      "sessions": [
+        {
+          "time": "08:45 am – 09:00 am",
+          "title": "Gathering of delegates",
+          "subtitle": "",
+          "speakers": [],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "09:00 am – 09:30 am",
+          "title": "Go Beyond: Connecting Minds, Shaping Success",
+          "subtitle": "Welcome by President & Global Alliance Director",
+          "speakers": [
+            "Katerina Meimaroglou",
+            "Stepan Motejzik"
+          ],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "09:30 am – 10:15 am",
+          "title": "Meet Our New Colleagues",
+          "subtitle": "Introduction of New Member Firms",
+          "speakers": [
+            "Monicca Yan"
+          ],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "10:15 am – 10:45 am",
+          "title": "Coffee break",
+          "subtitle": "",
+          "speakers": [],
+          "type": "break",
+          "description": ""
+        },
+        {
+          "time": "10:45 am – 11:15 am",
+          "title": "Group photoshoot",
+          "subtitle": "",
+          "speakers": [],
+          "type": "social",
+          "description": ""
+        },
+        {
+          "time": "11:15 am – 11:30 am",
+          "title": "Navigating the CEE: Search Practice in Hungary",
+          "subtitle": "Introduction & Welcome by Kestria Hungary",
+          "speakers": [
+            "Barbara Vincze"
+          ],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "11:30 am – 12:30 pm",
+          "title": "Power Shifts and Geopolitical Disruption: Navigating Risk, Opportunity, and Leadership in a Changing World",
+          "subtitle": "Keynote Speech",
+          "speakers": [
+            "Athanasios Platias"
+          ],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "12:30 pm – 01:45 pm",
+          "title": "Lunch at The Restaurant (ground floor)",
+          "subtitle": "",
+          "speakers": [],
+          "type": "lunch",
+          "description": ""
+        },
+        {
+          "time": "03:00 pm – 08:00 pm",
+          "title": "Cook Beyond: Sharing Bites, Lasting Bonds",
+          "subtitle": "Teambuilding event followed by dinner (casual attire, depending on weather, we may be seated indoors or outdoors). Meet in front of the hotel at 3:00 pm. Bus leaves at 3:10 pm. Back at the hotel by 8:00 pm.",
+          "speakers": [],
+          "type": "social",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "dayNumber": 2,
+      "label": "Day 2",
+      "dateLabel": "May 15th",
+      "location": "Roxy (rooftop), Pullman Hotel",
+      "dressCode": "Business attire",
+      "sessions": [
+        {
+          "time": "08:45 am – 09:00 am",
+          "title": "Gathering of delegates",
+          "subtitle": "",
+          "speakers": [],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "09:00 am – 09:15 am",
+          "title": "Opening & Day 1 Recap",
+          "subtitle": "",
+          "speakers": [],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "09:15 am – 09:35 am",
+          "title": "Beyond Kestria 2025: Forging the Path to 2030",
+          "subtitle": "Collaborating Today to Shape Tomorrow",
+          "speakers": [
+            "Stepan Motejzik"
+          ],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "09:35 am – 10:45 am",
+          "title": "Global Edge: Driving Cross-Border Excellence",
+          "subtitle": "Empowering Collaboration & Innovation Across Borders",
+          "speakers": [
+            "Japheth Worthy"
+          ],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "10:45 am – 11:15 am",
+          "title": "Coffee break",
+          "subtitle": "",
+          "speakers": [],
+          "type": "break",
+          "description": ""
+        },
+        {
+          "time": "11:15 am – 12:45 pm",
+          "title": "Global Pitch Lab",
+          "subtitle": "Mastering Cross-Border Deals Through Role-Play and Collaboration",
+          "speakers": [
+            "Stepan Motejzik"
+          ],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "12:45 pm – 02:00 pm",
+          "title": "Lunch at The Restaurant (ground floor)",
+          "subtitle": "",
+          "speakers": [],
+          "type": "lunch",
+          "description": ""
+        },
+        {
+          "time": "02:00 pm – 03:15 pm",
+          "title": "Shift Beyond: Rethinking Executive Search with AI",
+          "subtitle": "Presentation & Roundtable Discussions",
+          "speakers": [
+            "Sandro Eggimann",
+            "Bendik Myhre"
+          ],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "03:15 pm – 03:45 pm",
+          "title": "A Common Business Development Platform",
+          "subtitle": "Presentation by Ezekia (Joseph Blass)",
+          "speakers": [],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "04:00 pm – 05:00 pm",
+          "title": "Mix Beyond: Small Sips, Big Connections",
+          "subtitle": "",
+          "speakers": [],
+          "type": "social",
+          "description": ""
+        },
+        {
+          "time": "07:30 pm",
+          "title": "Dinner at Halászbástya Restaurant",
+          "subtitle": "",
+          "speakers": [],
+          "type": "social",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "dayNumber": 3,
+      "label": "Day 3",
+      "dateLabel": "May 16th",
+      "location": "Roxy (rooftop), Pullman Hotel",
+      "dressCode": "Business attire",
+      "sessions": [
+        {
+          "time": "08:45 am – 09:00 am",
+          "title": "Gathering of delegates",
+          "subtitle": "",
+          "speakers": [],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "09:00 am – 09:15 am",
+          "title": "Opening & Day 2 Recap",
+          "subtitle": "",
+          "speakers": [],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "09:15 am – 10:30 am",
+          "title": "Positioning with Purpose",
+          "subtitle": "Practice Groups at the Forefront",
+          "speakers": [
+            "Michael Kantel"
+          ],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "10:30 am – 11:00 am",
+          "title": "Coffee break",
+          "subtitle": "",
+          "speakers": [],
+          "type": "break",
+          "description": ""
+        },
+        {
+          "time": "11:00 am – 11:45 am",
+          "title": "Signal & Story",
+          "subtitle": "Amplifying Thought Leadership Across Borders",
+          "speakers": [
+            "Stepan Motejzik"
+          ],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "11:45 am – 12:45 pm",
+          "title": "Leadership Challenges and Priorities in a Complex, Disrupted Market",
+          "subtitle": "Roundtables on Kestria Global Leadership Survey",
+          "speakers": [
+            "Rohan Carr"
+          ],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "12:45 pm – 02:00 pm",
+          "title": "Lunch at The Restaurant (ground floor)",
+          "subtitle": "",
+          "speakers": [],
+          "type": "lunch",
+          "description": ""
+        },
+        {
+          "time": "02:00 pm – 02:15 pm",
+          "title": "General Meeting of the Association",
+          "subtitle": "Financial Update & Revised Rules",
+          "speakers": [
+            "Rohan Carr",
+            "Stepan Motejzik"
+          ],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "02:15 pm – 03:30 pm",
+          "title": "Elevating Executive Search: Drive Success",
+          "subtitle": "Panel Discussion on Growth Initiatives",
+          "speakers": [
+            "Travis Hann"
+          ],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "03:30 pm – 03:45 pm",
+          "title": "Awarding the Best",
+          "subtitle": "Kestria Excellence Awards (Katerina Meimaroglou)",
+          "speakers": [],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "03:45 pm – 04:00 pm",
+          "title": "Recap, Closing & 2026 Global Conference Announcement",
+          "subtitle": "",
+          "speakers": [],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "04:00 pm - 05:00 pm",
+          "title": "Mix Beyond: Small Sips, Big Connections",
+          "subtitle": "",
+          "speakers": [],
+          "type": "social",
+          "description": ""
+        },
+        {
+          "time": "07:30 pm",
+          "title": "Dinner & Party at Spiler Shanghai Secret Bar",
+          "subtitle": "Meet in front of the hotel at 7:10 pm for a short walk or meet us at 7:30 pm at the restaurant.",
+          "speakers": [],
+          "type": "social",
+          "description": ""
+        }
+      ]
+    }
+  ]
+}

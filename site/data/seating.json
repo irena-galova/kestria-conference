@@ -1,0 +1,614 @@
+[
+  {
+    "name": "Malcolm Duncan",
+    "member": "Kestria Australia",
+    "teambuilding": "black",
+    "thuAm": 1,
+    "thuPm": 2,
+    "friday": 7,
+    "fridayPG": "NGO/Education"
+  },
+  {
+    "name": "Rohan Carr",
+    "member": "Kestria Australia",
+    "teambuilding": "red",
+    "thuAm": 6,
+    "thuPm": 5,
+    "friday": 1,
+    "fridayPG": "NGO/Education"
+  },
+  {
+    "name": "Franz Schuster",
+    "member": "Kestria Austria",
+    "teambuilding": "green",
+    "thuAm": 2,
+    "thuPm": 1,
+    "friday": 2,
+    "fridayPG": "Consumer & Retail"
+  },
+  {
+    "name": "Gustav Kichler",
+    "member": "Kestria Austria",
+    "teambuilding": "black",
+    "thuAm": 3,
+    "thuPm": 3,
+    "friday": 3,
+    "fridayPG": "Healthcare & LS"
+  },
+  {
+    "name": "Alexander Moser",
+    "member": "Kestria Austria",
+    "teambuilding": "pink",
+    "thuAm": 4,
+    "thuPm": 4,
+    "friday": 5,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Charles Petit",
+    "member": "Kestria Belgium",
+    "teambuilding": "brown",
+    "thuAm": 5,
+    "thuPm": 6,
+    "friday": 1,
+    "fridayPG": "Agribusiness & Agriscience"
+  },
+  {
+    "name": "Frederic Du Jardin",
+    "member": "Kestria Belgium",
+    "teambuilding": "blue",
+    "thuAm": 7,
+    "thuPm": 7,
+    "friday": 5,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Carlos Eduardo Staut",
+    "member": "Kestria Brazil",
+    "teambuilding": "black",
+    "thuAm": 1,
+    "thuPm": 7,
+    "friday": 1,
+    "fridayPG": "Agribusiness & Agriscience"
+  },
+  {
+    "name": "Vera Staut",
+    "member": "Kestria Brazil",
+    "teambuilding": "red",
+    "thuAm": 3,
+    "thuPm": 6,
+    "friday": 2,
+    "fridayPG": "Consumer & Retail"
+  },
+  {
+    "name": "Celine Chabee",
+    "member": "Kestria Canada & USA",
+    "teambuilding": "green",
+    "thuAm": 7,
+    "thuPm": 1,
+    "friday": 3,
+    "fridayPG": "Healthcare & LS"
+  },
+  {
+    "name": "Sean Casey",
+    "member": "Kestria Canada & USA",
+    "teambuilding": "orange",
+    "thuAm": 4,
+    "thuPm": 5,
+    "friday": 5,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Travis Hann",
+    "member": "Kestria Canada & USA",
+    "teambuilding": "pink",
+    "thuAm": 5,
+    "thuPm": 2,
+    "friday": 4,
+    "fridayPG": "Technology"
+  },
+  {
+    "name": "Constanza Ossa",
+    "member": "Kestria Chile",
+    "teambuilding": "blue",
+    "thuAm": 3,
+    "thuPm": 3,
+    "friday": 1,
+    "fridayPG": "Agribusiness & Agriscience"
+  },
+  {
+    "name": "Daniela Mercandino",
+    "member": "Kestria Chile",
+    "teambuilding": "orange",
+    "thuAm": 6,
+    "thuPm": 4,
+    "friday": 1,
+    "fridayPG": "Agribusiness & Agriscience"
+  },
+  {
+    "name": "Magdalena Reyes",
+    "member": "Kestria Chile",
+    "teambuilding": "orange",
+    "thuAm": 5,
+    "thuPm": 1,
+    "friday": 2,
+    "fridayPG": "Consumer & Retail"
+  },
+  {
+    "name": "Monicca Yan",
+    "member": "Kestria China & Singapore",
+    "teambuilding": "red",
+    "thuAm": 2,
+    "thuPm": 4,
+    "friday": 1,
+    "fridayPG": "Agribusiness & Agriscience"
+  },
+  {
+    "name": "Vanja Horvat",
+    "member": "Kestria Croatia",
+    "teambuilding": "green",
+    "thuAm": 1,
+    "thuPm": 2,
+    "friday": 6,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Matija Mirkovic",
+    "member": "Kestria Croatia",
+    "teambuilding": "orange",
+    "thuAm": 3,
+    "thuPm": 3,
+    "friday": 4,
+    "fridayPG": "Technology"
+  },
+  {
+    "name": "Daniel Zahora",
+    "member": "Kestria Czech Republic",
+    "teambuilding": "violet/yellow",
+    "thuAm": 4,
+    "thuPm": 6,
+    "friday": 5,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Anders Jorgensen",
+    "member": "Kestria Denmark",
+    "teambuilding": "brown",
+    "thuAm": 5,
+    "thuPm": 7,
+    "friday": 5,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Jesper Dambo",
+    "member": "Kestria Denmark",
+    "teambuilding": "blue",
+    "thuAm": 7,
+    "thuPm": 1,
+    "friday": 5,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Jan Holmstrom",
+    "member": "Kestria Finland",
+    "teambuilding": "",
+    "thuAm": 5,
+    "thuPm": 2,
+    "friday": 2,
+    "fridayPG": "Consumer & Retail"
+  },
+  {
+    "name": "Sanna Leppaluoto",
+    "member": "Kestria Finland",
+    "teambuilding": "",
+    "thuAm": 2,
+    "thuPm": 3,
+    "friday": 5,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Valerie Pihan-Coste",
+    "member": "Kestria France",
+    "teambuilding": "green",
+    "thuAm": 6,
+    "thuPm": 4,
+    "friday": 2,
+    "fridayPG": "Consumer & Retail"
+  },
+  {
+    "name": "Mathias Friedrichs",
+    "member": "Kestria Germany",
+    "teambuilding": "black",
+    "thuAm": 4,
+    "thuPm": 5,
+    "friday": 2,
+    "fridayPG": "Consumer & Retail"
+  },
+  {
+    "name": "Michael Kantel",
+    "member": "Kestria Germany",
+    "teambuilding": "blue",
+    "thuAm": 3,
+    "thuPm": 1,
+    "friday": 6,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Katerina Meimaroglou",
+    "member": "Kestria Greece",
+    "teambuilding": "brown",
+    "thuAm": 1,
+    "thuPm": 3,
+    "friday": 2,
+    "fridayPG": "Consumer & Retail"
+  },
+  {
+    "name": "Margie Glentzaki",
+    "member": "Kestria Greece",
+    "teambuilding": "blue",
+    "thuAm": 4,
+    "thuPm": 6,
+    "friday": 3,
+    "fridayPG": "Healthcare & LS"
+  },
+  {
+    "name": "Sofia Kassavou",
+    "member": "Kestria Greece",
+    "teambuilding": "pink",
+    "thuAm": 3,
+    "thuPm": 7,
+    "friday": 4,
+    "fridayPG": "Technology"
+  },
+  {
+    "name": "Barbara Vincze",
+    "member": "Kestria Hungary",
+    "teambuilding": "red",
+    "thuAm": 1,
+    "thuPm": 2,
+    "friday": 3,
+    "fridayPG": "Healthcare & LS"
+  },
+  {
+    "name": "Manveet S. Hora",
+    "member": "Kestria India",
+    "teambuilding": "orange",
+    "thuAm": 3,
+    "thuPm": 4,
+    "friday": 4,
+    "fridayPG": "Technology"
+  },
+  {
+    "name": "Niamh O′Driscoll",
+    "member": "Kestria Ireland",
+    "teambuilding": "pink",
+    "thuAm": 4,
+    "thuPm": 5,
+    "friday": 3,
+    "fridayPG": "Healthcare & LS"
+  },
+  {
+    "name": "Ron Magen",
+    "member": "Kestria Israel",
+    "teambuilding": "blue",
+    "thuAm": 7,
+    "thuPm": 6,
+    "friday": 4,
+    "fridayPG": "Technology"
+  },
+  {
+    "name": "Carmelo Spinella",
+    "member": "Kestria Italy",
+    "teambuilding": "brown",
+    "thuAm": 6,
+    "thuPm": 7,
+    "friday": null,
+    "fridayPG": ""
+  },
+  {
+    "name": "Cristina Zanchi",
+    "member": "Kestria Italy",
+    "teambuilding": "green",
+    "thuAm": 7,
+    "thuPm": 6,
+    "friday": null,
+    "fridayPG": ""
+  },
+  {
+    "name": "Japheth A. Worthy",
+    "member": "Kestria Japan",
+    "teambuilding": "black",
+    "thuAm": 4,
+    "thuPm": 6,
+    "friday": 3,
+    "fridayPG": "Healthcare & LS"
+  },
+  {
+    "name": "Iluta Gaile",
+    "member": "Kestria Latvia",
+    "teambuilding": "black",
+    "thuAm": 5,
+    "thuPm": 1,
+    "friday": 7,
+    "fridayPG": "NGO/Education"
+  },
+  {
+    "name": "Romain Joly",
+    "member": "Kestria Luxembourg",
+    "teambuilding": "red",
+    "thuAm": 2,
+    "thuPm": 2,
+    "friday": 7,
+    "fridayPG": "Banking & FS"
+  },
+  {
+    "name": "Raj Kumar Paramanathan",
+    "member": "Kestria Malaysia",
+    "teambuilding": "violet/yellow",
+    "thuAm": 2,
+    "thuPm": 3,
+    "friday": 6,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Jens Hagedorn",
+    "member": "Kestria Mexico",
+    "teambuilding": "green",
+    "thuAm": 5,
+    "thuPm": 4,
+    "friday": 6,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Patrick Westerburger",
+    "member": "Kestria Netherlands",
+    "teambuilding": "brown",
+    "thuAm": 7,
+    "thuPm": 5,
+    "friday": 1,
+    "fridayPG": "Agribusiness & Agriscience"
+  },
+  {
+    "name": "Cees Hagoort",
+    "member": "Kestria Netherlands",
+    "teambuilding": "pink",
+    "thuAm": 6,
+    "thuPm": 1,
+    "friday": 6,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Ije Jidenma",
+    "member": "Kestria Nigeria",
+    "teambuilding": "brown",
+    "thuAm": 6,
+    "thuPm": 5,
+    "friday": 1,
+    "fridayPG": "NGO/Education"
+  },
+  {
+    "name": "Thea Thoresen Myhre",
+    "member": "Kestria Norway",
+    "teambuilding": "blue",
+    "thuAm": 2,
+    "thuPm": 7,
+    "friday": 7,
+    "fridayPG": "Banking & FS"
+  },
+  {
+    "name": "Bendik Myhre",
+    "member": "Kestria Norway",
+    "teambuilding": "black",
+    "thuAm": 2,
+    "thuPm": 5,
+    "friday": 2,
+    "fridayPG": "Consumer & Retail"
+  },
+  {
+    "name": "Vegard Berg",
+    "member": "Kestria Norway",
+    "teambuilding": "red",
+    "thuAm": 4,
+    "thuPm": 2,
+    "friday": 6,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Piotr Mazurkiewicz",
+    "member": "Kestria Poland",
+    "teambuilding": "green",
+    "thuAm": 5,
+    "thuPm": 3,
+    "friday": 7,
+    "fridayPG": "Banking & FS"
+  },
+  {
+    "name": "Tomasz Sokolowski",
+    "member": "Kestria Poland",
+    "teambuilding": "orange",
+    "thuAm": 6,
+    "thuPm": 4,
+    "friday": 7,
+    "fridayPG": "Consumer & Retail"
+  },
+  {
+    "name": "Razvan Eliad",
+    "member": "Kestria Romania",
+    "teambuilding": "red",
+    "thuAm": 7,
+    "thuPm": 6,
+    "friday": 4,
+    "fridayPG": "Technology"
+  },
+  {
+    "name": "Janice Wagner",
+    "member": "Kestria South Africa",
+    "teambuilding": "brown",
+    "thuAm": 1,
+    "thuPm": 2,
+    "friday": 7,
+    "fridayPG": "Banking & FS"
+  },
+  {
+    "name": "Steven McKinney",
+    "member": "Kestria South Korea",
+    "teambuilding": "pink",
+    "thuAm": 3,
+    "thuPm": 1,
+    "friday": 6,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Natalia Segura",
+    "member": "Kestria Spain",
+    "teambuilding": "black",
+    "thuAm": 6,
+    "thuPm": 4,
+    "friday": 1,
+    "fridayPG": "Agribusiness & Agriscience"
+  },
+  {
+    "name": "Toni Sole",
+    "member": "Kestria Spain",
+    "teambuilding": "red",
+    "thuAm": 1,
+    "thuPm": 5,
+    "friday": 3,
+    "fridayPG": "Healthcare & LS"
+  },
+  {
+    "name": "Niklas Claesson",
+    "member": "Kestria Sweden",
+    "teambuilding": "green",
+    "thuAm": 2,
+    "thuPm": 6,
+    "friday": 3,
+    "fridayPG": "Healthcare & LS"
+  },
+  {
+    "name": "Thomas Muhmenthaler",
+    "member": "Kestria Switzerland",
+    "teambuilding": "red",
+    "thuAm": 6,
+    "thuPm": 4,
+    "friday": 2,
+    "fridayPG": "Consumer & Retail"
+  },
+  {
+    "name": "Eveline Muhmenthaler",
+    "member": "Kestria Switzerland",
+    "teambuilding": "violet/yellow",
+    "thuAm": 7,
+    "thuPm": 1,
+    "friday": 3,
+    "fridayPG": "Healthcare & LS"
+  },
+  {
+    "name": "Philipp Mathieu",
+    "member": "Kestria Switzerland",
+    "teambuilding": "pink",
+    "thuAm": 1,
+    "thuPm": 7,
+    "friday": 5,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Thomas Suter",
+    "member": "Kestria Switzerland",
+    "teambuilding": "brown",
+    "thuAm": 2,
+    "thuPm": 2,
+    "friday": 4,
+    "fridayPG": "Technology"
+  },
+  {
+    "name": "Sandro Eggimann",
+    "member": "Kestria Switzerland",
+    "teambuilding": "blue",
+    "thuAm": 3,
+    "thuPm": 3,
+    "friday": 4,
+    "fridayPG": "Technology"
+  },
+  {
+    "name": "Rania Abdalla",
+    "member": "Kestria UAE & Egypt",
+    "teambuilding": "violet/yellow",
+    "thuAm": 4,
+    "thuPm": 7,
+    "friday": 6,
+    "fridayPG": "Industrial/Production"
+  },
+  {
+    "name": "Vanessa",
+    "member": "Kestria USA",
+    "teambuilding": "black",
+    "thuAm": 5,
+    "thuPm": 6,
+    "friday": 2,
+    "fridayPG": "Consumer & Retail"
+  },
+  {
+    "name": "Hong Nguyen",
+    "member": "Kestria Vietnam",
+    "teambuilding": "pink",
+    "thuAm": 5,
+    "thuPm": 5,
+    "friday": 4,
+    "fridayPG": "Technology"
+  },
+  {
+    "name": "Chiku Ndhlovu",
+    "member": "Kestria Zambia",
+    "teambuilding": "violet/yellow",
+    "thuAm": 7,
+    "thuPm": 1,
+    "friday": 1,
+    "fridayPG": "Agribusiness & Agriscience"
+  },
+  {
+    "name": "Cynthia Zulu",
+    "member": "Kestria Zambia",
+    "teambuilding": "green",
+    "thuAm": 1,
+    "thuPm": 2,
+    "friday": 7,
+    "fridayPG": "Banking & FS"
+  },
+  {
+    "name": "Titamenji Sakala",
+    "member": "Kestria Zambia",
+    "teambuilding": "orange",
+    "thuAm": 2,
+    "thuPm": 3,
+    "friday": 7,
+    "fridayPG": "Banking & FS"
+  },
+  {
+    "name": "Veronika",
+    "member": "Kestria Global",
+    "teambuilding": "violet/yellow",
+    "thuAm": null,
+    "thuPm": null,
+    "friday": null,
+    "fridayPG": ""
+  },
+  {
+    "name": "Stepan",
+    "member": "Kestria Global",
+    "teambuilding": "orange",
+    "thuAm": null,
+    "thuPm": null,
+    "friday": null,
+    "fridayPG": ""
+  },
+  {
+    "name": "Irena",
+    "member": "",
+    "teambuilding": "",
+    "thuAm": null,
+    "thuPm": 7,
+    "friday": null,
+    "fridayPG": ""
+  }
+]

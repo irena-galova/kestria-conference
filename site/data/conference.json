@@ -1,0 +1,101 @@
+{
+  "name": "Kestria Global Conference 2025",
+  "city": "Budapest",
+  "dates": "May 14–16, 2025",
+  "venue": "Pullman Hotel",
+  "tagline": "Go Beyond: Connecting Minds, Shaping Success",
+  "keynote": {
+    "name": "Athanasios Platias",
+    "photo": "img/speakers/athanasios-platias.png",
+    "title": "Professor of Strategic Studies",
+    "org": "University of Piraeus",
+    "bio": "Athanasios G. Platias is Professor of Strategy at the University of Piraeus. He is also the President of the Council of International Relations-Greece, an Athens-based think tank. He received a degree in Public Law and Political Science (with excellence) from \nthe Law Faculty of the University of Athens. He also received an M.A. and a Ph.D. \nin International Relations from the Department of Government at Cornell University. He has been a Ford Foundation Fellow at the Center for Science and International Affairs, Harvard University; a Research Fellow at the Peace Studies Program, Cornell University; MacArthur Fellow in International Peace and Security at the Program for Science, Technology and International Security, MIT; and the Center \nfor International Affairs, Harvard University. Professor Platias held several senior advisory positions in the public and private sectors in the last 35 years. He also held several senior academic positions such \nas Dean of the School of Economics, Business and International Studies; Chairman of the Department of International and European Studies; Director of the Graduate Program in International and European Studies; and member of the Governing Council of the University of Piraeus. Professor Platias is the author of numerous books and articles. His research \nand teaching focus on five principal areas: Grand Strategy, Geopolitics and Geoeconomics, Regional Security (with emphasis on South Eastern Europe \nand the Eastern Mediterranean), and Leadership. He is the co-author of Thucydides on Strategy: Grand Strategies in the Peloponnesian War and Their Relevance Today (N.Y.: Columbia University Press, 2010). His forthcoming book The Art of Strategy: 50 Maxims for War, Politics and Business (Hurst Publishers/Oxford University Press) will be released in 2025."
+  },
+  "partner": {
+    "name": "Joseph Blass",
+    "photo": "img/speakers/joseph-blass.png",
+    "title": "CEO",
+    "org": "Ezekia",
+    "bio": "Joseph started his career as an economist in the public sector. He then worked for a global family business managing a varied portfolio of investments in manufacturing, real estate and financial services. Prior to founding Ezekia, Joseph was an executive, managing both privately held and publicly listed Telecom and IT Companies. He founded Ezekia in 2015 and, together with his team, has built Ezekia into the leading CRM and Assignment Management tool for executive search firms. Joseph holds a Master's in Economics and is a (very) amateur artist.",
+    "companyDescription": "Ezekia is a full-stack CRM/Business Development and Assignment Management platform for executive search firms. It is easy to use, customisable to your own work patterns and offers \nan excellent user experience. It is rich in functionality and besides including superb reporting tools (both for clients and for management), a client portal, a billing module, built-in AI and all other features, it has various APIs which enable numerous integrations. Migrating data from another platform onto Ezekia is quick and simple. All training and support are free and clients are not tied into long term contracts. Ezekia is ISO27001 certified and employs 60 people. Our thousands of users are all across the globe."
+  },
+  "globalOffice": [
+    {
+      "name": "Stepan Motejzik",
+      "role": "Global Alliance Director",
+      "phone": "+420 608 102 893"
+    },
+    {
+      "name": "Irena Galova",
+      "role": "Global Operations Manager",
+      "phone": "+420 733 783 307"
+    },
+    {
+      "name": "Veronika Paluskova",
+      "role": "Global Communications Manager",
+      "phone": "+421 917 342 598"
+    }
+  ],
+  "travelTips": [
+    {
+      "title": "Airport to hotel",
+      "icon": "car",
+      "body": "Budapest Airport (BUD) to Pullman Hotel: Uber or Bolt ~€25–35. Taxi ~9,000 HUF. 100E airport bus to city center is a cheaper option."
+    },
+    {
+      "title": "Currency",
+      "icon": "money",
+      "body": "Hungarian Forint (HUF). Cards are widely accepted; some small vendors prefer cash."
+    },
+    {
+      "title": "Cash",
+      "icon": "wallet",
+      "body": "Useful for tips and small purchases. ATMs widely available throughout the city."
+    },
+    {
+      "title": "Power adapter",
+      "icon": "plug",
+      "body": "EU Type C/F plugs, 230V. Bring an adapter if travelling from UK, US, Australia, or other regions."
+    },
+    {
+      "title": "Getting around",
+      "icon": "map",
+      "body": "Public transport (BKK) or ride-hailing (Bolt, Uber). The Pullman Hotel is centrally located."
+    },
+    {
+      "title": "Weather in mid‑May",
+      "icon": "cloud",
+      "body": "Expect 17–23°C (63–73°F). Mild, often sunny. Occasional rain – pack a light jacket. Evenings can be cooler. Ideal for walking tours and terrace dining."
+    },
+    {
+      "title": "Top 5 restaurants",
+      "icon": "utensils",
+      "items": [
+        { "name": "Costes", "desc": "Michelin-star fine dining, Pest", "url": "https://www.costesrestaurant.hu/" },
+        { "name": "Onyx", "desc": "Hungarian gourmet, Vörösmarty Square", "url": "https://www.onyxrestaurant.hu/" },
+        { "name": "Borkonyha", "desc": "Wine & cuisine, near St. Stephen's", "url": "https://www.borkonyha.hu/" },
+        { "name": "Comme Chez Soi", "desc": "Italian, District V", "url": "https://commechezsoi.hu/" },
+        { "name": "Rosenstein", "desc": "Jewish-Hungarian, authentic local", "url": "https://rosenstein.hu/" }
+      ]
+    },
+    {
+      "title": "Top 5 bars",
+      "icon": "glass",
+      "items": [
+        { "name": "Szimpla Kert", "desc": "Iconic ruin bar, District VII", "url": "https://szimpla.hu/" },
+        { "name": "Instant", "desc": "Multi-room ruin bar, nightlife hub", "url": "https://instant.hu/" },
+        { "name": "High Note SkyBar", "desc": "Rooftop views, Aria Hotel", "url": "https://www.ariahotel.hu/high-note-skybar" },
+        { "name": "360 Bar", "desc": "Panoramic terrace, Andrássy út", "url": "https://360bar.hu/" },
+        { "name": "Boutiq'Bar", "desc": "Cocktails, near Parliament", "url": "https://boutiqbar.hu/" }
+      ]
+    }
+  ],
+  "sightseeing": [
+    { "name": "Parliament & Danube", "desc": "Riverfront landmark, iconic neo-Gothic building", "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Parliament_Building_Budapest_Hungary.jpg?width=400" },
+    { "name": "Fisherman's Bastion", "desc": "Castle Hill views, fairytale terraces", "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Fisherman%27s_Bastion%2C_Budapest%2C_Hungary.jpg?width=400" },
+    { "name": "Chain Bridge", "desc": "Iconic link between Buda & Pest", "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Chain_Bridge_Budapest_Hungary.jpg?width=400" },
+    { "name": "St. Stephen's Basilica", "desc": "Neo-classical church, panoramic terrace", "image": "https://commons.wikimedia.org/wiki/Special:FilePath/St_Stephens_bas_budapest.jpg?width=400" },
+    { "name": "Andrássy út", "desc": "UNESCO boulevard to Heroes' Square", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Andrassy_ut_01.jpg/400px-Andrassy_ut_01.jpg" },
+    { "name": "Matthias Church", "desc": "Neo-Gothic church next to Fisherman's Bastion", "image": "https://commons.wikimedia.org/wiki/Special:FilePath/Matthias_Church_Budapest_Corrected.jpg?width=400" }
+  ]
+}

@@ -1,0 +1,19 @@
+.DS_Store
+__pycache__/
+*.pyc
+.env
+.env.*
+node_modules/
+
+# Rozbalený obsah DOCX (nepotřebný pro web)
+docx_extract/
+docx_extract.zip
+
+# Velké zdrojové materiály (web běží ze site/; tyto soubory zbytečně nafoukají repo)
+kulaté fotky/
+photos from Budapest/
+
+*.pptx
+*.xlsx
+*.docx
+*.pdf

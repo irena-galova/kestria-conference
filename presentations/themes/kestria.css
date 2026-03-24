@@ -1,0 +1,109 @@
+/* @theme kestria */
+
+@import "https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Noto+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap";
+
+/* ============================================
+   Kestria Marp Theme – Brand Design System
+   Colors/fonts aligned with Agenda website
+   ============================================ */
+
+:root {
+  --primary: #0057B0;
+  --primary-dark: #003164;
+  --secondary: #C0865E;
+  --secondary-light: #D9B18E;
+  --tertiary: #0C2340;
+  --color-dark: #161E21;
+  --color-light: #FFFFFF;
+  --content-bg: #F5F3F2;
+  --heading-emphasis: #0C2340;
+  --grey: #757575;
+  --font-heading: "Montserrat", "Arial", sans-serif;
+  --font-body: "Noto Sans", "Arial", sans-serif;
+}
+
+section {
+  width: 1280px;
+  height: 720px;
+  font-family: var(--font-body);
+  font-size: 32px;
+  padding: 2.5rem 3rem;
+  background: var(--tertiary);
+  color: var(--color-light);
+}
+
+section::after {
+  color: var(--grey);
+  font-size: 0.6em;
+  opacity: 0.7;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-light);
+  line-height: 1.2;
+  margin-bottom: 0.75em;
+}
+
+h1 {
+  font-size: 2.2em;
+  color: var(--secondary-light);
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+p, li {
+  font-size: 0.9em;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+ul {
+  margin: 0.5em 0;
+}
+
+li {
+  margin-bottom: 0.35em;
+}
+
+strong {
+  color: var(--secondary-light);
+}
+
+a {
+  color: var(--secondary-light);
+}
+
+a:hover {
+  color: var(--secondary);
+}
+
+/* Inverted (light bg) slides for variety */
+section.invert,
+section[data-background-color="#FFFFFF"] {
+  background: var(--color-light);
+  color: var(--color-dark);
+}
+
+section.invert h1,
+section.invert h2,
+section.invert h3,
+section[data-background-color="#FFFFFF"] h1,
+section[data-background-color="#FFFFFF"] h2,
+section[data-background-color="#FFFFFF"] h3 {
+  color: var(--secondary);
+}
+
+section.invert p,
+section.invert li,
+section[data-background-color="#FFFFFF"] p,
+section[data-background-color="#FFFFFF"] li {
+  color: var(--color-dark);
+}

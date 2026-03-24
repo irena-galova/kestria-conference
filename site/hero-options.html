@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Design Options – Kestria Conference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Noto+Sans:ital,wght@0,400;0,600;0,700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Noto Sans", Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 2rem 0;
+    }
+    h2.option-label {
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 1rem;
+      color: #333;
+      margin: 2rem 1rem 0.5rem;
+      padding-left: 0.5rem;
+      border-left: 4px solid #0057B0;
+    }
+    h2.option-label:first-of-type { margin-top: 0; }
+    .hero-mock {
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      margin: 0 1rem 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-mock .content { position: relative; z-index: 2; text-align: center; }
+    .hero-mock .theme { font-family: "Montserrat", Arial, sans-serif; font-weight: 700; }
+    .hero-mock .tagline { font-family: "Montserrat", Arial, sans-serif; font-weight: 600; }
+    .hero-mock .meta { font-size: 0.85rem; opacity: 0.9; margin-top: 0.5rem; }
+    .hero-mock .graphic {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: 0.4;
+    }
+    .hero-mock .graphic--light { opacity: 0.25; }
+    .hero-mock .graphic--strong { opacity: 0.6; }
+  </style>
+</head>
+<body>
+
+  <div style="max-width: 700px; margin: 0 auto 2rem; padding: 0 1rem;">
+    <h1 style="font-family: Montserrat, Arial, sans-serif; font-size: 1.5rem; color: #161E21; margin-bottom: 0.5rem;">Hero design inspiration – with interconnected circles motif</h1>
+    <p style="font-size: 0.9rem; color: #757575;">10 options integrating Kestria's graphic design (interconnected circles, blues, gold). Different colours, text sizes, and layouts.</p>
+  </div>
+
+  <!-- SVG pattern: interconnected circles (Kestria brand motif – nodes + connectors) -->
+  <svg width="0" height="0">
+    <defs>
+      <g id="circles-motif">
+        <circle cx="20" cy="20" r="14"/><rect x="30" y="16" width="28" height="8" rx="4"/>
+        <circle cx="62" cy="20" r="12"/><rect x="58" y="26" width="8" height="18" rx="4"/>
+        <circle cx="62" cy="48" r="10"/><rect x="40" y="44" width="24" height="8" rx="4"/>
+        <circle cx="40" cy="48" r="8"/><rect x="16" y="28" width="10" height="10" rx="5"/>
+        <circle cx="10" cy="33" r="10"/><rect x="66" y="16" width="20" height="8" rx="4"/>
+        <circle cx="90" cy="20" r="12"/><circle cx="74" cy="54" r="8"/>
+        <rect x="62" y="52" width="18" height="6" rx="3"/><circle cx="100" cy="50" r="6"/>
+      </g>
+    </defs>
+  </svg>
+
+  <h2 class="option-label">1. Dark blue + interconnected circles (white/gold), large text</h2>
+  <div class="hero-mock" style="background: #0C2340; color: #fff;">
+    <svg class="graphic" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+      <use href="#circles-motif" fill="#D9B18E" transform="translate(20,30)"/>
+      <use href="#circles-motif" fill="#ffffff" transform="translate(180,80) scale(0.8)"/>
+      <use href="#circles-motif" fill="#6B9BC4" transform="translate(280,20) scale(0.6)"/>
+      <circle cx="350" cy="160" r="18" fill="#C0865E"/>
+      <circle cx="330" cy="145" r="8" fill="#fff"/>
+    </svg>
+    <div class="content" style="max-width: 600px;">
+      <p class="theme" style="font-size: clamp(2.75rem, 9vw, 4.5rem); line-height: 1.1; color: #fff;">Go Beyond</p>
+      <p class="tagline" style="font-size: clamp(1.1rem, 3.5vw, 1.4rem); color: #D9B18E;">Connecting Minds, Shaping Success</p>
+      <p class="meta">Kestria Global Conference · Budapest, May 14–16, 2025</p>
+    </div>
+  </div>
+
+  <h2 class="option-label">2. Kestria blue + subtle circles, extra-large theme</h2>
+  <div class="hero-mock" style="background: #0057B0; color: #fff;">
+    <svg class="graphic graphic--light" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+      <use href="#circles-motif" fill="#ffffff" transform="translate(50,50)"/>
+      <use href="#circles-motif" fill="#6B9BC4" transform="translate(220,100) scale(1.2)"/>
+      <use href="#circles-motif" fill="#C0865E" transform="translate(320,30) scale(0.7)"/>
+    </svg>
+    <div class="content" style="max-width: 650px;">
+      <p class="theme" style="font-size: clamp(3rem, 10vw, 5rem); letter-spacing: -0.02em;">Go Beyond</p>
+      <p class="tagline" style="font-size: clamp(1.15rem, 3.5vw, 1.5rem); margin-top: 0.25rem;">Connecting Minds, Shaping Success</p>
+      <p class="meta" style="margin-top: 1rem;">Kestria Global Conference · Budapest, May 14–16, 2025</p>
+    </div>
+  </div>
+
+  <h2 class="option-label">3. Navy with gold circles motif, compact text</h2>
+  <div class="hero-mock" style="background: #0C2340; color: #fff; min-height: 260px;">
+    <svg class="graphic graphic--strong" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+      <use href="#circles-motif" fill="#C0865E" transform="translate(10,60) scale(1.1)"/>
+      <use href="#circles-motif" fill="#D9B18E" transform="translate(200,20) scale(0.9)"/>
+      <use href="#circles-motif" fill="#ffffff" transform="translate(300,90) scale(0.7)"/>
+    </svg>
+    <div class="content" style="max-width: 550px;">
+      <p class="theme" style="font-size: 2.25rem;">Go Beyond</p>
+      <p class="tagline" style="font-size: 1rem; color: #C0865E;">Connecting Minds, Shaping Success</p>
+      <p class="meta" style="margin-top: 0.75rem; font-size: 0.85rem;">Budapest · May 14–16, 2025</p>
+    </div>
+  </div>
+
+  <h2 class="option-label">4. Teal-blue gradient + circles, left-aligned</h2>
+  <div class="hero-mock" style="background: linear-gradient(135deg, #0C2340 0%, #1a4a6e 50%, #0057B0 100%); color: #fff; justify-content: flex-start; padding-left: 2.5rem;">
+    <svg class="graphic graphic--light" viewBox="0 0 400 200" preserveAspectRatio="xMaxYMid slice">
+      <use href="#circles-motif" fill="#D9B18E" transform="translate(250,40)"/>
+      <use href="#circles-motif" fill="#6B9BC4" transform="translate(320,120) scale(0.8)"/>
+    </svg>
+    <div class="content" style="text-align: left; max-width: 480px;">
+      <p class="theme" style="font-size: 2.75rem;">Go Beyond</p>
+      <p class="tagline" style="font-size: 1.1rem; color: #D9B18E; margin-top: 0.5rem;">Connecting Minds, Shaping Success</p>
+      <p class="meta" style="margin-top: 1rem;">Budapest, May 14–16, 2025</p>
+    </div>
+  </div>
+
+  <h2 class="option-label">5. Dark blue + prominent white circles, small uppercase theme</h2>
+  <div class="hero-mock" style="background: #0C2340; color: #fff;">
+    <svg class="graphic graphic--strong" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+      <use href="#circles-motif" fill="#ffffff" transform="translate(80,70)"/>
+      <use href="#circles-motif" fill="#6B9BC4" transform="translate(200,30) scale(0.8)"/>
+      <use href="#circles-motif" fill="#C0865E" transform="translate(290,100) scale(0.6)"/>
+    </svg>
+    <div class="content" style="max-width: 500px;">
+      <p class="theme" style="font-size: 1.6rem; letter-spacing: 0.2em; text-transform: uppercase;">Go Beyond</p>
+      <p class="tagline" style="font-size: 0.95rem; margin-top: 0.5rem;">Connecting Minds, Shaping Success</p>
+      <p class="meta" style="margin-top: 1rem; font-size: 0.8rem;">Kestria Global Conference · Budapest, May 14–16, 2025</p>
+    </div>
+  </div>
+
+  <h2 class="option-label">6. Light background + blue circles motif, dark text</h2>
+  <div class="hero-mock" style="background: #F5F3F2; color: #161E21; border: 1px solid #DEE2E6;">
+    <svg class="graphic" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice" style="opacity: 0.35;">
+      <use href="#circles-motif" fill="#0C2340" transform="translate(30,50)"/>
+      <use href="#circles-motif" fill="#0057B0" transform="translate(180,30) scale(0.8)"/>
+      <use href="#circles-motif" fill="#C0865E" transform="translate(300,80) scale(0.7)"/>
+    </svg>
+    <div class="content" style="max-width: 600px;">
+      <p class="theme" style="font-size: 2.5rem; color: #0C2340;">Go Beyond</p>
+      <p class="tagline" style="font-size: 1.1rem; color: #C0865E;">Connecting Minds, Shaping Success</p>
+      <p class="meta" style="color: #757575;">Kestria Global Conference · Budapest, May 14–16, 2025</p>
+    </div>
+  </div>
+
+  <h2 class="option-label">7. Deep navy + gold circles (strong), bold theme</h2>
+  <div class="hero-mock" style="background: #0a1a2e; color: #fff;">
+    <svg class="graphic graphic--strong" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+      <use href="#circles-motif" fill="#C0865E" transform="translate(40,80)"/>
+      <use href="#circles-motif" fill="#D9B18E" transform="translate(150,20) scale(0.9)"/>
+      <use href="#circles-motif" fill="#6B9BC4" transform="translate(270,60) scale(0.8)"/>
+    </svg>
+    <div class="content" style="max-width: 620px;">
+      <p class="theme" style="font-size: 3rem; color: #D9B18E;">Go Beyond</p>
+      <p class="tagline" style="font-size: 1.25rem; margin-top: 0.25rem;">Connecting Minds, Shaping Success</p>
+      <p class="meta" style="margin-top: 1rem;">Kestria Global Conference · Budapest, May 14–16, 2025</p>
+    </div>
+  </div>
+
+  <h2 class="option-label">8. Medium blue + multi-colour circles, large condensed</h2>
+  <div class="hero-mock" style="background: #1a4a6e; color: #fff;">
+    <svg class="graphic" viewBox="0 0 400 200" preserveAspectRatio="xMidYMid slice">
+      <use href="#circles-motif" fill="#ffffff" transform="translate(20,100) scale(0.9)"/>
+      <use href="#circles-motif" fill="#C0865E" transform="translate(150,40) scale(0.8)"/>
+      <use href="#circles-motif" fill="#D9B18E" transform="translate(280,70) scale(0.7)"/>
+      <use href="#circles-motif" fill="#6B9BC4" transform="translate(340,20) scale(0.6)"/>
+    </svg>
+    <div class="content" style="max-width: 640px;">
+      <p class="theme" style="font-size: 3.25rem; line-height: 1;">Go Beyond:</p>
+      <p class="tagline" style="font-size: 1.35rem; margin-top: 0.25rem; color: #D9B18E;">Connecting Minds, Shaping Success</p>
+      <p class="meta" style="margin-top: 1rem;">Budapest · May 14–16, 2025</p>
+    </div>
+  </div>
+
+  <h2 class="option-label">9. Narrow banner + circles motif, single-line theme</h2>
+  <div class="hero-mock" style="background: #0C2340; color: #fff; min-height: 200px; padding: 1.5rem;">
+    <svg class="graphic graphic--light" viewBox="0 0 400 120" preserveAspectRatio="xMidYMid slice">
+      <use href="#circles-motif" fill="#D9B18E" transform="translate(50,20) scale(0.5)"/>
+      <use href="#circles-motif" fill="#6B9BC4" transform="translate(280,40) scale(0.5)"/>
+    </svg>
+    <div class="content" style="max-width: 800px;">
+      <p class="theme" style="font-size: clamp(1.5rem, 4vw, 2rem);">Go Beyond: Connecting Minds, Shaping Success</p>
+      <p class="meta" style="margin-top: 0.5rem; font-size: 0.85rem;">Kestria Global Conference · Budapest, May 14–16, 2025</p>
+    </div>
+  </div>
+
+  <h2 class="option-label">10. Asymmetric – circles top-right, large theme left</h2>
+  <div class="hero-mock" style="background: #0C2340; color: #fff; flex-direction: row; justify-content: space-between; align-items: center; text-align: left; padding: 2rem 3rem;">
+    <svg class="graphic" viewBox="0 0 400 200" preserveAspectRatio="xMaxYMin slice" style="opacity: 0.5;">
+      <use href="#circles-motif" fill="#D9B18E" transform="translate(280,10)"/>
+      <use href="#circles-motif" fill="#ffffff" transform="translate(340,80) scale(0.6)"/>
+    </svg>
+    <div class="content" style="text-align: left;">
+      <p class="theme" style="font-size: 3.25rem; line-height: 1; color: #fff;">Go Beyond</p>
+      <p class="tagline" style="font-size: 1.1rem; margin-top: 0.25rem; color: #D9B18E;">Connecting Minds, Shaping Success</p>
+      <p class="meta" style="margin-top: 0.75rem;">Budapest · May 14–16, 2025</p>
+    </div>
+    <div style="text-align: right; position: relative; z-index: 2;">
+      <p class="meta" style="font-size: 0.9rem;">Budapest</p>
+      <p class="meta" style="font-size: 0.9rem;">May 14–16, 2025</p>
+    </div>
+  </div>
+
+</body>
+</html>
