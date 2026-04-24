@@ -3,12 +3,12 @@
     {
       "dayNumber": 1,
       "label": "Day 1",
-      "dateLabel": "May 14th",
-      "location": "Roxy (rooftop), Pullman Hotel",
-      "dressCode": "Business attire",
+      "dateLabel": "May 13th",
+      "location": "Garden Studio (Level 3), Andaz Singapore",
+      "dressCode": "Business attire (sessions) \u00b7 Casual attire (teambuilding & dinner)",
       "sessions": [
         {
-          "time": "08:45 am – 09:00 am",
+          "time": "08:45 am \u2013 09:00 am",
           "title": "Gathering of delegates",
           "subtitle": "",
           "speakers": [],
@@ -16,28 +16,31 @@
           "description": ""
         },
         {
-          "time": "09:00 am – 09:30 am",
-          "title": "Go Beyond: Connecting Minds, Shaping Success",
-          "subtitle": "Welcome by President & Global Alliance Director",
-          "speakers": [
-            "Katerina Meimaroglou",
-            "Stepan Motejzik"
-          ],
+          "time": "09:00 am \u2013 09:20 am",
+          "title": "Beyond Growth: Leading with Authenticity. Building with Trust.",
+          "subtitle": "Opening Ceremony by the Board & Global Office",
+          "speakers": ["Katerina Meimaroglou", "Stepan Motejzik"],
           "type": "session",
           "description": ""
         },
         {
-          "time": "09:30 am – 10:15 am",
+          "time": "09:20 am \u2013 09:50 am",
           "title": "Meet Our New Colleagues",
           "subtitle": "Introduction of New Member Firms",
-          "speakers": [
-            "Monicca Yan"
-          ],
+          "speakers": ["Monicca Yan"],
           "type": "session",
           "description": ""
         },
         {
-          "time": "10:15 am – 10:45 am",
+          "time": "09:50 am \u2013 10:25 am",
+          "title": "Tools to Boost Our Performance",
+          "subtitle": "Introduction of Conference Partners (Hogan Assessments)",
+          "speakers": [],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "10:25 am \u2013 10:50 am",
           "title": "Coffee break",
           "subtitle": "",
           "speakers": [],
@@ -45,60 +48,65 @@
           "description": ""
         },
         {
-          "time": "10:45 am – 11:15 am",
-          "title": "Group photoshoot",
+          "time": "10:50 am \u2013 11:50 am",
+          "title": "Trusted Advisory: Executive Search in Asia Pacific",
+          "subtitle": "Asia Pacific Member Panel",
+          "speakers": ["Monicca Yan"],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "11:50 am \u2013 12:15 pm",
+          "title": "Group photo shoot",
           "subtitle": "",
           "speakers": [],
           "type": "social",
           "description": ""
         },
         {
-          "time": "11:15 am – 11:30 am",
-          "title": "Navigating the CEE: Search Practice in Hungary",
-          "subtitle": "Introduction & Welcome by Kestria Hungary",
-          "speakers": [
-            "Barbara Vincze"
-          ],
-          "type": "session",
-          "description": ""
-        },
-        {
-          "time": "11:30 am – 12:30 pm",
-          "title": "Power Shifts and Geopolitical Disruption: Navigating Risk, Opportunity, and Leadership in a Changing World",
-          "subtitle": "Keynote Speech",
-          "speakers": [
-            "Athanasios Platias"
-          ],
-          "type": "session",
-          "description": ""
-        },
-        {
-          "time": "12:30 pm – 01:45 pm",
-          "title": "Lunch at The Restaurant (ground floor)",
+          "time": "12:15 pm \u2013 01:30 pm",
+          "title": "Lunch at Alley on 25 (Level 25)",
           "subtitle": "",
           "speakers": [],
           "type": "lunch",
           "description": ""
         },
         {
-          "time": "03:00 pm – 08:00 pm",
-          "title": "Cook Beyond: Sharing Bites, Lasting Bonds",
-          "subtitle": "Teambuilding event followed by dinner (casual attire, depending on weather, we may be seated indoors or outdoors). Meet in front of the hotel at 3:00 pm. Bus leaves at 3:10 pm. Back at the hotel by 8:00 pm.",
+          "time": "02:30 pm \u2013 05:30 pm",
+          "title": "Paddle as One: Find your Rhythm. Bond with Trust.",
+          "subtitle": "Teambuilding",
           "speakers": [],
           "type": "social",
-          "description": ""
+          "image": "img/agenda/dragon-boats.jpg",
+          "imageLayout": "left",
+          "alwaysOpen": true,
+          "description": "Embrace one of Singapore\u2019s most beloved traditions \u2014 dragon boating on the water. No experience needed; the boats are wide, stable, and built for first-timers. Whether you paddle or cheer from the shore, every role counts.",
+          "bullets": [
+            "\ud83d\udeb6 Meet us at 2:30 pm at street level in front of the hotel for a short bus ride",
+            "\u2600\ufe0f Sun protection and light, comfortable casual / sports attire recommended",
+            "\ud83d\ude8c The bus returns to the hotel by 5:30 pm"
+          ]
+        },
+        {
+          "time": "07:15 pm \u2013 09:15 pm",
+          "title": "Group dinner at Coca at Suntec",
+          "subtitle": "",
+          "speakers": [],
+          "type": "social",
+          "url": "https://www.google.com/maps/search/?api=1&query=Coca+Suntec+City+Singapore",
+          "description": "Meet us at 7:00 pm at street level in front of the Andaz hotel for a short 10-minute walk, or meet us directly at the restaurant at 7:15 pm. Spouses are welcome if registered in advance."
         }
       ]
     },
     {
       "dayNumber": 2,
       "label": "Day 2",
-      "dateLabel": "May 15th",
-      "location": "Roxy (rooftop), Pullman Hotel",
-      "dressCode": "Business attire",
+      "dateLabel": "May 14th",
+      "location": "Garden Studio (Level 3), Andaz Singapore",
+      "dressCode": "Business attire (sessions) \u00b7 Casual attire (dinner)",
       "sessions": [
         {
-          "time": "08:45 am – 09:00 am",
+          "time": "08:45 am \u2013 09:00 am",
           "title": "Gathering of delegates",
           "subtitle": "",
           "speakers": [],
@@ -106,7 +114,7 @@
           "description": ""
         },
         {
-          "time": "09:00 am – 09:15 am",
+          "time": "09:00 am \u2013 09:15 am",
           "title": "Opening & Day 1 Recap",
           "subtitle": "",
           "speakers": [],
@@ -114,27 +122,23 @@
           "description": ""
         },
         {
-          "time": "09:15 am – 09:35 am",
-          "title": "Beyond Kestria 2025: Forging the Path to 2030",
-          "subtitle": "Collaborating Today to Shape Tomorrow",
-          "speakers": [
-            "Stepan Motejzik"
-          ],
+          "time": "09:15 am \u2013 09:30 am",
+          "title": "Kestria 2030",
+          "subtitle": "Strategy Building Blocks",
+          "speakers": ["Stepan Motejzik"],
           "type": "session",
           "description": ""
         },
         {
-          "time": "09:35 am – 10:45 am",
-          "title": "Global Edge: Driving Cross-Border Excellence",
-          "subtitle": "Empowering Collaboration & Innovation Across Borders",
-          "speakers": [
-            "Japheth Worthy"
-          ],
+          "time": "09:30 am \u2013 10:30 am",
+          "title": "Enhancing Cross-border Business",
+          "subtitle": "Rise of New Concepts",
+          "speakers": ["Cross-border BD Task Force"],
           "type": "session",
           "description": ""
         },
         {
-          "time": "10:45 am – 11:15 am",
+          "time": "10:30 am \u2013 11:00 am",
           "title": "Coffee break",
           "subtitle": "",
           "speakers": [],
@@ -142,69 +146,73 @@
           "description": ""
         },
         {
-          "time": "11:15 am – 12:45 pm",
-          "title": "Global Pitch Lab",
-          "subtitle": "Mastering Cross-Border Deals Through Role-Play and Collaboration",
-          "speakers": [
-            "Stepan Motejzik"
-          ],
+          "time": "11:00 am \u2013 12:15 pm",
+          "title": "Strengthening Our Vertical Expertise",
+          "subtitle": "Practice Group Meetings",
+          "speakers": ["Global Practice Leaders"],
           "type": "session",
           "description": ""
         },
         {
-          "time": "12:45 pm – 02:00 pm",
-          "title": "Lunch at The Restaurant (ground floor)",
+          "time": "12:15 pm \u2013 12:50 pm",
+          "title": "Tools to Boost Our Performance",
+          "subtitle": "Introduction of Conference Partners (Ezekia)",
+          "speakers": ["Joseph Blass"],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "12:50 pm \u2013 01:00 pm",
+          "title": "Getting Ready for the Client Event",
+          "subtitle": "Internal Alignment",
+          "speakers": ["Stepan Motejzik"],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "01:00 pm \u2013 02:30 pm",
+          "title": "Lunch at Alley on 25 (Level 25)",
           "subtitle": "",
           "speakers": [],
           "type": "lunch",
           "description": ""
         },
         {
-          "time": "02:00 pm – 03:15 pm",
-          "title": "Shift Beyond: Rethinking Executive Search with AI",
-          "subtitle": "Presentation & Roundtable Discussions",
-          "speakers": [
-            "Sandro Eggimann",
-            "Bendik Myhre"
-          ],
-          "type": "session",
-          "description": ""
-        },
-        {
-          "time": "03:15 pm – 03:45 pm",
-          "title": "A Common Business Development Platform",
-          "subtitle": "Presentation by Ezekia (Joseph Blass)",
+          "time": "",
+          "title": "The Power of Being Authentic: The Currency of Modern Leadership",
+          "subtitle": "Invitation-only client leadership forum",
           "speakers": [],
-          "type": "session",
-          "description": ""
+          "type": "client",
+          "alwaysOpen": true,
+          "description": "",
+          "program": [
+            { "time": "2:30 \u2013 3:00 pm", "title": "Welcome Reception", "type": "break" },
+            { "time": "3:00 \u2013 3:10 pm", "title": "Official Welcome", "speaker": "Kestria Global Executive Board", "type": "welcome" },
+            { "time": "3:10 \u2013 3:50 pm", "title": "Proactive Agility: Leading with Foresight and Authenticity in a Changing World", "speaker": "Steven B. McKinney", "type": "keynote" },
+            { "time": "3:50 \u2013 4:30 pm", "title": "The Authenticity Advantage: Being Real Is No Longer an Option", "speaker": "Norman Chua", "type": "keynote" },
+            { "time": "4:30 \u2013 5:30 pm", "title": "Leadership Dialogues & Networking Cocktail Reception", "type": "break" }
+          ]
         },
         {
-          "time": "04:00 pm – 05:00 pm",
-          "title": "Mix Beyond: Small Sips, Big Connections",
+          "time": "07:30 pm \u2013 09:30 pm",
+          "title": "Group dinner at Long Beach Seafood East Coast",
           "subtitle": "",
           "speakers": [],
           "type": "social",
-          "description": ""
-        },
-        {
-          "time": "07:30 pm",
-          "title": "Dinner at Halászbástya Restaurant",
-          "subtitle": "",
-          "speakers": [],
-          "type": "social",
-          "description": ""
+          "url": "https://www.google.com/maps/search/?api=1&query=Long+Beach+Seafood+East+Coast+Singapore",
+          "description": "Meet us at 7:00 pm at street level in front of the hotel for a 20-minute bus ride, or meet us directly at the restaurant at 7:30 pm. Dinner is for members only. The bus returns to the hotel by 10:00 pm."
         }
       ]
     },
     {
       "dayNumber": 3,
       "label": "Day 3",
-      "dateLabel": "May 16th",
-      "location": "Roxy (rooftop), Pullman Hotel",
-      "dressCode": "Business attire",
+      "dateLabel": "May 15th",
+      "location": "Garden Studio (Level 3), Andaz Singapore",
+      "dressCode": "Business attire (sessions) \u00b7 Casual attire (dinner)",
       "sessions": [
         {
-          "time": "08:45 am – 09:00 am",
+          "time": "08:45 am \u2013 09:00 am",
           "title": "Gathering of delegates",
           "subtitle": "",
           "speakers": [],
@@ -212,7 +220,7 @@
           "description": ""
         },
         {
-          "time": "09:00 am – 09:15 am",
+          "time": "09:00 am \u2013 09:15 am",
           "title": "Opening & Day 2 Recap",
           "subtitle": "",
           "speakers": [],
@@ -220,17 +228,23 @@
           "description": ""
         },
         {
-          "time": "09:15 am – 10:30 am",
-          "title": "Positioning with Purpose",
-          "subtitle": "Practice Groups at the Forefront",
-          "speakers": [
-            "Michael Kantel"
-          ],
+          "time": "09:15 am \u2013 09:45 am",
+          "title": "Positioned to Shine",
+          "subtitle": "Communication Strategy: Globally & Locally",
+          "speakers": ["Stepan Motejzik", "Irena Galova"],
           "type": "session",
           "description": ""
         },
         {
-          "time": "10:30 am – 11:00 am",
+          "time": "09:45 am \u2013 10:45 am",
+          "title": "Kestria Global Insights",
+          "subtitle": "",
+          "speakers": ["Kestria Institute Council"],
+          "type": "session",
+          "description": ""
+        },
+        {
+          "time": "10:45 am \u2013 11:15 am",
           "title": "Coffee break",
           "subtitle": "",
           "speakers": [],
@@ -238,85 +252,105 @@
           "description": ""
         },
         {
-          "time": "11:00 am – 11:45 am",
-          "title": "Signal & Story",
-          "subtitle": "Amplifying Thought Leadership Across Borders",
-          "speakers": [
-            "Stepan Motejzik"
-          ],
+          "time": "11:15 am \u2013 12:45 pm",
+          "title": "The Augmented Search Firm: How AI Is Reshaping Client Expectations, Consultant Leverage, and Trust",
+          "subtitle": "Kestria AI Ambassador Session",
+          "speakers": ["Dr. Ayesha Khanna"],
           "type": "session",
           "description": ""
         },
         {
-          "time": "11:45 am – 12:45 pm",
-          "title": "Leadership Challenges and Priorities in a Complex, Disrupted Market",
-          "subtitle": "Roundtables on Kestria Global Leadership Survey",
-          "speakers": [
-            "Rohan Carr"
-          ],
-          "type": "session",
-          "description": ""
-        },
-        {
-          "time": "12:45 pm – 02:00 pm",
-          "title": "Lunch at The Restaurant (ground floor)",
+          "time": "12:45 pm \u2013 02:00 pm",
+          "title": "Lunch at Alley on 25 (Level 25)",
           "subtitle": "",
           "speakers": [],
           "type": "lunch",
           "description": ""
         },
         {
-          "time": "02:00 pm – 02:15 pm",
-          "title": "General Meeting of the Association",
-          "subtitle": "Financial Update & Revised Rules",
-          "speakers": [
-            "Rohan Carr",
-            "Stepan Motejzik"
-          ],
+          "time": "02:00 pm \u2013 03:15 pm",
+          "title": "Beyond Growth: The Moments That Define Us",
+          "subtitle": "Authentic Stories From Across Our Alliance",
+          "speakers": ["Stepan Motejzik"],
           "type": "session",
           "description": ""
         },
         {
-          "time": "02:15 pm – 03:30 pm",
-          "title": "Elevating Executive Search: Drive Success",
-          "subtitle": "Panel Discussion on Growth Initiatives",
-          "speakers": [
-            "Travis Hann"
-          ],
-          "type": "session",
+          "time": "03:15 pm \u2013 03:45 pm",
+          "title": "Coffee break",
+          "subtitle": "",
+          "speakers": [],
+          "type": "break",
           "description": ""
         },
         {
-          "time": "03:30 pm – 03:45 pm",
+          "time": "03:45 pm \u2013 04:00 pm",
           "title": "Awarding the Best",
-          "subtitle": "Kestria Excellence Awards (Katerina Meimaroglou)",
-          "speakers": [],
+          "subtitle": "Kestria Excellence Awards",
+          "speakers": ["Katerina Meimaroglou"],
           "type": "session",
           "description": ""
         },
         {
-          "time": "03:45 pm – 04:00 pm",
-          "title": "Recap, Closing & 2026 Global Conference Announcement",
+          "time": "04:00 pm \u2013 04:15 pm",
+          "title": "Recap, Closing & 2027 Global Conference Announcement",
           "subtitle": "",
           "speakers": [],
           "type": "session",
           "description": ""
         },
         {
-          "time": "04:00 pm - 05:00 pm",
-          "title": "Mix Beyond: Small Sips, Big Connections",
+          "time": "07:30 pm \u2013 09:30 pm",
+          "title": "Group dinner at Fu Yuan Teochew Dining",
           "subtitle": "",
           "speakers": [],
           "type": "social",
-          "description": ""
-        },
+          "url": "https://www.google.com/maps/search/?api=1&query=Fu+Yuan+Teochew+Dining+Singapore",
+          "description": "Meet us at 7:00 pm at street level in front of the hotel for a 10\u201315 minute bus ride, or meet us directly at the restaurant at 7:30 pm. Spouses are welcome if registered in advance. After dinner, feel free to join us for drinks and dancing at Zouk Club. Too tired for that? Take a taxi or stroll back to the hotel \u2013 please note that no bus service is booked after dinner."
+        }
+      ]
+    },
+    {
+      "dayNumber": 4,
+      "label": "Day 4",
+      "dateLabel": "May 16th",
+      "headline": "Optional Saturday sightseeing tour and lunch",
+      "location": "Little India \u00b7 Chinatown \u00b7 Kampong Gelam \u00b7 Suntec City",
+      "dressCode": "Casual attire",
+      "optional": true,
+      "sessions": [
         {
-          "time": "07:30 pm",
-          "title": "Dinner & Party at Spiler Shanghai Secret Bar",
-          "subtitle": "Meet in front of the hotel at 7:10 pm for a short walk or meet us at 7:30 pm at the restaurant.",
+          "time": "9:30 am \u2013 1:30 pm",
+          "title": "Cultures of Singapore Sightseeing Tour",
+          "subtitle": "Optional \u00b7 Registered participants only",
           "speakers": [],
           "type": "social",
-          "description": ""
+          "alwaysOpen": true,
+          "image": "img/tour/kampong-gelam.jpg",
+          "imageLayout": "left",
+          "description": "Step off the beaten path and discover three of Singapore\u2019s most vibrant and culturally rich neighbourhoods on a guided small-bus tour. In Little India, soak up the colours and aromas of flower-garland stalls, spice shops and the ornate Sri Veeramakaliamman Temple. In Chinatown, wander conserved shophouses where a mosque, a Hindu temple and a Buddhist temple stand within metres of each other. In Kampong Gelam, admire the golden domes of Sultan Mosque, browse Arab Street\u2019s textile boutiques and lose yourself in the street-art alleys of Haji Lane.",
+          "bullets": [
+            "\ud83d\udcb0 Price: \u20ac85 per person",
+            "\ud83d\ude8c Includes: private bus, English-speaking guide and light refreshments",
+            "\ud83d\udc65 Spouses welcome if registered in advance"
+          ]
+        },
+        {
+          "time": "1:30 \u2013 2:30 pm",
+          "title": "Group Lunch at Penang Place",
+          "subtitle": "Suntec City",
+          "speakers": [],
+          "type": "lunch",
+          "url": "https://www.penangplace.com/",
+          "alwaysOpen": true,
+          "image": "img/tour/penang-place.jpg",
+          "imageLayout": "right",
+          "description": "Casual buffet lunch at one of Singapore\u2019s best-loved Penang restaurants, famous for its Char Kway Teow, Assam Laksa and Beef Rendang.",
+          "bullets": [
+            "\ud83d\udcb0 Price: \u20ac45 per person (full buffet & soft drinks)",
+            "\ud83c\udf89 Guests aged 60 and above receive a 20% discount",
+            "\ud83d\udeb6 After lunch, feel free to explore Singapore, browse the shopping malls, or simply walk back to the Andaz hotel \u2014 it\u2019s just a 12-minute walk"
+          ]
         }
       ]
     }

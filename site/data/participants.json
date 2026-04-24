@@ -10,6 +10,16 @@
     "photo": "img/photos/rohan-carr.jpg"
   },
   {
+    "name": "Emily Witts",
+    "member": "Kestria Australia",
+    "country": "Australia",
+    "email": "emilywitts@insightgroup.com.au",
+    "mobile": "+61421704686",
+    "role": "participant",
+    "dietary": "",
+    "photo": "img/photos/emily-witts.jpg"
+  },
+  {
     "name": "Malcolm Duncan",
     "member": "Kestria Australia",
     "country": "Australia",
@@ -28,36 +38,6 @@
     "role": "participant",
     "dietary": "",
     "photo": "img/photos/alexander-moser.jpg"
-  },
-  {
-    "name": "Franz Schuster",
-    "member": "Kestria Austria",
-    "country": "Austria",
-    "email": "schuster@aristid.at",
-    "mobile": "+436644453690",
-    "role": "participant",
-    "dietary": "",
-    "photo": "img/photos/franz-schuster.jpg"
-  },
-  {
-    "name": "Gustav Kichler",
-    "member": "Kestria Austria",
-    "country": "Austria",
-    "email": "kichler@aristid.at",
-    "mobile": "+4369913909554",
-    "role": "participant",
-    "dietary": "",
-    "photo": ""
-  },
-  {
-    "name": "Frederic Du Jardin",
-    "member": "Kestria Belgium",
-    "country": "Belgium",
-    "email": "frederic.du.jardin@cbp.be",
-    "mobile": "+32496108876",
-    "role": "participant",
-    "dietary": "No shrimps please.",
-    "photo": "img/photos/frederic-du-jardin.png"
   },
   {
     "name": "Charles Petit",
@@ -83,8 +63,8 @@
     "name": "Vera Staut",
     "member": "Kestria Brazil",
     "country": "Brazil",
-    "email": "",
-    "mobile": "",
+    "email": "vera@stautrh.com.br",
+    "mobile": "+5519991815673",
     "role": "participant",
     "dietary": "",
     "photo": "img/photos/vera-staut.jpg"
@@ -100,6 +80,16 @@
     "photo": "img/photos/celine-chabee.jpg"
   },
   {
+    "name": "Ryan Berrecloth",
+    "member": "Kestria Canada & USA",
+    "country": "Canada & USA",
+    "email": "ryan.berrecloth@penderhowe.com",
+    "mobile": "+16043466349",
+    "role": "participant",
+    "dietary": "",
+    "photo": "img/photos/ryan-berrecloth.jpg"
+  },
+  {
     "name": "Travis Hann",
     "member": "Kestria Canada & USA",
     "country": "Canada & USA",
@@ -110,46 +100,6 @@
     "photo": "img/photos/travis-hann.jpg"
   },
   {
-    "name": "Sean Casey",
-    "member": "Kestria Canada & USA",
-    "country": "Canada & USA",
-    "email": "",
-    "mobile": "",
-    "role": "participant",
-    "dietary": "",
-    "photo": ""
-  },
-  {
-    "name": "Matija Mirkovic",
-    "member": "Kestria Croatia",
-    "country": "Croatia",
-    "email": "Matija.Mirkovic@profesio.hr",
-    "mobile": "+385916118223",
-    "role": "participant",
-    "dietary": "",
-    "photo": ""
-  },
-  {
-    "name": "Vanja Horvat",
-    "member": "Kestria Croatia",
-    "country": "Croatia",
-    "email": "Vanja.horvat@profesio.hr",
-    "mobile": "+385916118015",
-    "role": "participant",
-    "dietary": "No Dairy products",
-    "photo": ""
-  },
-  {
-    "name": "Daniel Zahora",
-    "member": "Kestria Czech Republic",
-    "country": "Czech Republic",
-    "email": "",
-    "mobile": "",
-    "role": "participant",
-    "dietary": "",
-    "photo": "img/photos/daniel-zahora.jpg"
-  },
-  {
     "name": "Anders Jorgensen",
     "member": "Kestria Denmark",
     "country": "Denmark",
@@ -157,7 +107,7 @@
     "mobile": "+4530517789",
     "role": "participant",
     "dietary": "",
-    "photo": ""
+    "photo": "img/photos/anders-jorgensen.jpg"
   },
   {
     "name": "Jesper Dambo",
@@ -170,44 +120,14 @@
     "photo": "img/photos/jesper-dambo.jpg"
   },
   {
-    "name": "Sanna Leppaluoto",
+    "name": "Kari Hausen",
     "member": "Kestria Finland",
     "country": "Finland",
-    "email": "",
-    "mobile": "",
+    "email": "kari.hausen@ssconsulting.fi",
+    "mobile": "+358503743504",
     "role": "participant",
     "dietary": "",
-    "photo": "img/photos/sanna-leppaluoto.jpg"
-  },
-  {
-    "name": "Jan Holmstrom",
-    "member": "Kestria Finland",
-    "country": "Finland",
-    "email": "",
-    "mobile": "",
-    "role": "participant",
-    "dietary": "",
-    "photo": "img/photos/jan-holmstrom.jpg"
-  },
-  {
-    "name": "Valerie Pihan-Coste",
-    "member": "Kestria France",
-    "country": "France",
-    "email": "vpihancoste@vmsfrance.com",
-    "mobile": "+33683425418",
-    "role": "participant",
-    "dietary": "",
-    "photo": "img/photos/valerie-pihan-coste.jpg"
-  },
-  {
-    "name": "Mathias Friedrichs",
-    "member": "Kestria Germany",
-    "country": "Germany",
-    "email": "m.friedrichs@friedrichs-partner.com",
-    "mobile": "+491722853992",
-    "role": "participant",
-    "dietary": "",
-    "photo": "img/photos/mathias-friedrichs.jpg"
+    "photo": "img/photos/kari-hausen.jpg"
   },
   {
     "name": "Michael Kantel",
@@ -227,37 +147,7 @@
     "mobile": "+306944824855",
     "role": "participant",
     "dietary": "",
-    "photo": "img/photos/katerina-meimaroglou.png"
-  },
-  {
-    "name": "Margie Glentzaki",
-    "member": "Kestria Greece",
-    "country": "Greece",
-    "email": "margie@meihunt.com",
-    "mobile": "+306945702087",
-    "role": "participant",
-    "dietary": "",
-    "photo": ""
-  },
-  {
-    "name": "Sofia Kassavou",
-    "member": "Kestria Greece",
-    "country": "Greece",
-    "email": "skassavou@meihunt.com",
-    "mobile": "+306985733243",
-    "role": "participant",
-    "dietary": "",
-    "photo": ""
-  },
-  {
-    "name": "Barbara Vincze",
-    "member": "Kestria Hungary",
-    "country": "Hungary",
-    "email": "vincze.barbara@bmr.hu",
-    "mobile": "+36205692521",
-    "role": "participant",
-    "dietary": "",
-    "photo": "img/photos/barbara-vincze.jpg"
+    "photo": "img/photos/katerina-meimaroglou.jpg"
   },
   {
     "name": "Constanza Ossa",
@@ -267,7 +157,7 @@
     "mobile": "+56957981741",
     "role": "participant",
     "dietary": "",
-    "photo": ""
+    "photo": "img/photos/constanza-ossa.jpg"
   },
   {
     "name": "Daniela Mercandino",
@@ -277,17 +167,17 @@
     "mobile": "+56992202114",
     "role": "participant",
     "dietary": "",
-    "photo": ""
+    "photo": "img/photos/daniela-mercandino.jpg"
   },
   {
     "name": "Magdalena Reyes",
     "member": "Kestria Chile",
     "country": "Chile",
-    "email": "magdalena.reyes@krebs.cl",
-    "mobile": "+56952265191",
+    "email": "daniela.mercandino@krebs.cl",
+    "mobile": "+56992202114",
     "role": "participant",
     "dietary": "",
-    "photo": ""
+    "photo": "img/photos/magdalena-reyes.jpg"
   },
   {
     "name": "Monicca Yan",
@@ -300,24 +190,44 @@
     "photo": "img/photos/monicca-yan.jpg"
   },
   {
+    "name": "Nine Jee Wu",
+    "member": "Kestria China & Singapore",
+    "country": "China & Singapore",
+    "email": "ninejee@hrpartners.com",
+    "mobile": "+6590090090",
+    "role": "participant",
+    "dietary": "",
+    "photo": "img/photos/nine-jee-wu.jpg"
+  },
+  {
+    "name": "Veronica Lee",
+    "member": "Kestria China & Singapore",
+    "country": "China & Singapore",
+    "email": "veron@hrpartners.com",
+    "mobile": "+6593821752",
+    "role": "participant",
+    "dietary": "",
+    "photo": "img/photos/veronica-lee.jpg"
+  },
+  {
+    "name": "Dwitiya Sengupta",
+    "member": "Kestria India",
+    "country": "India",
+    "email": "dwitiya@synergyconsultants.co",
+    "mobile": "+919870596200",
+    "role": "participant",
+    "dietary": "",
+    "photo": "img/photos/dwitiya-sengupta.jpg"
+  },
+  {
     "name": "Manveet S. Hora",
     "member": "Kestria India",
     "country": "India",
-    "email": "manveet@synergyconsultants.in",
+    "email": "manveet@synergyconsultants.co",
     "mobile": "+919810891703,+919971499475",
     "role": "participant",
-    "dietary": "",
+    "dietary": "calorie count",
     "photo": "img/photos/manveet-s-hora.jpg"
-  },
-  {
-    "name": "Niamh O′Driscoll",
-    "member": "Kestria Ireland",
-    "country": "Ireland",
-    "email": "niamh@fastnettalent.com",
-    "mobile": "+353866386228",
-    "role": "participant",
-    "dietary": "",
-    "photo": ""
   },
   {
     "name": "Ron Magen",
@@ -340,14 +250,14 @@
     "photo": "img/photos/carmelo-spinella.jpg"
   },
   {
-    "name": "Cristina Zanchi",
+    "name": "Giorgio Veronelli",
     "member": "Kestria Italy",
     "country": "Italy",
-    "email": "cristina.zanchi@gchconsulting.net",
-    "mobile": "+393513739980",
+    "email": "giorgio.veronelli@gchconsulting.net",
+    "mobile": "+393401255633",
     "role": "participant",
     "dietary": "",
-    "photo": ""
+    "photo": "img/photos/giorgio-veronelli.jpg"
   },
   {
     "name": "Japheth A. Worthy",
@@ -356,7 +266,7 @@
     "email": "japheth@apexes.co.jp",
     "mobile": "+818034602737",
     "role": "participant",
-    "dietary": "No nuts of any kind",
+    "dietary": "Nuts allergy",
     "photo": "img/photos/japheth-a-worthy.jpg"
   },
   {
@@ -370,34 +280,14 @@
     "photo": "img/photos/iluta-gaile.jpg"
   },
   {
-    "name": "Romain Joly",
-    "member": "Kestria Luxembourg",
-    "country": "Luxembourg",
-    "email": "r.joly@adveci.com",
-    "mobile": "+352661900618",
-    "role": "participant",
-    "dietary": "",
-    "photo": ""
-  },
-  {
     "name": "Raj Kumar Paramanathan",
     "member": "Kestria Malaysia",
     "country": "Malaysia",
     "email": "raj@cnetg.com",
     "mobile": "+60122196288",
     "role": "participant",
-    "dietary": "No beef, no prawn/lobsters/crabs.",
+    "dietary": "No beef, no crustacean",
     "photo": "img/photos/raj-kumar-paramanathan.jpg"
-  },
-  {
-    "name": "Jens Hagedorn",
-    "member": "Kestria Mexico",
-    "country": "Mexico",
-    "email": "",
-    "mobile": "",
-    "role": "participant",
-    "dietary": "",
-    "photo": ""
   },
   {
     "name": "Cees Hagoort",
@@ -420,6 +310,16 @@
     "photo": "img/photos/patrick-westerburger.jpg"
   },
   {
+    "name": "Guy Brew",
+    "member": "Kestria New Zealand",
+    "country": "New Zealand",
+    "email": "guy@ichor.co.nz",
+    "mobile": "+64274455310",
+    "role": "participant",
+    "dietary": "no 'red' meat. Poultry and seafood is fine.",
+    "photo": "img/photos/guy-brew.jpg"
+  },
+  {
     "name": "Ije Jidenma",
     "member": "Kestria Nigeria",
     "country": "Nigeria",
@@ -428,26 +328,6 @@
     "role": "participant",
     "dietary": "",
     "photo": "img/photos/ije-jidenma.jpg"
-  },
-  {
-    "name": "Bendik Myhre",
-    "member": "Kestria Norway",
-    "country": "Norway",
-    "email": "btm@pu.no",
-    "mobile": "+4792263185",
-    "role": "participant",
-    "dietary": "",
-    "photo": "img/photos/bendik-myhre.jpg"
-  },
-  {
-    "name": "Thea Thoresen Myhre",
-    "member": "Kestria Norway",
-    "country": "Norway",
-    "email": "ttm@pu.no",
-    "mobile": "+4792262456",
-    "role": "participant",
-    "dietary": "",
-    "photo": ""
   },
   {
     "name": "Vegard Berg",
@@ -463,21 +343,31 @@
     "name": "Tomasz Sokolowski",
     "member": "Kestria Poland",
     "country": "Poland",
-    "email": "tso@hrk.pl",
-    "mobile": "+48600353121",
+    "email": "pma@hrk.pl",
+    "mobile": "+48506287487",
     "role": "participant",
     "dietary": "",
     "photo": "img/photos/tomasz-sokolowski.jpg"
   },
   {
-    "name": "Piotr Mazurkiewicz",
-    "member": "Kestria Poland",
-    "country": "Poland",
-    "email": "",
-    "mobile": "",
+    "name": "João Miguel Antunes",
+    "member": "Kestria Portugal",
+    "country": "Portugal",
+    "email": "joao.m.antunes@thrivpartners.com",
+    "mobile": "+351938144068",
     "role": "participant",
     "dietary": "",
-    "photo": "img/photos/piotr-mazurkiewicz.jpg"
+    "photo": "img/photos/joao-miguel-antunes.jpg"
+  },
+  {
+    "name": "Pedro Antao",
+    "member": "Kestria Portugal",
+    "country": "Portugal",
+    "email": "pedro.antao@thrivpartners.com",
+    "mobile": "+351935392802",
+    "role": "participant",
+    "dietary": "I am alergic to seefood!",
+    "photo": "img/photos/pedro-antao.jpg"
   },
   {
     "name": "Razvan Eliad",
@@ -497,37 +387,37 @@
     "mobile": "+27834525340",
     "role": "participant",
     "dietary": "",
-    "photo": ""
+    "photo": "img/photos/janice-wagner.jpg"
   },
   {
-    "name": "Steven McKinney",
+    "name": "Bryan McKinney",
+    "member": "Kestria South Korea",
+    "country": "South Korea",
+    "email": "Bryan@mckinneyconsulting.com",
+    "mobile": "+821091169981",
+    "role": "participant",
+    "dietary": "",
+    "photo": "img/photos/bryan-mckinney.jpg"
+  },
+  {
+    "name": "Steven B. McKinney",
     "member": "Kestria South Korea",
     "country": "South Korea",
     "email": "steve@mckinneyconsulting.com",
     "mobile": "+821086325898",
     "role": "participant",
     "dietary": "",
-    "photo": "img/photos/steven-mckinney.jpg"
+    "photo": "img/photos/steven-b-mckinney.jpg"
   },
   {
-    "name": "Natalia Segura",
-    "member": "Kestria Spain",
-    "country": "Spain",
-    "email": "nsegura@theskeye.com",
-    "mobile": "+34659165061",
-    "role": "participant",
-    "dietary": "",
-    "photo": "img/photos/natalia-segura.jpg"
-  },
-  {
-    "name": "Toni Sole",
+    "name": "Edel Arguedas",
     "member": "Kestria Spain",
     "country": "Spain",
     "email": "tsole@theskeye.com",
     "mobile": "+34629861044",
     "role": "participant",
     "dietary": "",
-    "photo": "img/photos/toni-sole.jpg"
+    "photo": "img/photos/edel-arguedas.jpg"
   },
   {
     "name": "Niklas Claesson",
@@ -547,17 +437,17 @@
     "mobile": "+41788230074",
     "role": "participant",
     "dietary": "Vegetarian",
-    "photo": ""
+    "photo": "img/photos/eveline-muhmenthaler.jpg"
   },
   {
-    "name": "Philipp Mathieu",
+    "name": "Monika Vogt",
     "member": "Kestria Switzerland",
     "country": "Switzerland",
-    "email": "philipp.mathieu@viavanta.ch",
-    "mobile": "+41763724775",
+    "email": "Monika.Vogt@viavanta.ch",
+    "mobile": "+49491733896776",
     "role": "participant",
     "dietary": "",
-    "photo": "img/photos/philipp-mathieu.jpg"
+    "photo": "img/photos/monika-vogt.jpg"
   },
   {
     "name": "Thomas Muhmenthaler",
@@ -580,34 +470,14 @@
     "photo": "img/photos/thomas-suter.jpg"
   },
   {
-    "name": "Sandro Eggimann",
-    "member": "Kestria Switzerland",
-    "country": "Switzerland",
-    "email": "sandro.eggimann@viavanta.ch",
-    "mobile": "",
+    "name": "Daniel Osmer",
+    "member": "Kestria UK",
+    "country": "UK",
+    "email": "daniel.osmer@spectrum-ehcs.com",
+    "mobile": "+447788416715",
     "role": "participant",
     "dietary": "",
-    "photo": ""
-  },
-  {
-    "name": "Rania Abdalla",
-    "member": "Kestria UAE & Egypt",
-    "country": "UAE & Egypt",
-    "email": "rania.abdalla@kestria.com",
-    "mobile": "+201222222211,+971501961652",
-    "role": "participant",
-    "dietary": "No pork and no spicy food",
-    "photo": "img/photos/rania-abdalla.jpg"
-  },
-  {
-    "name": "Vanessa",
-    "member": "Kestria USA",
-    "country": "USA",
-    "email": "vanessa@ls-international.com",
-    "mobile": "",
-    "role": "participant",
-    "dietary": "",
-    "photo": ""
+    "photo": "img/photos/daniel-osmer.jpg"
   },
   {
     "name": "Hong Nguyen",
@@ -620,34 +490,14 @@
     "photo": "img/photos/hong-nguyen.jpg"
   },
   {
-    "name": "Cynthia Zulu",
-    "member": "Kestria Zambia",
-    "country": "Zambia",
-    "email": "cynthia.zulu@kestria.com",
-    "mobile": "+260966004197",
+    "name": "Tom Vovers",
+    "member": "Kestria Vietnam",
+    "country": "Vietnam",
+    "email": "1@hr2b.com",
+    "mobile": "+84939559093",
     "role": "participant",
     "dietary": "",
-    "photo": "img/photos/cynthia-zulu.jpg"
-  },
-  {
-    "name": "Chiku Ndhlovu",
-    "member": "Kestria Zambia",
-    "country": "Zambia",
-    "email": "chiku.ndhlovu@kestria.com",
-    "mobile": "+260776315636,+260966770066",
-    "role": "participant",
-    "dietary": "No pork, red meat and sugar (Sugar free options only).",
-    "photo": ""
-  },
-  {
-    "name": "Titamenji Sakala",
-    "member": "Kestria Zambia",
-    "country": "Zambia",
-    "email": "titamenji.sakala@kestria.com",
-    "mobile": "+260966004194",
-    "role": "participant",
-    "dietary": "",
-    "photo": ""
+    "photo": "img/photos/tom-vovers.jpg"
   },
   {
     "name": "Irena Galova",
@@ -657,7 +507,7 @@
     "mobile": "+420733783307",
     "role": "participant",
     "dietary": "",
-    "photo": "img/photos/irena-galova.png"
+    "photo": "img/photos/irena-galova.jpg"
   },
   {
     "name": "Stepan Motejzik",
@@ -677,6 +527,6 @@
     "mobile": "+421917342598",
     "role": "participant",
     "dietary": "vegan",
-    "photo": "img/photos/veronika-paluskova.png"
+    "photo": "img/photos/veronika-paluskova.jpg"
   }
 ]

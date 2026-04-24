@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kestria Global Conference</title>
+  <title>Kestria Global Conference 2026 · Singapore</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Noto+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -23,38 +23,21 @@
     <ul class="nav__links" id="navLinks">
       <li><a href="#hero" data-section="hero">Home</a></li>
       <li><a href="#agenda" data-section="agenda">Agenda</a></li>
-      <li><a href="#myseat" data-section="myseat">My Seat</a></li>
       <li><a href="#speakers" data-section="speakers">Speakers</a></li>
       <li><a href="#directory" data-section="directory">Participants</a></li>
       <li><a href="#info" data-section="info">Info</a></li>
       <li><a href="#traveltips" data-section="traveltips">Travel Tips</a></li>
-      <li><a href="#gallery" data-section="gallery">Gallery</a></li>
+      <li><a href="#gallery" data-section="gallery">Memories</a></li>
     </ul>
   </nav>
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="hero">
     <div class="hero__content">
-      <h1 class="hero__theme" id="heroTheme">Go Beyond</h1>
-      <p class="hero__tagline-main" id="heroTaglineMain">Connecting Minds, Shaping Success</p>
+      <h1 class="hero__theme" id="heroTheme">Beyond Growth</h1>
+      <p class="hero__tagline-main" id="heroTaglineMain">Leading with Authenticity. Building with Trust.</p>
       <p class="hero__meta" id="heroMeta"></p>
       <a href="#agenda" class="btn btn--secondary">View Agenda</a>
-    </div>
-  </section>
-
-  <!-- ===== MY SEAT ===== -->
-  <section class="section section--warm myseat" id="myseat">
-    <div class="container">
-      <h2 class="section__title">My Seat</h2>
-      <p class="myseat__intro" id="myseatIntro">Select your name to see your table assignments for each session.</p>
-      <div class="myseat__picker" id="myseatPicker">
-        <div class="search-box">
-          <svg class="search-box__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input type="text" id="myseatSearch" class="search-box__input" placeholder="Type your name&hellip;" autocomplete="off">
-        </div>
-        <ul class="myseat__suggestions" id="myseatSuggestions"></ul>
-      </div>
-      <div class="myseat__card" id="myseatCard" hidden></div>
     </div>
   </section>
 
@@ -71,8 +54,10 @@
   <!-- ===== SPEAKERS ===== -->
   <section class="section section--warm" id="speakers">
     <div class="container">
-      <h2 class="section__title">Speakers &amp; Partners</h2>
-      <div class="speaker-grid" id="speakerGrid"></div>
+      <h2 class="section__title">Keynote Speakers</h2>
+      <div class="speaker-grid" id="keynoteGrid"></div>
+      <h2 class="section__title" style="margin-top:3rem">Conference Partners</h2>
+      <div class="speaker-grid" id="partnerGrid"></div>
     </div>
   </section>
 
@@ -108,7 +93,7 @@
       <h2 class="section__title">Travel Tips</h2>
       <div class="travel-tips__grid" id="travelTipsGrid"></div>
       <div class="sightseeing" id="sightseeingSection">
-        <h3 class="sightseeing__title">Top 6 sightseeing (central Budapest)</h3>
+        <h3 class="sightseeing__title">Top 6 sightseeing spots</h3>
         <div class="sightseeing__grid" id="sightseeingGrid"></div>
       </div>
     </div>
@@ -117,7 +102,7 @@
   <!-- ===== PHOTO GALLERY ===== -->
   <section class="section section--warm" id="gallery">
     <div class="container">
-      <h2 class="section__title">Gallery</h2>
+      <h2 class="section__title">Memories from Budapest</h2>
       <div class="gallery-grid" id="galleryGrid"></div>
     </div>
   </section>
@@ -131,10 +116,23 @@
     <div class="lightbox__counter" id="lightboxCounter"></div>
   </div>
 
+  <!-- ===== CONFERENCE PARTNERS BANNER ===== -->
+  <div class="partners-banner" role="contentinfo" aria-label="Conference Partners">
+    <p class="partners-banner__label">Conference Partners</p>
+    <div class="partners-banner__logos">
+      <a href="https://ezekia.com/" target="_blank" rel="noopener" class="partners-banner__link" aria-label="Ezekia">
+        <img src="img/partners/ezekia-white.png" alt="Ezekia" class="partners-banner__logo partners-banner__logo--ezekia">
+      </a>
+      <span class="partners-banner__divider"></span>
+      <a href="https://www.hoganassessments.com/" target="_blank" rel="noopener" class="partners-banner__link" aria-label="Hogan Assessments">
+        <img src="img/partners/hogan-assessments.svg" alt="Hogan Assessments" class="partners-banner__logo partners-banner__logo--hogan">
+      </a>
+    </div>
+  </div>
+
   <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container">
-      <img src="img/logo-white.png" class="footer__logo" alt="Kestria">
       <p>&copy; <span id="footerYear"></span> Kestria &middot; <a href="https://www.kestria.com" target="_blank" rel="noopener">www.kestria.com</a></p>
     </div>
   </footer>
