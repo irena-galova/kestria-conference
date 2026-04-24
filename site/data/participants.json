@@ -340,11 +340,21 @@
     "photo": "img/photos/vegard-berg.jpg"
   },
   {
-    "name": "Tomasz Sokolowski",
+    "name": "Piotr Mazurkiewicz",
     "member": "Kestria Poland",
     "country": "Poland",
     "email": "pma@hrk.pl",
     "mobile": "+48506287487",
+    "role": "participant",
+    "dietary": "",
+    "photo": "img/photos/piotr-mazurkiewicz.jpg"
+  },
+  {
+    "name": "Tomasz Sokolowski",
+    "member": "Kestria Poland",
+    "country": "Poland",
+    "email": "tso@hrk.pl",
+    "mobile": "+48600353121",
     "role": "participant",
     "dietary": "",
     "photo": "img/photos/tomasz-sokolowski.jpg"
