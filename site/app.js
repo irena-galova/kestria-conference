@@ -606,10 +606,11 @@
 
     const bio = speaker.bio || "";
     const companyDesc = speaker.companyDescription || "";
-    const bioLong = bio.length > BIO_PREVIEW_LEN;
-    const companyLong = companyDesc.length > COMPANY_PREVIEW_LEN;
-    const shortBio = bioLong ? bio.substring(0, BIO_PREVIEW_LEN) + "…" : bio;
-    const shortCompany = companyLong ? companyDesc.substring(0, COMPANY_PREVIEW_LEN) + "…" : companyDesc;
+    // If a company description exists, always treat the bio as "long" so the
+    // Read-more toggle is rendered - clicking it also reveals the company blurb,
+    // keeping the initial card height consistent across all partner cards.
+    const bioLong = bio.length > BIO_PREVIEW_LEN || !!companyDesc;
+    const shortBio = bio.length > BIO_PREVIEW_LEN ? bio.substring(0, BIO_PREVIEW_LEN) + "…" : bio;
 
     const avatarContent = speaker.photo
       ? `<img src="${esc(speaker.photo)}" alt="${esc(speaker.name)}" loading="lazy">`
@@ -645,9 +646,8 @@
           ${bioLong ? `<button type="button" class="speaker-card__expand" data-target="bio">Read more</button>` : ""}
         </div>
         ${companyDesc ? `
-        <div class="speaker-card__company">
-          <p data-full="${esc(companyDesc)}" data-preview="${esc(shortCompany)}" style="font-style:italic">${esc(companyLong ? shortCompany : companyDesc)}</p>
-          ${companyLong ? `<button type="button" class="speaker-card__expand" data-target="company">Read more</button>` : ""}
+        <div class="speaker-card__company" hidden>
+          <p style="font-style:italic">${esc(companyDesc)}</p>
         </div>` : ""}
       </div>`;
 
@@ -657,14 +657,17 @@
         const wrap = btn.closest(".speaker-card__bio, .speaker-card__company");
         const p = wrap.querySelector("p");
         const isExpanded = btn.dataset.expanded === "1";
+        const companyBlock = card.querySelector(".speaker-card__company");
         if (isExpanded) {
           p.textContent = p.dataset.preview || "";
           btn.textContent = "Read more";
           delete btn.dataset.expanded;
+          if (companyBlock) companyBlock.hidden = true;
         } else {
           p.textContent = p.dataset.full || "";
           btn.textContent = "Show less";
           btn.dataset.expanded = "1";
+          if (companyBlock) companyBlock.hidden = false;
         }
       });
     });
