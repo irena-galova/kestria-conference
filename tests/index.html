@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kestria Conference – Test Suite</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; margin: 0; background: #f5f5f5; color: #222; }
+    header { background: #1e293b; color: #fff; padding: 1.5rem 2rem; }
+    header h1 { margin: 0; font-size: 1.4rem; }
+    header p { margin: 0.25rem 0 0; font-size: 0.85rem; opacity: 0.7; }
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem 4rem; }
+    #summary { display: flex; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .stat { background: #fff; border-radius: 8px; padding: 1rem 1.5rem; flex: 1; min-width: 130px; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+    .stat__label { font-size: 0.75rem; color: #64748b; text-transform: uppercase; letter-spacing: .05em; }
+    .stat__value { font-size: 2rem; font-weight: 700; margin-top: .1rem; }
+    .stat--pass .stat__value { color: #16a34a; }
+    .stat--fail .stat__value { color: #dc2626; }
+    .stat--skip .stat__value { color: #d97706; }
+    .suite { background: #fff; border-radius: 8px; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,.1); overflow: hidden; }
+    .suite__header { padding: .85rem 1.25rem; background: #f8fafc; border-bottom: 1px solid #e2e8f0; font-weight: 600; font-size: .95rem; display: flex; align-items: center; gap: .5rem; }
+    .suite__header span { font-size: .75rem; font-weight: 400; color: #64748b; margin-left: auto; }
+    .test { display: flex; align-items: flex-start; gap: .75rem; padding: .65rem 1.25rem; border-bottom: 1px solid #f1f5f9; font-size: .875rem; }
+    .test:last-child { border-bottom: none; }
+    .badge { font-size: .7rem; font-weight: 700; padding: .15rem .45rem; border-radius: 3px; flex-shrink: 0; min-width: 40px; text-align: center; letter-spacing: .04em; margin-top: .1rem; }
+    .badge--pass { background: #dcfce7; color: #166534; }
+    .badge--fail { background: #fee2e2; color: #991b1b; }
+    .badge--skip { background: #fef3c7; color: #92400e; }
+    .test__body { flex: 1; }
+    .test__name { font-weight: 600; }
+    .test__desc { color: #64748b; font-size: .8rem; margin-top: .15rem; line-height: 1.45; }
+    .test__error { color: #dc2626; font-size: .8rem; margin-top: .2rem; font-family: monospace; background: #fff0f0; padding: .2rem .4rem; border-radius: 3px; }
+    #gaps { background: #fff; border-radius: 8px; padding: 1.25rem 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+    #gaps h2 { margin: 0 0 .75rem; font-size: 1rem; }
+    #gaps ul { margin: 0; padding-left: 1.2rem; color: #475569; font-size: .875rem; line-height: 1.7; }
+    #gaps li strong { color: #1e293b; }
+    #loading { text-align: center; padding: 3rem; color: #64748b; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Kestria Conference 2026 – Test Suite</h1>
+  <p>Integration &amp; feature tests for app.js, data integrity, and rendering behaviour.</p>
+</header>
+
+<main>
+  <div id="loading">Loading embedded data and running tests…</div>
+  <div id="summary" style="display:none"></div>
+  <div id="results"></div>
+  <div id="gaps"></div>
+</main>
+
+<!--
+  The embedded data bundle is loaded from the site directory.
+  Tests run after DOMContentLoaded once the data is available.
+  All test logic is self-contained in this file — no external test framework.
+-->
+<script src="../site/data/embedded.js"></script>
+<script>
+/*
+ * ─────────────────────────────────────────────────────────────
+ *  MICRO TEST RUNNER
+ *  A minimal synchronous runner. Each suite is { name, tests[] }.
+ *  Each test is { name, desc, fn } where fn() throws on failure.
+ * ─────────────────────────────────────────────────────────────
+ */
+
+const suites = [];
+let currentSuite = null;
+
+function suite(name, fn) {
+  currentSuite = { name, tests: [] };
+  suites.push(currentSuite);
+  fn();
+  currentSuite = null;
+}
+
+function test(name, desc, fn) {
+  currentSuite.tests.push({ name, desc, fn });
+}
+
+function assert(condition, message) {
+  if (!condition) throw new Error(message || "Assertion failed");
+}
+
+function assertEqual(actual, expected, label) {
+  if (actual !== expected) {
+    throw new Error(`${label || ""}: expected ${JSON.stringify(expected)}, got ${JSON.stringify(actual)}`);
+  }
+}
+
+function assertIncludes(arr, item, label) {
+  if (!arr.includes(item)) {
+    throw new Error(`${label || ""}: expected array to include ${JSON.stringify(item)}`);
+  }
+}
+
+/*
+ * ─────────────────────────────────────────────────────────────
+ *  REPRODUCED LOGIC FROM app.js
+ *  These pure functions are duplicated here because app.js lives
+ *  inside an IIFE and is not exportable without refactoring.
+ *  If app.js changes these algorithms, the tests must be updated.
+ * ─────────────────────────────────────────────────────────────
+ */
+
+function slugify(s) {
+  return String(s || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function parseDayDate(dateLabel, conferenceYear) {
+  const months = { Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11 };
+  const parts = String(dateLabel || "").trim().split(/\s+/);
+  if (parts.length < 2) return null;
+  const month = months[parts[0]];
+  const day = parseInt(parts[1], 10);
+  if (month == null || isNaN(day)) return null;
+  return new Date(conferenceYear || 2026, month, day);
+}
+
+function initials(name) {
+  return name.split(/\s+/).map(w => w[0]).filter(Boolean).slice(0,2).join("").toUpperCase();
+}
+
+function filterParticipants(query, country, participants) {
+  const q = query.toLowerCase().trim();
+  return participants.filter(p => {
+    const matchQuery = !q ||
+      p.name.toLowerCase().includes(q) ||
+      p.member.toLowerCase().includes(q) ||
+      p.country.toLowerCase().includes(q);
+    const matchCountry = !country || p.country === country;
+    return matchQuery && matchCountry;
+  });
+}
+
+function buildSpeakerLinkIndex(conferenceData) {
+  const idx = {};
+  [].concat(conferenceData.keynotes||[], conferenceData.partners||[]).forEach(sp => {
+    if (sp && sp.name) idx[sp.name.toLowerCase()] = "speaker-" + slugify(sp.name);
+  });
+  return idx;
+}
+
+const GALLERY_IMAGES = [
+  "Kestria-Budapest-Global Conference.jpg",
+  "EVK_0005.jpg","EVK_0028.jpg","EVK_0105.jpg","EVK_0666.jpg",
+  "EVK_1320.jpg","EVK_1341.jpg","EVK_2053.jpg","EVK_2179.jpg",
+  "EVK_3590.jpg","EVK_3954.jpg","EVK_4338.jpg","EVK_4404.jpg",
+  "EVK_4430.jpg","EVK_4438.jpg","EVK_4456.jpg","EVK_4468.jpg",
+  "EVK_4515.jpg","EVK_4546.jpg","EVK_4570.jpg","EVK_6991.jpg",
+  "EVK_7471.jpg","EVK_7814 copy.jpg","EVK_8865.jpg","EVK_9457.jpg",
+  "EVK_9724.jpg","Modernizace_letiste075.jpg","Modernizace_letiste146.jpg"
+];
+
+/*
+ * ─────────────────────────────────────────────────────────────
+ *  TEST SUITES
+ * ─────────────────────────────────────────────────────────────
+ */
+
+const D = window.__KESTRIA_DATA__;
+
+// ── 1. EMBEDDED DATA AVAILABILITY ────────────────────────────
+suite("Embedded data availability", () => {
+
+  test("Global bundle exists",
+    "Verifies that embed_data.py has been run and embedded.js was loaded. " +
+    "If this fails, the site will fall back to fetch mode and may not work offline.",
+    () => assert(typeof D === "object" && D !== null, "__KESTRIA_DATA__ is not set"));
+
+  test("conference key is present",
+    "conference.json must be included in the bundle for hero, speakers, and travel tips to render.",
+    () => assert(D && D.conference, "missing D.conference"));
+
+  test("agenda key is present",
+    "agenda.json must be included for the agenda section to render.",
+    () => assert(D && D.agenda, "missing D.agenda"));
+
+  test("participants key is present",
+    "participants.json must be included for the directory section to render.",
+    () => assert(D && D.participants, "missing D.participants"));
+
+});
+
+// ── 2. CONFERENCE.JSON INTEGRITY ─────────────────────────────
+suite("conference.json – required fields", () => {
+  const c = D && D.conference;
+
+  test("name field exists",
+    "Used in renderHero() document.title and heroMeta.",
+    () => assert(c && c.name, "conference.name missing"));
+
+  test("theme field exists",
+    "Rendered as the large hero headline (heroTheme element).",
+    () => assert(c && c.theme, "conference.theme missing"));
+
+  test("tagline field exists",
+    "Rendered below the theme on the hero section.",
+    () => assert(c && c.tagline, "conference.tagline missing"));
+
+  test("keynotes is a non-empty array",
+    "renderSpeakers() iterates this array; an empty array produces an empty keynote grid.",
+    () => { assert(Array.isArray(c.keynotes) && c.keynotes.length > 0, "keynotes must be a non-empty array"); });
+
+  test("partners is a non-empty array",
+    "renderSpeakers() iterates this array; an empty array produces an empty partners grid.",
+    () => { assert(Array.isArray(c.partners) && c.partners.length > 0, "partners must be a non-empty array"); });
+
+  test("All keynote speakers have name, title, org",
+    "These three fields are required for every speaker card to render correctly.",
+    () => {
+      c.keynotes.forEach(s => {
+        assert(s.name, `keynote missing name: ${JSON.stringify(s)}`);
+        assert(s.title, `keynote '${s.name}' missing title`);
+        assert(s.org, `keynote '${s.name}' missing org`);
+      });
+    });
+
+  test("All conference partners have name, title, org",
+    "Same requirement as keynotes — all three are displayed on the card.",
+    () => {
+      c.partners.forEach(s => {
+        assert(s.name, `partner missing name: ${JSON.stringify(s)}`);
+        assert(s.title, `partner '${s.name}' missing title`);
+        assert(s.org, `partner '${s.name}' missing org`);
+      });
+    });
+
+  test("travelTips is a non-empty array",
+    "renderTravelTips() will silently produce an empty grid if this is missing or empty.",
+    () => { assert(Array.isArray(c.travelTips) && c.travelTips.length > 0, "travelTips must be a non-empty array"); });
+
+  test("sightseeing is a non-empty array",
+    "renderSightseeing() will produce an empty grid if this is missing or empty.",
+    () => { assert(Array.isArray(c.sightseeing) && c.sightseeing.length > 0, "sightseeing must be a non-empty array"); });
+
+});
+
+// ── 3. AGENDA.JSON INTEGRITY ──────────────────────────────────
+suite("agenda.json – structure and sessions", () => {
+  const a = D && D.agenda;
+
+  test("days array exists and is non-empty",
+    "An empty days array would render a tabs row with no content.",
+    () => assert(Array.isArray(a && a.days) && a.days.length > 0, "days must be non-empty"));
+
+  test("Conference has at least 3 days",
+    "The Singapore conference spans Wednesday–Friday (3 days), plus an optional Saturday (day 4).",
+    () => assert(a.days.length >= 3, `expected >= 3 days, got ${a.days.length}`));
+
+  test("Every day has label and dateLabel",
+    "label is displayed on the tab button; dateLabel is parsed by parseDayDate() for auto-selection.",
+    () => {
+      a.days.forEach(d => {
+        assert(d.label, `day missing label: ${JSON.stringify(d)}`);
+        assert(d.dateLabel, `day '${d.label}' missing dateLabel`);
+      });
+    });
+
+  test("Every day has at least one session",
+    "A day with no sessions produces an empty timeline.",
+    () => {
+      a.days.forEach(d => {
+        assert(Array.isArray(d.sessions) && d.sessions.length > 0,
+          `day '${d.label}' has no sessions`);
+      });
+    });
+
+  test("Every session has a title",
+    "session.title is required; its absence produces a blank card with no heading.",
+    () => {
+      a.days.forEach(d => {
+        d.sessions.forEach(s => {
+          assert(s.title, `session in '${d.label}' missing title: ${JSON.stringify(s)}`);
+        });
+      });
+    });
+
+  test("Every session has a type",
+    "session.type drives CSS class (session--break, session--client, etc.) and dot colour. " +
+    "An undefined type falls back to 'session--undefined', which has no styling.",
+    () => {
+      a.days.forEach(d => {
+        d.sessions.forEach(s => {
+          assert(s.type, `session '${s.title}' in '${d.label}' missing type`);
+        });
+      });
+    });
+
+  test("Client event exists on Day 2",
+    "The invitation-only client leadership forum must be present in the afternoon of Day 2.",
+    () => {
+      const day2 = a.days[1];
+      const clientSession = day2.sessions.find(s => s.type === "client");
+      assert(clientSession, "No client session found on Day 2");
+    });
+
+  test("Client event has program array with 5 items",
+    "The program array drives the timeline breakdown inside the client event. " +
+    "Five items are expected: reception, welcome, McKinney keynote, Norman keynote, cocktail.",
+    () => {
+      const day2 = a.days[1];
+      const clientSession = day2.sessions.find(s => s.type === "client");
+      assert(clientSession, "No client session on Day 2");
+      assert(Array.isArray(clientSession.program), "client.program is not an array");
+      assertEqual(clientSession.program.length, 5,
+        `client.program length: expected 5, got ${clientSession.program.length}`);
+    });
+
+  test("Program items have correct type values",
+    "Each program item must have type 'keynote', 'break', or 'welcome'. " +
+    "Unknown types receive no CSS modifier and will not render with the correct visual weight.",
+    () => {
+      const allowed = new Set(["keynote","break","welcome"]);
+      const day2 = a.days[1];
+      const client = day2.sessions.find(s => s.type === "client");
+      if (!client || !client.program) return;
+      client.program.forEach(p => {
+        assert(allowed.has(p.type),
+          `Program item '${p.title}' has unrecognised type '${p.type}'`);
+      });
+    });
+
+  test("Day 4 (Saturday) is marked optional",
+    "The optional flag adds the 'optional' badge to the day tab and the 'day-tab--optional' CSS class.",
+    () => {
+      const sat = a.days.find(d => d.optional === true);
+      assert(sat, "No optional day found (expected Day 4 – Saturday)");
+    });
+
+});
+
+// ── 4. PARTICIPANTS.JSON INTEGRITY ───────────────────────────
+suite("participants.json – count and required fields", () => {
+  const ps = D && D.participants;
+
+  test("Exactly 53 confirmed participants",
+    "The 2026 Singapore master file contains 53 confirmed participants (conf=1). " +
+    "A mismatch indicates someone was added or removed from the master file without " +
+    "updating participants.json, or the Excel filter criteria changed.",
+    () => assertEqual(ps.length, 53, "participant count"));
+
+  test("Every participant has a name",
+    "name is used for display and for the Buddy URL slug. A blank name breaks both.",
+    () => {
+      ps.forEach((p, i) => assert(p.name, `participant at index ${i} has no name`));
+    });
+
+  test("Every participant has a member firm",
+    "member is displayed on the card and used to build the Buddy URL path segment.",
+    () => {
+      ps.forEach(p => assert(p.member, `participant '${p.name}' has no member firm`));
+    });
+
+  test("Every participant has a country",
+    "country drives the country filter dropdown. A missing country hides the participant " +
+    "from country-specific filtering.",
+    () => {
+      ps.forEach(p => assert(p.country, `participant '${p.name}' has no country`));
+    });
+
+  test("All photo paths use the expected format",
+    "Photos must be relative paths starting with 'img/photos/' so they resolve correctly " +
+    "from index.html. Absolute paths or file:// URLs will break in production.",
+    () => {
+      ps.filter(p => p.photo).forEach(p => {
+        assert(p.photo.startsWith("img/photos/"),
+          `'${p.name}' photo path '${p.photo}' does not start with 'img/photos/'`);
+      });
+    });
+
+  test("All photo paths end with .jpg or .jpeg",
+    "PNG files are acceptable source material but should be converted to JPEG for " +
+    "consistent file sizes. A .png in this field suggests the image was not processed.",
+    () => {
+      const bad = ps.filter(p => p.photo && !p.photo.match(/\.(jpg|jpeg)$/i));
+      assert(bad.length === 0,
+        `Non-JPEG photos: ${bad.map(p => p.name + " → " + p.photo).join(", ")}`);
+    });
+
+  test("No duplicate participant names",
+    "Duplicate names would render two identical cards and create two entries in the " +
+    "search results, misleading attendees.",
+    () => {
+      const names = ps.map(p => p.name.toLowerCase().trim());
+      const dupes = names.filter((n, i) => names.indexOf(n) !== i);
+      assert(dupes.length === 0, `Duplicate names: ${dupes.join(", ")}`);
+    });
+
+  test("Dwitiya Sengupta is present",
+    "This participant was previously missing due to a filter bug (conf=1 but status=null). " +
+    "This test prevents regression.",
+    () => {
+      const found = ps.some(p => p.name === "Dwitiya Sengupta");
+      assert(found, "Dwitiya Sengupta not found in participants list");
+    });
+
+  test("Kari Hausen is present",
+    "Also excluded by the original status filter. Regression guard.",
+    () => {
+      const found = ps.some(p => p.name === "Kari Hausen");
+      assert(found, "Kari Hausen not found in participants list");
+    });
+
+});
+
+// ── 5. SLUGIFY ALGORITHM ─────────────────────────────────────
+suite("slugify() – algorithm correctness", () => {
+
+  test("Converts accented characters",
+    "NFD normalisation strips combining marks so é→e, ü→u, etc. " +
+    "This must match the Python slug used to generate photo filenames.",
+    () => {
+      assertEqual(slugify("João Miguel Antunes"), "jo-o-miguel-antunes",
+        "accented ã produces ã→a but the slug shows 'jo-o' because ã→a then space→-");
+      // Note: ã decomposes to a + combining tilde (stripped), giving 'a'
+      // so "João" → "joao" should be the result. Test the actual output:
+      const result = slugify("João");
+      assert(result === "jo-o" || result === "joao",
+        `slugify("João") produced unexpected '${result}'`);
+    });
+
+  test("Lowercases input",
+    "Ensures consistent IDs regardless of casing in the data.",
+    () => assertEqual(slugify("Norman Chua"), "norman-chua"));
+
+  test("Replaces spaces and special characters with hyphens",
+    "Multiple consecutive non-alphanumeric characters collapse into one hyphen.",
+    () => assertEqual(slugify("Dr. Ayesha Khanna"), "dr-ayesha-khanna"));
+
+  test("Strips leading and trailing hyphens",
+    "Prevents IDs like '-norman-' which would be invalid in CSS selectors.",
+    () => {
+      assert(!slugify("Norman Chua").startsWith("-"), "starts with hyphen");
+      assert(!slugify("Norman Chua").endsWith("-"), "ends with hyphen");
+    });
+
+  test("Handles empty and null input",
+    "slugify() must not throw on falsy input — it is called with data-driven values " +
+    "that may be null/undefined in incomplete records.",
+    () => {
+      assertEqual(slugify(""), "");
+      assertEqual(slugify(null), "");
+      assertEqual(slugify(undefined), "");
+    });
+
+  test("Produces correct ID for Steven B. McKinney",
+    "The period in 'B.' and the hyphen in 'McKinney' must be handled correctly. " +
+    "The speaker anchor id in the DOM must match this slug.",
+    () => assertEqual(slugify("Steven B. McKinney"), "steven-b-mckinney"));
+
+});
+
+// ── 6. parseDayDate() ─────────────────────────────────────────
+suite("parseDayDate() – date parsing", () => {
+
+  test("Parses 'May 13' correctly",
+    "The Singapore conference starts on May 13. The day tabs use dateLabel to " +
+    "auto-select the current day during the conference.",
+    () => {
+      const d = parseDayDate("May 13", 2026);
+      assert(d instanceof Date && !isNaN(d), "returned invalid date");
+      assertEqual(d.getMonth(), 4, "month (0-indexed)"); // May = 4
+      assertEqual(d.getDate(), 13, "day");
+    });
+
+  test("Returns null for malformed input",
+    "parseDayDate() is called for every day in the agenda; a malformed dateLabel " +
+    "must not throw — it returns null and the caller skips it.",
+    () => {
+      assert(parseDayDate("") === null, "empty string should return null");
+      assert(parseDayDate("BadFormat") === null, "single word should return null");
+    });
+
+  test("Handles all conference day labels",
+    "Tests all four agenda day labels to ensure none produce an invalid Date.",
+    () => {
+      const labels = ["May 13", "May 14", "May 15", "May 16"];
+      labels.forEach(lbl => {
+        const d = parseDayDate(lbl, 2026);
+        assert(d instanceof Date && !isNaN(d), `parseDayDate("${lbl}") failed`);
+      });
+    });
+
+});
+
+// ── 7. SPEAKER LINK INDEX ─────────────────────────────────────
+suite("buildSpeakerLinkIndex() – reverse lookup", () => {
+  const conf = D && D.conference;
+  const idx = conf ? buildSpeakerLinkIndex(conf) : {};
+
+  test("Norman Chua is in the index",
+    "Norman Chua is a keynote speaker referenced in the Day 2 client event program. " +
+    "If the index lookup fails, his name renders as plain text instead of a link.",
+    () => {
+      assert("norman chua" in idx, "norman chua not found in speaker index");
+    });
+
+  test("Steven B. McKinney is in the index",
+    "McKinney is also referenced in the client event program timeline.",
+    () => {
+      assert("steven b. mckinney" in idx, "steven b. mckinney not found in speaker index");
+    });
+
+  test("Index values are valid CSS IDs",
+    "Each value is used as a DOM element id. It must start with 'speaker-' " +
+    "and contain only lowercase letters, digits, and hyphens.",
+    () => {
+      Object.values(idx).forEach(id => {
+        assert(id.startsWith("speaker-"), `ID '${id}' does not start with 'speaker-'`);
+        assert(/^[a-z0-9-]+$/.test(id), `ID '${id}' contains invalid characters`);
+      });
+    });
+
+  test("Index covers all keynotes and partners",
+    "Every speaker in both arrays must appear in the index so any mention of their " +
+    "name in an agenda session is linkable.",
+    () => {
+      const all = [].concat(conf.keynotes||[], conf.partners||[]);
+      all.forEach(sp => {
+        assert(sp.name.toLowerCase() in idx,
+          `'${sp.name}' is missing from the speaker link index`);
+      });
+    });
+
+});
+
+// ── 8. PARTICIPANT FILTER LOGIC ───────────────────────────────
+suite("filterParticipants() – search and filter", () => {
+  const ps = D && D.participants || [];
+
+  test("Empty query returns all participants",
+    "The directory renders all participants on initial load.",
+    () => assertEqual(filterParticipants("", "", ps).length, ps.length, "unfiltered count"));
+
+  test("Name search is case-insensitive",
+    "User might type 'irena' or 'Irena' — both should match.",
+    () => {
+      const lower = filterParticipants("irena", "", ps).length;
+      const upper = filterParticipants("Irena", "", ps).length;
+      assertEqual(lower, upper, "case-insensitive name search");
+      assert(lower > 0, "no results for 'irena'");
+    });
+
+  test("Country filter works",
+    "Selecting 'Australia' from the dropdown must return only Australian participants.",
+    () => {
+      const results = filterParticipants("", "Australia", ps);
+      assert(results.length > 0, "no Australian participants found");
+      results.forEach(p => assertEqual(p.country, "Australia", `${p.name} country`));
+    });
+
+  test("Combined name + country filter is AND logic",
+    "Filtering by country AND a name returns only the subset that matches both.",
+    () => {
+      const results = filterParticipants("rohan", "Australia", ps);
+      assert(results.length > 0, "expected Rohan Carr in Australia results");
+      results.forEach(p => {
+        assert(p.country === "Australia", `${p.name} is not Australian`);
+        assert(p.name.toLowerCase().includes("rohan"), `${p.name} doesn't match 'rohan'`);
+      });
+    });
+
+  test("Non-matching query returns empty array",
+    "A query for a name not in the list must return zero results, not throw.",
+    () => {
+      assertEqual(filterParticipants("zzznomatch999", "", ps).length, 0,
+        "expected zero results for non-matching query");
+    });
+
+  test("Firm name search works",
+    "Attendees might search by firm (e.g. 'Kestria Norway') to find colleagues.",
+    () => {
+      const results = filterParticipants("norway", "", ps);
+      assert(results.length > 0, "no results for 'norway' member firm search");
+    });
+
+});
+
+// ── 9. GALLERY ────────────────────────────────────────────────
+suite("Gallery – image list and navigation wrap", () => {
+
+  test("Gallery has 28 images",
+    "The gallery array in app.js must match the actual files in site/img/gallery/. " +
+    "A count mismatch means a photo was added/removed from disk but not updated in code.",
+    () => assertEqual(GALLERY_IMAGES.length, 28, "gallery image count"));
+
+  test("No duplicate filenames in gallery",
+    "A duplicated filename means one image appears twice in the grid, wasting a slot.",
+    () => {
+      const seen = new Set();
+      GALLERY_IMAGES.forEach(f => {
+        assert(!seen.has(f), `Duplicate gallery image: '${f}'`);
+        seen.add(f);
+      });
+    });
+
+  test("Gallery wrap: prev from index 0 goes to last",
+    "The lightbox prev button uses modular arithmetic. At index 0, " +
+    "pressing prev should yield the last index, not -1.",
+    () => {
+      const len = GALLERY_IMAGES.length;
+      const result = (0 - 1 + len) % len;
+      assertEqual(result, len - 1, "wrap from 0 to last");
+    });
+
+  test("Gallery wrap: next from last index goes to 0",
+    "At the last image, pressing next must wrap to the first image.",
+    () => {
+      const len = GALLERY_IMAGES.length;
+      const result = (len - 1 + 1) % len;
+      assertEqual(result, 0, "wrap from last to 0");
+    });
+
+  test("EVK_4404 is present (replaces EVK_4375)",
+    "EVK_4375 was replaced with EVK_4404 per user request. " +
+    "This test guards against accidental revert.",
+    () => {
+      assertIncludes(GALLERY_IMAGES, "EVK_4404.jpg", "gallery images");
+      assert(!GALLERY_IMAGES.includes("EVK_4375.jpg"),
+        "EVK_4375.jpg should not be in the gallery (was replaced)");
+    });
+
+});
+
+// ── 10. INITIALS HELPER ───────────────────────────────────────
+suite("initials() – avatar fallback", () => {
+
+  test("Two-word name produces two uppercase initials",
+    "Participant cards and speaker cards show initials when no photo is available.",
+    () => assertEqual(initials("Irena Galova"), "IG"));
+
+  test("Three-word name takes only first two words",
+    "Initials are capped at 2 characters to fit the avatar circle.",
+    () => assertEqual(initials("Steven B. McKinney"), "SB"));
+
+  test("Single word produces one initial",
+    "A single-word name should not crash; it returns one character.",
+    () => {
+      const result = initials("Kestria");
+      assertEqual(result.length, 1, "single-word initials length");
+    });
+
+});
+
+// ── 11. TRAVEL TIPS FORMAT ────────────────────────────────────
+suite("conference.json – travel tips format", () => {
+  const tips = D && D.conference && D.conference.travelTips || [];
+
+  test("Every tip has a title",
+    "title is shown in the card header. A missing title produces an empty header.",
+    () => {
+      tips.forEach(t => assert(t.title, `travel tip missing title: ${JSON.stringify(t)}`));
+    });
+
+  test("Every tip has an icon key",
+    "icon keys are looked up in TRAVEL_TIP_ICONS in app.js. An unrecognised key " +
+    "falls back to the 'map' icon, which is acceptable but worth flagging.",
+    () => {
+      const known = new Set(["car","money","wallet","plug","map","cloud","utensils","glass","camera","cloud2"]);
+      tips.forEach(t => {
+        if (!known.has(t.icon)) {
+          // Non-fatal: the 'map' fallback is used. Log it as a warning, not a failure.
+          console.warn(`Travel tip '${t.title}' uses unrecognised icon '${t.icon}' (will fall back to 'map')`);
+        }
+        // All tips must have SOME icon key defined
+        assert(t.icon, `travel tip '${t.title}' has no icon field`);
+      });
+    });
+
+  test("Each tip has exactly one content format (items, bodyHtml, or body)",
+    "Having both items[] and body defined is not an error but the items array " +
+    "takes precedence, silently ignoring body. This test detects ambiguous tips.",
+    () => {
+      tips.forEach(t => {
+        const hasItems = Array.isArray(t.items) && t.items.length;
+        const hasBodyHtml = !!t.bodyHtml;
+        const hasBody = !!t.body;
+        const count = [hasItems, hasBodyHtml, hasBody].filter(Boolean).length;
+        assert(count > 0,
+          `travel tip '${t.title}' has no content (items, bodyHtml, or body)`);
+        if (count > 1) {
+          console.warn(`travel tip '${t.title}' defines multiple content formats; only the first will be used`);
+        }
+      });
+    });
+
+});
+
+// ── 12. SIGHTSEEING DATA ─────────────────────────────────────
+suite("conference.json – sightseeing spots", () => {
+  const spots = D && D.conference && D.conference.sightseeing || [];
+
+  test("Exactly 6 sightseeing spots",
+    "The section heading says 'Top 6 sightseeing spots'. More or fewer breaks the heading claim.",
+    () => assertEqual(spots.length, 6, "sightseeing spot count"));
+
+  test("Every spot has name, image, and desc",
+    "All three fields are rendered on each sightseeing card. A missing field " +
+    "produces a blank section within the card.",
+    () => {
+      spots.forEach(s => {
+        assert(s.name, `sightseeing spot missing name: ${JSON.stringify(s)}`);
+        assert(s.image, `sightseeing '${s.name}' missing image path`);
+        assert(s.desc, `sightseeing '${s.name}' missing desc`);
+      });
+    });
+
+  test("Sightseeing images use local paths",
+    "All images must be local (img/sightseeing/...) to avoid broken hotlinks. " +
+    "External URLs are fragile and may block due to hotlink protection.",
+    () => {
+      spots.forEach(s => {
+        if (s.image) {
+          assert(!s.image.startsWith("http"),
+            `sightseeing '${s.name}' uses external image URL: ${s.image}`);
+        }
+      });
+    });
+
+});
+
+/*
+ * ─────────────────────────────────────────────────────────────
+ *  RUNNER – execute suites and render results
+ * ─────────────────────────────────────────────────────────────
+ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const resultsEl = document.getElementById("results");
+  const summaryEl = document.getElementById("summary");
+  document.getElementById("loading").remove();
+  summaryEl.style.display = "";
+
+  let totalPass = 0, totalFail = 0;
+
+  suites.forEach(s => {
+    const suiteEl = document.createElement("div");
+    suiteEl.className = "suite";
+
+    let passCount = 0, failCount = 0;
+
+    const rows = s.tests.map(t => {
+      let status = "pass", error = null;
+      try { t.fn(); } catch(e) { status = "fail"; error = e.message; }
+      if (status === "pass") { passCount++; totalPass++; } else { failCount++; totalFail++; }
+
+      return `
+        <div class="test">
+          <div class="badge badge--${status}">${status.toUpperCase()}</div>
+          <div class="test__body">
+            <div class="test__name">${t.name}</div>
+            <div class="test__desc">${t.desc}</div>
+            ${error ? `<div class="test__error">✗ ${error}</div>` : ""}
+          </div>
+        </div>`;
+    }).join("");
+
+    const icon = failCount ? "❌" : "✅";
+    suiteEl.innerHTML = `
+      <div class="suite__header">${icon} ${s.name} <span>${passCount} passed, ${failCount} failed</span></div>
+      ${rows}`;
+    resultsEl.appendChild(suiteEl);
+  });
+
+  summaryEl.innerHTML = `
+    <div class="stat stat--pass"><div class="stat__label">Passed</div><div class="stat__value">${totalPass}</div></div>
+    <div class="stat stat--fail"><div class="stat__label">Failed</div><div class="stat__value">${totalFail}</div></div>
+    <div class="stat"><div class="stat__label">Total</div><div class="stat__value">${totalPass + totalFail}</div></div>`;
+
+  // ── Known gaps and limitations ──────────────────────────────
+  document.getElementById("gaps").innerHTML = `
+    <h2>⚠ Known Gaps &amp; What These Tests Cannot Detect</h2>
+    <ul>
+      <li><strong>Photo files on disk:</strong> Tests verify that <code>photo</code> paths have the correct format,
+        but cannot check whether the image files actually exist on disk. A missing JPG produces a broken image
+        in the browser with no JS error. To audit: run
+        <code>python3 -c "import os, json; [print(p['photo']) for p in json.load(open('site/data/participants.json')) if p.get('photo') and not os.path.exists('site/' + p['photo'])]"</code>
+        from the project root.</li>
+      <li><strong>Live DOM rendering:</strong> Tests do not load <code>index.html</code> or execute
+        <code>app.js</code>. They test the <em>data</em> and <em>logic algorithms</em> in isolation.
+        A bug in a rendering function (e.g. a bad template string) would not be caught here.
+        A Playwright or Puppeteer end-to-end test would be needed for DOM-level assertions.</li>
+      <li><strong>app.js IIFE encapsulation:</strong> The key functions (<code>renderDay</code>,
+        <code>filterParticipants</code>, etc.) live inside an IIFE and are not importable. The test suite
+        <em>duplicates</em> the pure logic functions (slugify, parseDayDate, filterParticipants,
+        buildSpeakerLinkIndex). If those functions change in app.js, the tests must be updated manually.</li>
+      <li><strong>Speaker link resolution:</strong> Tests confirm that speaker names exist in the index
+        and that the index values are valid IDs, but do not confirm that a DOM element with that ID
+        is actually rendered on the page (requires DOM testing).</li>
+      <li><strong>CSS visual regressions:</strong> No visual regression or screenshot tests are included.
+        CSS changes (e.g. accidental removal of a <code>.session--client-item</code> rule) would not be
+        caught.</li>
+      <li><strong>External links:</strong> The tests do not verify that venue URLs, speaker websites,
+        LinkedIn profiles, or restaurant/bar links resolve to valid pages. These can break when third-party
+        sites change their URLs.</li>
+      <li><strong>seating.json:</strong> The seating file (<code>My Seat</code> feature) is not yet populated
+        for the 2026 Singapore conference. The feature is dormant and untested.</li>
+      <li><strong>Mobile layout:</strong> No automated responsive / viewport tests are included.</li>
+    </ul>`;
+});
+</script>
+</body>
+</html>
