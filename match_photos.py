@@ -55,7 +55,15 @@ def extract_name_from_filename(fname):
 
 def best_match(photo_name_parts, participants):
     """Find participant whose name shares the most words with the photo name.
-    Uses Jaccard-like score to prefer tighter matches."""
+
+    Uses a Jaccard-like score (overlap / union of word sets) to prefer tighter
+    matches. A score of 1.0 means the word sets are identical.
+
+    The min_required guard requires at least 2 overlapping words (or all words
+    for single-word names), preventing spurious matches on common first names
+    alone (e.g. "John" in "John Smith" should not match "John Doe" purely on
+    first name without a surname match).
+    """
     best = None
     best_score = 0
     for p in participants:
@@ -92,7 +100,11 @@ def main():
 
     candidates = jpg_files + list(png_only.values())
 
-    # Compute all (file, participant, score) triples, then assign highest-score-first
+    # Greedy one-to-one assignment: compute all (score, file, participant) triples,
+    # sort by score descending, then iterate and commit each pair only if neither
+    # the file nor the participant has already been matched. This ensures the
+    # globally best matches are resolved first, preventing a lower-quality partial
+    # match from "stealing" a participant from a better-matching file.
     all_scores = []
     for fname in sorted(candidates):
         photo_name = extract_name_from_filename(fname)

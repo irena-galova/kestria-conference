@@ -1,5 +1,11 @@
 /* ============================================
    Kestria Conference – Application Layer
+   ============================================
+   All content rendering happens here. The module
+   reads data (either from the embedded bundle or
+   via fetch) and populates the static HTML shell
+   defined in index.html. There are no external
+   dependencies.
    ============================================ */
 
 (function () {
@@ -17,6 +23,8 @@
 
   // ── Helpers ──
 
+  // Safe HTML escaping via the browser's own text-node serialiser.
+  // This avoids any regex-based escaping bugs for edge-case characters.
   function esc(str) {
     const el = document.createElement("span");
     el.textContent = str;
@@ -33,6 +41,12 @@
       .toUpperCase();
   }
 
+  // Converts an arbitrary string into a URL-safe lowercase slug.
+  // Steps: (1) decompose Unicode into base characters + combining marks via NFD,
+  // (2) strip the combining marks (U+0300–U+036F), producing plain ASCII letters
+  // from accented ones (é→e, ñ→n, etc.), (3) replace any run of non-alphanumeric
+  // characters with a single hyphen, (4) trim leading/trailing hyphens.
+  // This produces the same slug in both JS (for DOM IDs) and Python (for filenames).
   function slugify(s) {
     return String(s || "")
       .toLowerCase()
@@ -53,6 +67,10 @@
     return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(query);
   }
 
+  // Parses a short date label like "May 13" into a JS Date object.
+  // The year is inferred in priority order: explicit argument → year embedded in
+  // conferenceData.dates (extracted with a regex) → current year as last resort.
+  // Returns null if the label is malformed, so callers can skip safely.
   function parseDayDate(dateLabel, year) {
     const months = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
     const parts = String(dateLabel || "").trim().split(/\s+/);
@@ -64,6 +82,10 @@
     return new Date(y, month, day);
   }
 
+  // Determines which day tab to show first. During the conference itself, the
+  // current day's tab is pre-selected so attendees don't need to navigate.
+  // Outside conference dates, falls back to Day 1 (index 0).
+  // Both dates are normalised to midnight to avoid timezone-of-day mismatches.
   function getInitialDayIndex() {
     if (!agendaData || !agendaData.days || !agendaData.days.length) return 0;
     const today = new Date();
@@ -85,6 +107,13 @@
     return resp.json();
   }
 
+  // Dual-mode data loading:
+  //   1. Embedded mode: embed_data.py pre-bundles all JSON into embedded.js,
+  //      which sets window.__KESTRIA_DATA__ before this script runs. This makes
+  //      the site work when opened as a file:// URL or from any static CDN.
+  //   2. Fetch mode: falls back to individual HTTP requests. Used automatically
+  //      during local development when embedded.js has not been regenerated yet.
+  // seating.json is optional — its absence is handled gracefully downstream.
   function loadData() {
     const embedded = window.__KESTRIA_DATA__;
     if (embedded && embedded.conference && embedded.agenda) {
@@ -111,7 +140,6 @@
     try {
       await loadData();
       renderHero();
-      initMySeat();
       activeDay = getInitialDayIndex();
       renderDayTabs();
       renderDay(activeDay);
@@ -134,10 +162,9 @@
 
   function renderHero() {
     const d = conferenceData;
-    document.getElementById("heroTheme").textContent = "Go Beyond";
-    const tagline = (d.tagline || "").replace(/^Go Beyond[:\s]*/i, "");
+    document.getElementById("heroTheme").textContent = d.theme || "Beyond Growth";
     document.getElementById("heroTaglineMain").textContent =
-      tagline || "Connecting Minds, Shaping Success";
+      d.tagline || "Leading with Authenticity. Building with Trust.";
     document.getElementById("heroMeta").textContent =
       `${d.name} · ${d.city} · ${d.dates}`;
     document.title = `${d.name} – ${d.city}`;
@@ -196,6 +223,11 @@
       sugList.hidden = false;
     });
 
+    // Keyboard navigation for the suggestion dropdown.
+    // ArrowDown/Up use the same modular wrap as the gallery navigator so navigation
+    // wraps seamlessly at both ends of the list. When no item is currently active
+    // (idx === -1), (−1 + 1) % n = 0 naturally selects the first item on the
+    // first ArrowDown press.
     input.addEventListener("keydown", (e) => {
       const items = sugList.querySelectorAll(".myseat__suggestion");
       const active = sugList.querySelector(".myseat__suggestion--active");
@@ -336,9 +368,15 @@
     container.innerHTML = "";
     agendaData.days.forEach((day, i) => {
       const btn = document.createElement("button");
-      btn.className = "day-tab" + (i === activeDay ? " active" : "");
+      btn.className = "day-tab" + (i === activeDay ? " active" : "") + (day.optional ? " day-tab--optional" : "");
       btn.setAttribute("role", "tab");
       btn.textContent = `${day.label} · ${day.dateLabel}`;
+      if (day.optional) {
+        const badge = document.createElement("span");
+        badge.className = "day-tab__badge";
+        badge.textContent = "optional";
+        btn.appendChild(badge);
+      }
       btn.addEventListener("click", () => {
         container.querySelectorAll(".day-tab").forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
@@ -348,38 +386,181 @@
     });
   }
 
+  // Builds a reverse-lookup map from lowercase speaker name → DOM anchor ID.
+  // This is computed once per day render and passed down to both the session
+  // speaker name renderer and the client-event program item renderer.
+  // Using a pre-built index means we do a single O(n) pass over all speakers
+  // rather than an O(n×m) search inside every session's inner loop.
+  function buildSpeakerLinkIndex() {
+    const idx = {};
+    const all = [].concat(
+      conferenceData.keynotes || [],
+      conferenceData.partners || []
+    );
+    all.forEach((sp) => {
+      if (!sp || !sp.name) return;
+      idx[sp.name.toLowerCase()] = "speaker-" + slugify(sp.name);
+    });
+    return idx;
+  }
+
+  // Renders an array of speaker name strings, turning each into a smooth-scroll
+  // anchor if the name exists in the pre-built speaker link index.
+  function renderSpeakerNames(names, linkIndex) {
+    return names
+      .map((n) => {
+        const anchor = linkIndex[String(n).toLowerCase()];
+        return anchor
+          ? `<a href="#${anchor}" class="session__speaker-link" data-speaker-link>${esc(n)}</a>`
+          : esc(n);
+      })
+      .join(", ");
+  }
+
   function renderDay(index) {
     activeDay = index;
     const day = agendaData.days[index];
     const meta = document.getElementById("dayMeta");
-    meta.innerHTML = `<strong>${day.location}</strong> · Dress code: ${esc(day.dressCode)}`;
+    if (day.headline) {
+      meta.innerHTML = `<span class="day__meta-headline">${esc(day.headline)}</span>`;
+    } else {
+      meta.innerHTML = `<strong>${day.location}</strong> · Dress code: ${esc(day.dressCode)}`;
+    }
 
     const timeline = document.getElementById("timeline");
     timeline.innerHTML = "";
 
+    const speakerIndex = buildSpeakerLinkIndex();
+
     day.sessions.forEach((s, si) => {
+      // ── Client event: special two-pass rendering ──
+      // A "client" session with a program array is rendered as a group of sibling
+      // DOM elements rather than a single card with nested content. This places
+      // each sub-item's dot on the same vertical timeline rail as all other sessions,
+      // satisfying the design requirement for visual continuity. The header card
+      // (title + subtitle) is appended first, followed by one element per program
+      // item, each receiving a type-specific CSS modifier for the three-tier
+      // visual hierarchy (keynote > welcome > break).
+      if (s.type === "client" && s.program && s.program.length) {
+        const headerEl = document.createElement("div");
+        headerEl.className = "session session--client fade-in";
+        headerEl.style.animationDelay = `${si * 0.04}s`;
+        headerEl.innerHTML = `
+          <div class="session__title">${esc(s.title)}</div>
+          ${s.subtitle ? `<div class="session__subtitle">${esc(s.subtitle)}</div>` : ""}
+        `;
+        timeline.appendChild(headerEl);
+
+        s.program.forEach((p, pi) => {
+          const typeClass = p.type === "keynote" ? " session--client-item--keynote"
+                          : p.type === "break"   ? " session--client-item--break"
+                          : p.type === "welcome" ? " session--client-item--welcome" : "";
+          const isLast = pi === s.program.length - 1;
+          const itemEl = document.createElement("div");
+          itemEl.className = `session session--client-item${typeClass}${isLast ? " session--client-item--last" : ""} fade-in`;
+          itemEl.style.animationDelay = `${(si * 0.04) + ((pi + 1) * 0.03)}s`;
+
+          const anchor = p.speaker && speakerIndex[p.speaker.toLowerCase()];
+          const speakerHtml = p.speaker
+            ? (anchor
+                ? `<a href="#${anchor}" class="session__client-speaker-link" data-speaker-link>${esc(p.speaker)}</a>`
+                : `<span>${esc(p.speaker)}</span>`)
+            : "";
+
+          itemEl.innerHTML = `
+            <div class="session__time">${esc(p.time)}</div>
+            <div class="session__title">${esc(p.title)}</div>
+            ${speakerHtml ? `<div class="session__subtitle">${speakerHtml}</div>` : ""}
+          `;
+
+          itemEl.querySelectorAll("[data-speaker-link]").forEach((a) => {
+            a.addEventListener("click", (e) => {
+              e.stopPropagation();
+              const id = a.getAttribute("href").replace(/^#/, "");
+              const target = document.getElementById(id);
+              if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+                target.classList.add("speaker-card--highlight");
+                setTimeout(() => target.classList.remove("speaker-card--highlight"), 2200);
+              }
+            });
+          });
+
+          timeline.appendChild(itemEl);
+        });
+
+        return; // skip normal session rendering for client sessions
+      }
+
       const el = document.createElement("div");
       el.className = `session session--${s.type} fade-in`;
       el.style.animationDelay = `${si * 0.04}s`;
 
+      // Expandability rules:
+      //   alwaysOpen: session has a URL, an explicit alwaysOpen flag, or an image
+      //     → description is always visible; no toggle. The "expanded" class is added
+      //     immediately so CSS can show the content without a click.
+      //   expandable: session has body content but is NOT alwaysOpen
+      //     → a click listener toggles the "expanded" class.
+      // Subtitle length > 80 chars is treated as body content because very long
+      // subtitles (e.g. dinner practical info) are meant to be revealed on demand.
+      const hasUrl = !!s.url;
+      const alwaysOpen = hasUrl || s.alwaysOpen || !!s.image;
       const hasDesc = s.description || (s.subtitle && s.subtitle.length > 80);
-      if (hasDesc) el.setAttribute("data-expandable", "");
+      const expandable = hasDesc && !alwaysOpen;
+      if (expandable) el.setAttribute("data-expandable", "");
+      if (alwaysOpen && (s.description || s.image)) el.classList.add("expanded");
 
-      const badge = getSeatBadge(index, s);
-      let html = `<div class="session__time">${esc(s.time)}${badge}</div>`;
-      html += `<div class="session__title">${esc(s.title)}</div>`;
+      let html = `<div class="session__time">${esc(s.time)}</div>`;
+      const titleInner = hasUrl
+        ? `<a href="${esc(s.url)}" target="_blank" rel="noopener" class="session__title-link" data-session-link>${esc(s.title)} <svg class="session__title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></a>`
+        : esc(s.title);
+      html += `<div class="session__title">${titleInner}</div>`;
       if (s.subtitle) {
         html += `<div class="session__subtitle">${esc(s.subtitle)}</div>`;
       }
       if (s.speakers && s.speakers.length) {
-        html += `<div class="session__speakers">${s.speakers.map(esc).join(", ")}</div>`;
+        html += `<div class="session__speakers">${renderSpeakerNames(s.speakers, speakerIndex)}</div>`;
       }
-      if (s.description) {
-        html += `<div class="session__description">${esc(s.description)}</div>`;
+      const bulletsHtml = s.bullets && s.bullets.length
+        ? `<ul class="session__bullets">${s.bullets.map(b => `<li>${esc(b)}</li>`).join("")}</ul>`
+        : "";
+
+      if (s.image && s.imageLayout) {
+        const imgTag = `<img src="${esc(s.image)}" alt="${esc(s.title)}" class="session__image session__image--side${s.type === 'client' ? ' session__image--portrait' : ''}" loading="lazy">`;
+        const descTag = s.description ? `<div class="session__description">${esc(s.description)}</div>` : "";
+        const reverse = s.imageLayout === "right" ? " session__img-row--reverse" : "";
+        html += `<div class="session__img-row${reverse}">${imgTag}<div class="session__img-text">${descTag}${bulletsHtml}</div></div>`;
+      } else {
+        if (s.image) {
+          html += `<img src="${esc(s.image)}" alt="${esc(s.title)}" class="session__image" loading="lazy">`;
+        }
+        if (s.description) {
+          html += `<div class="session__description">${esc(s.description)}</div>`;
+        }
+        html += bulletsHtml;
       }
       el.innerHTML = html;
 
-      if (hasDesc) {
+      el.querySelectorAll("[data-speaker-link]").forEach((a) => {
+        a.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const id = a.getAttribute("href").replace(/^#/, "");
+          const target = document.getElementById(id);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            target.classList.add("speaker-card--highlight");
+            setTimeout(() => target.classList.remove("speaker-card--highlight"), 2200);
+          }
+        });
+      });
+      el.querySelectorAll("[data-session-link]").forEach((a) => {
+        a.addEventListener("click", (e) => e.stopPropagation());
+      });
+
+      if (expandable) {
         el.addEventListener("click", () => el.classList.toggle("expanded"));
       }
       timeline.appendChild(el);
@@ -389,16 +570,19 @@
   // ── Speakers ──
 
   function renderSpeakers() {
-    const grid = document.getElementById("speakerGrid");
     const d = conferenceData;
-    grid.innerHTML = "";
-
-    if (d.keynote && d.keynote.name) {
-      grid.appendChild(buildSpeakerCard(d.keynote, "keynote", "Keynote Speaker"));
+    const keynoteGrid = document.getElementById("keynoteGrid");
+    const partnerGrid = document.getElementById("partnerGrid");
+    if (keynoteGrid) {
+      keynoteGrid.innerHTML = "";
+      (d.keynotes || []).forEach((s) =>
+        keynoteGrid.appendChild(buildSpeakerCard(s, "keynote", "Keynote Speaker"))
+      );
     }
-    if (d.partner && d.partner.name) {
-      grid.appendChild(
-        buildSpeakerCard(d.partner, "partner", "Conference Partner")
+    if (partnerGrid) {
+      partnerGrid.innerHTML = "";
+      (d.partners || []).forEach((s) =>
+        partnerGrid.appendChild(buildSpeakerCard(s, "partner", "Conference Partner"))
       );
     }
   }
@@ -406,9 +590,16 @@
   const BIO_PREVIEW_LEN = 280;
   const COMPANY_PREVIEW_LEN = 200;
 
+  // Builds a speaker/partner card DOM element.
+  // The "read more / show less" toggle works by storing both the full text and the
+  // preview text as data-* attributes on the <p> element at render time. Toggling
+  // swaps p.textContent between the two values, avoiding a second trip to the data.
+  // The card's DOM id ("speaker-<slug>") is the anchor target used by timeline
+  // speaker links to smooth-scroll to the corresponding card.
   function buildSpeakerCard(speaker, type, label) {
     const card = document.createElement("div");
     card.className = "speaker-card fade-in";
+    card.id = "speaker-" + slugify(speaker.name);
 
     const bio = speaker.bio || "";
     const companyDesc = speaker.companyDescription || "";
@@ -421,6 +612,19 @@
       ? `<img src="${esc(speaker.photo)}" alt="${esc(speaker.name)}" loading="lazy">`
       : initials(speaker.name);
 
+    const orgHtml = speaker.website
+      ? `<a href="${esc(speaker.website)}" target="_blank" rel="noopener" class="speaker-card__org-link">${esc(speaker.org)}</a>`
+      : esc(speaker.org);
+
+    const linkedinIcon = `<svg class="speaker-card__link-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0H5C2.2 0 0 2.2 0 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5V5c0-2.8-2.2-5-5-5zM8 19H5V8h3v11zM6.5 6.7C5.6 6.7 4.8 6 4.8 5s.8-1.7 1.7-1.7S8.2 4 8.2 5s-.8 1.7-1.7 1.7zM20 19h-3v-5.6c0-3.4-4-3.1-4 0V19h-3V8h3v1.8c1.4-2.6 7-2.8 7 2.5V19z"/></svg>`;
+    const webIcon = `<svg class="speaker-card__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+
+    const linksHtml = (speaker.website || speaker.linkedin) ? `<div class="speaker-card__links">${
+      speaker.website ? `<a href="${esc(speaker.website)}" target="_blank" rel="noopener" class="speaker-card__link-btn">${webIcon} Website</a>` : ""
+    }${
+      speaker.linkedin ? `<a href="${esc(speaker.linkedin)}" target="_blank" rel="noopener" class="speaker-card__link-btn speaker-card__link-btn--linkedin">${linkedinIcon} LinkedIn</a>` : ""
+    }</div>` : "";
+
     card.innerHTML = `
       <div class="speaker-card__label speaker-card__label--${type}">${esc(label)}</div>
       <div class="speaker-card__header">
@@ -428,7 +632,8 @@
         <div class="speaker-card__info">
           <div class="speaker-card__name">${esc(speaker.name)}</div>
           <div class="speaker-card__role">${esc(speaker.title)}</div>
-          <div class="speaker-card__org">${esc(speaker.org)}</div>
+          <div class="speaker-card__org">${orgHtml}</div>
+          ${linksHtml}
         </div>
       </div>
       <div class="speaker-card__body">
@@ -488,6 +693,10 @@
     filterParticipants("", "", withPhoto);
   }
 
+  // Multi-field participant search. An empty query or empty country string is treated
+  // as "match all" for that dimension, so the two filters are independently optional.
+  // The text search matches against name, Kestria member firm, and country — covering
+  // both "find a colleague by name" and "find all attendees from a given firm" use cases.
   function filterParticipants(query, country, list) {
     const participants = list || participantsData.filter((p) => p.photo && String(p.photo).trim());
     const q = query.toLowerCase().trim();
@@ -563,9 +772,13 @@
 
   const GALLERY_IMAGES = [
     "Kestria-Budapest-Global Conference.jpg",
-    "EVK_1163.JPG", "EVK_7088.JPG", "EVK_7507.JPG", "EVK_7814.JPG", "EVK_8865.JPG",
-    "EVK_8885.JPG", "EVK_9079.JPG", "EVK_9457.JPG", "EVK_9586.JPG",
-    "EVK_9666.JPG", "EVK_9724.JPG"
+    "EVK_0005.jpg", "EVK_0028.jpg", "EVK_0105.jpg", "EVK_0666.jpg",
+    "EVK_1320.jpg", "EVK_1341.jpg", "EVK_2053.jpg", "EVK_2179.jpg",
+    "EVK_3590.jpg", "EVK_3954.jpg", "EVK_4338.jpg", "EVK_4404.jpg",
+    "EVK_4430.jpg", "EVK_4438.jpg", "EVK_4456.jpg", "EVK_4468.jpg",
+    "EVK_4515.jpg", "EVK_4546.jpg", "EVK_4570.jpg", "EVK_6991.jpg",
+    "EVK_7471.jpg", "EVK_7814 copy.jpg", "EVK_8865.jpg", "EVK_9457.jpg",
+    "EVK_9724.jpg", "Modernizace_letiste075.jpg", "Modernizace_letiste146.jpg"
   ];
 
   let galleryIndex = 0;
@@ -604,6 +817,13 @@
       `${galleryIndex + 1} / ${GALLERY_IMAGES.length}`;
   }
 
+  // Initialises the gallery grid and lightbox.
+  // Navigation uses modular arithmetic to wrap at both ends:
+  //   prev: (index - 1 + length) % length  → wraps 0 back to last
+  //   next: (index + 1) % length           → wraps last back to 0
+  // The same wrap logic applies to keyboard arrow keys.
+  // Clicking the lightbox backdrop (the element whose id === "lightbox",
+  // not a child) closes the overlay without needing a separate close button hit.
   function initGallery() {
     renderGallery();
     document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
@@ -634,27 +854,35 @@
 
   // ── Travel Tips ──
 
+  // Each value is raw SVG inner content (paths, circles, lines)
   const TRAVEL_TIP_ICONS = {
-    car: "M5 17h14v-5H5v5zm2-6l1.5-4.5h9L19 11H5z",
-    money: "M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6",
-    wallet: "M21 12V7H5a2 2 0 010-4h14v4",
-    plug: "M12 22v-8M9 14H6a2 2 0 01-2-2v-4a2 2 0 012-2h3M15 14h3a2 2 0 002-2v-4a2 2 0 00-2-2h-3M12 2v4",
-    map: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z",
-    map2: "M12 7a3 3 0 100 6 3 3 0 000-6z",
-    utensils: "M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2H3zM21 2v7c0 1.1-.9 2-2 2h-4a2 2 0 01-2-2V2h8z",
-    glass: "M8 21h8M12 3v18M5 3h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V4a1 1 0 011-1z",
-    camera: "M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-2h6l2 2h4a2 2 0 012 2z",
-    cloud: "M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z",
+    car:      `<path d="M5 12l2-6h10l2 6"/><path d="M3 12h18v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6z"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/><path d="M3 15h2M19 15h2"/>`,
+    money:    `<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>`,
+    wallet:   `<path d="M4 5a2 2 0 00-2 2v11a2 2 0 002 2h16a2 2 0 002-2V7a2 2 0 00-2-2H4z"/><path d="M2 10h20"/><path d="M20 5V4a2 2 0 00-2-2H6a2 2 0 00-2 2v1"/><circle cx="16" cy="14" r="1" fill="currentColor" stroke="none"/>`,
+    plug:     `<path d="M9 3v5M15 3v5"/><rect x="6" y="8" width="12" height="7" rx="2"/><path d="M12 15v4"/><path d="M10 19h4"/>`,
+    map:      `<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>`,
+    cloud:    `<path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/>`,
+    utensils: `<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2"/><line x1="7" y1="11" x2="7" y2="22"/><path d="M21 15V2a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3v5"/><line x1="19" y1="15" x2="19" y2="22"/>`,
+    glass:    `<path d="M4 2h16L13 14H11L4 2z"/><line x1="12" y1="14" x2="12" y2="21"/><line x1="9" y1="21" x2="15" y2="21"/>`,
+    camera:   `<path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/>`,
+    cloud2:   `<path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/>`,
   };
 
+  // Renders travel tip cards. Three content formats are supported, checked in order:
+  //   1. items[]  – a list of {name, url, desc} objects rendered as linked entries.
+  //      Used for restaurant/bar lists where each item needs its own hyperlink.
+  //   2. bodyHtml – raw HTML string injected directly. Used when the content needs
+  //      inline links that cannot be expressed as a simple items array (e.g. the
+  //      Grab/Gojek "Getting around" tip with mixed text and app links).
+  //   3. body     – plain text, newlines converted to <br>. The safe fallback.
+  // After rendering tips, renderSightseeing() is called to populate the grid below.
   function renderTravelTips() {
     const tips = conferenceData?.travelTips || [];
     const grid = document.getElementById("travelTipsGrid");
     if (!grid) return;
     grid.innerHTML = "";
     tips.forEach((t, i) => {
-      const path = TRAVEL_TIP_ICONS[t.icon] || TRAVEL_TIP_ICONS.map;
-      const path2 = t.icon === "map" ? TRAVEL_TIP_ICONS.map2 : null;
+      const iconContent = TRAVEL_TIP_ICONS[t.icon] || TRAVEL_TIP_ICONS.map;
       const el = document.createElement("div");
       el.className = "travel-tip-card fade-in";
       el.style.animationDelay = `${i * 0.04}s`;
@@ -666,6 +894,8 @@
               `<a href="${item.url}" target="_blank" rel="noopener" class="travel-tip-card__link"><strong>${esc(item.name)}</strong></a> – ${esc(item.desc)}`
           )
           .join("<br>");
+      } else if (t.bodyHtml) {
+        bodyHtml = t.bodyHtml;
       } else {
         bodyHtml = String(t.body || "")
           .split("\n")
@@ -676,8 +906,7 @@
       el.innerHTML = `
         <div class="travel-tip-card__title">
           <svg class="travel-tip-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="${path}"/>
-            ${path2 ? `<path d="${path2}"/>` : ""}
+            ${iconContent}
           </svg>
           ${esc(t.title)}
         </div>
@@ -720,9 +949,10 @@
         icon: "M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z",
         icon2: "M12 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z",
         title: "Venue",
-        body: `<strong>Conference venue:</strong><br>${esc(agendaData.days[0]?.location || d.venue)} <a href="${mapsUrl(d.venue + " " + d.city)}" target="_blank" rel="noopener" class="info-card__maplink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Map</a><br><br><strong>Dinner venues:</strong><br>` +
-          `<strong>Day 2:</strong> Halászbástya Restaurant <a href="${mapsUrl("Halászbástya Restaurant Budapest")}" target="_blank" rel="noopener" class="info-card__maplink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Map</a><br>` +
-          `<strong>Day 3:</strong> Spiler Shanghai Secret Bar <a href="${mapsUrl("Spiler Shanghai Secret Bar Budapest")}" target="_blank" rel="noopener" class="info-card__maplink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Map</a>`,
+        body: `<strong>Conference venue:</strong><br>${esc(agendaData.days[0]?.location || d.venue)} <a href="${mapsUrl("Andaz Singapore 5 Fraser Street")}" target="_blank" rel="noopener" class="info-card__maplink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Map</a><br><br><strong>Dinner venues:</strong><br>` +
+          `<strong>Day 1:</strong> Coca at Suntec <a href="${mapsUrl("Coca Suntec City Singapore")}" target="_blank" rel="noopener" class="info-card__maplink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Map</a><br>` +
+          `<strong>Day 2:</strong> Long Beach Seafood East Coast <a href="${mapsUrl("Long Beach Seafood East Coast Singapore")}" target="_blank" rel="noopener" class="info-card__maplink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Map</a><br>` +
+          `<strong>Day 3:</strong> Fu Yuan Teochew Dining <a href="${mapsUrl("Fu Yuan Teochew Dining Singapore")}" target="_blank" rel="noopener" class="info-card__maplink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Map</a>`,
       },
       {
         icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",
@@ -772,6 +1002,74 @@
     });
   }
 
+  // ── Saturday Tour ──
+
+  function renderSaturday() {
+    const sat = conferenceData.saturday;
+    const container = document.getElementById("saturdayContainer");
+    if (!sat || !container) return;
+
+    const t = sat.tour;
+    const l = sat.lunch;
+
+    const contactHtml = sat.contact
+      ? `<a href="mailto:${esc(sat.contact.email)}" class="sat__contact-link">${esc(sat.contact.label)}</a>.`
+      : "";
+
+    const tourPhotosHtml = (t.photos || [])
+      .map((p) => `
+        <div class="sat__photo">
+          <img src="${esc(p.src)}" alt="${esc(p.alt)}" loading="lazy">
+          <span class="sat__photo-label">${esc(p.alt)}</span>
+        </div>`)
+      .join("");
+
+    container.innerHTML = `
+      <div class="sat__header">
+        <h2 class="section__title section__title--light">${esc(sat.title)}</h2>
+        <p class="sat__date">${esc(sat.date)}</p>
+      </div>
+      <p class="sat__intro">${esc(sat.intro)} ${contactHtml}</p>
+
+      <div class="sat__cards">
+
+        <div class="sat__card">
+          <div class="sat__card-header">
+            <h3 class="sat__card-title">${esc(t.title)}</h3>
+          </div>
+          <div class="sat__card-body">
+            <p class="sat__desc">${esc(t.description)}</p>
+            <ul class="sat__details">
+              <li><strong>Time:</strong> ${esc(t.time)}</li>
+              <li><strong>Cost:</strong> ${esc(t.cost)}</li>
+              <li><strong>Includes:</strong> ${esc(t.includes)}</li>
+              <li><strong>Spouses:</strong> ${esc(t.spouses)}</li>
+            </ul>
+            <div class="sat__photos">${tourPhotosHtml}</div>
+          </div>
+        </div>
+
+        <div class="sat__card">
+          <div class="sat__card-header">
+            <h3 class="sat__card-title">
+              <a href="${esc(l.url)}" target="_blank" rel="noopener" class="sat__venue-link">${esc(l.title)}</a>
+            </h3>
+          </div>
+          <div class="sat__card-body">
+            <p class="sat__desc">${esc(l.description)}</p>
+            <ul class="sat__details">
+              <li><strong>Location:</strong> ${esc(l.location)}</li>
+              <li><strong>Cost:</strong> ${esc(l.cost)}</li>
+              <li><strong>Note:</strong> ${esc(l.note)}</li>
+            </ul>
+            ${l.photo ? `<img src="${esc(l.photo)}" alt="Penang Place restaurant" class="sat__venue-photo" loading="lazy">` : ""}
+            ${l.afternoteHtml ? `<p class="sat__afternote">${esc(l.afternoteHtml)}</p>` : ""}
+          </div>
+        </div>
+
+      </div>`;
+  }
+
   // ── Navigation ──
 
   function initNav() {
@@ -799,8 +1097,15 @@
     updateActiveLink();
   }
 
+  // Scroll-spy: highlights the nav link that corresponds to the section currently
+  // in view. The 100px offset accounts for the fixed nav bar height so a section
+  // is considered "active" before its top edge reaches the very top of the viewport.
+  // The algorithm walks all sections in order and keeps the last one whose top is
+  // at-or-above the adjusted scroll position — i.e. the lowest section that has
+  // scrolled into view wins. "hero" is the default so the Home link is always
+  // highlighted when the page first loads.
   function updateActiveLink() {
-    const sections = ["hero", "myseat", "agenda", "speakers", "directory", "info", "traveltips", "gallery"];
+    const sections = ["hero", "agenda", "speakers", "directory", "info", "traveltips", "gallery"];
     const scrollY = window.scrollY + 100;
 
     let current = "hero";
