@@ -422,7 +422,10 @@
     const day = agendaData.days[index];
     const meta = document.getElementById("dayMeta");
     if (day.headline) {
-      meta.innerHTML = `<span class="day__meta-headline">${esc(day.headline)}</span>`;
+      const introHtml = day.headlineIntroHtml
+        ? `<p class="day__meta-intro">${day.headlineIntroHtml}</p>`
+        : "";
+      meta.innerHTML = `<span class="day__meta-headline">${esc(day.headline)}</span>${introHtml}`;
     } else {
       meta.innerHTML = `<strong>${day.location}</strong> · Dress code: ${esc(day.dressCode)}`;
     }
