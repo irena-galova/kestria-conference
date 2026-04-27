@@ -568,6 +568,32 @@
       }
       timeline.appendChild(el);
     });
+
+    // ── "Continue to next day" CTA ──
+    // Inserted as a sibling AFTER #timeline so it doesn't sit on the
+    // vertical rail and doesn't pick up a dot from .session::before.
+    // Skipped on the last day and whenever the next day is optional
+    // (e.g. Day 4 Saturday tour) so users aren't nudged into it.
+    const existingJump = timeline.parentNode.querySelector(".day-jump");
+    if (existingJump) existingJump.remove();
+    const nextDay = agendaData.days[index + 1];
+    if (nextDay && !nextDay.optional) {
+      const jump = document.createElement("div");
+      jump.className = "day-jump fade-in";
+      jump.innerHTML = `
+        <button type="button" class="btn btn--primary day-jump__btn">
+          <span>Continue to <strong>${esc(nextDay.label)} \u00b7 ${esc(nextDay.dateLabel)}</strong></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+        </button>`;
+      jump.querySelector("button").addEventListener("click", () => {
+        const tabs = document.querySelectorAll("#dayTabs .day-tab");
+        tabs.forEach((b, i) => b.classList.toggle("active", i === index + 1));
+        renderDay(index + 1);
+        const section = document.getElementById("agenda");
+        if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      timeline.parentNode.insertBefore(jump, timeline.nextSibling);
+    }
   }
 
   // ── Speakers ──
