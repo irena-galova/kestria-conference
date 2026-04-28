@@ -1015,8 +1015,11 @@
       },
       {
         icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
-        title: "Device Etiquette",
-        body: "Please refrain from using laptops, tablets, or phones during sessions. Coffee and lunch breaks are scheduled for catching up on business matters.",
+        title: "Wi-Fi & device etiquette",
+        body:
+          `<strong>Wi-Fi:</strong> Connect to ${esc("@Andaz_WiFi")}<br>` +
+          `<strong>Conference code:</strong> ${esc("may2026")}<br><br>` +
+          "Please refrain from using laptops, tablets, or phones during sessions. Coffee and lunch breaks are scheduled for catching up on business matters.",
       },
     ];
 
