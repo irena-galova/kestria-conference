@@ -280,6 +280,16 @@
     "photo": "img/photos/iluta-gaile.jpg"
   },
   {
+    "name": "Anuradha Patil",
+    "member": "Kestria Malaysia",
+    "country": "Malaysia",
+    "email": "anuradha@cnetg.com",
+    "mobile": "",
+    "role": "participant",
+    "dietary": "",
+    "photo": "img/photos/anuradha-patil.jpg"
+  },
+  {
     "name": "Intan Rosida",
     "buddyConsultantSlug": "intan-rosidna",
     "member": "Kestria Malaysia",
@@ -289,6 +299,16 @@
     "role": "participant",
     "dietary": "",
     "photo": "img/photos/intan-rosida.jpg"
+  },
+  {
+    "name": "Manish Mehta",
+    "member": "Kestria Malaysia",
+    "country": "Malaysia",
+    "email": "mmehta@cnetg.com",
+    "mobile": "+60122171215",
+    "role": "participant",
+    "dietary": "",
+    "photo": "img/photos/manish-mehta.jpg"
   },
   {
     "name": "Nadimah Khairuddin",
@@ -319,16 +339,6 @@
     "role": "participant",
     "dietary": "",
     "photo": "img/photos/shalini-singh.jpg"
-  },
-  {
-    "name": "Sheena Sreedhar",
-    "member": "Kestria Malaysia",
-    "country": "Malaysia",
-    "email": "sheena.sreedhar@cnetg.com",
-    "mobile": "",
-    "role": "participant",
-    "dietary": "",
-    "photo": "img/photos/sheena-sreedhar.jpg"
   },
   {
     "name": "Siddharrtan Raja",
