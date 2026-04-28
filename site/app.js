@@ -56,9 +56,11 @@
       .replace(/^-|-$/g, "");
   }
 
-  function buddyUrl(member, name) {
+  // Optional consultantSlugOverride: Buddy path segment when it differs from
+  // slugify(full name), e.g. profile slug "intan-rosidna" vs display "Intan Rosida".
+  function buddyUrl(member, name, consultantSlugOverride) {
     const memberSlug = slugify(member);
-    const nameSlug = slugify(name);
+    const nameSlug = consultantSlugOverride ? slugify(consultantSlugOverride) : slugify(name);
     if (!memberSlug || !nameSlug) return "";
     return `https://buddy.kestria.com/members/${memberSlug}/consultants/${nameSlug}/`;
   }
@@ -768,7 +770,7 @@
         ? `<img src="${esc(p.photo)}" alt="${esc(p.name)}" loading="lazy">`
         : initials(p.name);
 
-      const buddy = buddyUrl(p.member, p.name);
+      const buddy = buddyUrl(p.member, p.name, p.buddyConsultantSlug);
 
       card.innerHTML = `
         <div class="participant-card__top">
