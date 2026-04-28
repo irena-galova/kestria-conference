@@ -280,6 +280,26 @@
     "photo": "img/photos/iluta-gaile.jpg"
   },
   {
+    "name": "Intan Rosida",
+    "member": "Kestria Malaysia",
+    "country": "Malaysia",
+    "email": "intan@cnetg.com",
+    "mobile": "+60376650050",
+    "role": "participant",
+    "dietary": "",
+    "photo": "img/photos/intan-rosida.jpg"
+  },
+  {
+    "name": "Nadimah Khairuddin",
+    "member": "Kestria Malaysia",
+    "country": "Malaysia",
+    "email": "nadimah@cnetg.com",
+    "mobile": "+60193191942",
+    "role": "participant",
+    "dietary": "",
+    "photo": "img/photos/nadimah-khairuddin.jpg"
+  },
+  {
     "name": "Raj Kumar Paramanathan",
     "member": "Kestria Malaysia",
     "country": "Malaysia",
@@ -288,6 +308,36 @@
     "role": "participant",
     "dietary": "No beef, no crustacean",
     "photo": "img/photos/raj-kumar-paramanathan.jpg"
+  },
+  {
+    "name": "Shalini Singh",
+    "member": "Kestria Malaysia",
+    "country": "Malaysia",
+    "email": "shalini.singh@cnetg.com",
+    "mobile": "",
+    "role": "participant",
+    "dietary": "",
+    "photo": "img/photos/shalini-singh.jpg"
+  },
+  {
+    "name": "Sheena Sreedhar",
+    "member": "Kestria Malaysia",
+    "country": "Malaysia",
+    "email": "sheena.sreedhar@cnetg.com",
+    "mobile": "",
+    "role": "participant",
+    "dietary": "",
+    "photo": "img/photos/sheena-sreedhar.jpg"
+  },
+  {
+    "name": "Siddharrtan Raja",
+    "member": "Kestria Malaysia",
+    "country": "Malaysia",
+    "email": "siddharrthan@cnetg.com",
+    "mobile": "+60175772072",
+    "role": "participant",
+    "dietary": "",
+    "photo": "img/photos/siddharrtan-raja.jpg"
   },
   {
     "name": "Cees Hagoort",

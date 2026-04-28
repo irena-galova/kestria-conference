@@ -342,11 +342,11 @@ suite("agenda.json – structure and sessions", () => {
 suite("participants.json – count and required fields", () => {
   const ps = D && D.participants;
 
-  test("Exactly 53 confirmed participants",
-    "The 2026 Singapore master file contains 53 confirmed participants (conf=1). " +
+  test("Exactly 59 confirmed participants",
+    "The 2026 Singapore master file contains 59 confirmed participants (conf=1). " +
     "A mismatch indicates someone was added or removed from the master file without " +
     "updating participants.json, or the Excel filter criteria changed.",
-    () => assertEqual(ps.length, 53, "participant count"));
+    () => assertEqual(ps.length, 59, "participant count"));
 
   test("Every participant has a name",
     "name is used for display and for the Buddy URL slug. A blank name breaks both.",
