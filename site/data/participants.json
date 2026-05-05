@@ -361,16 +361,6 @@
     "photo": "img/photos/ije-jidenma.jpg"
   },
   {
-    "name": "Vegard Berg",
-    "member": "Kestria Norway",
-    "country": "Norway",
-    "email": "vb@pu.no",
-    "mobile": "+4799442155",
-    "role": "participant",
-    "dietary": "Allergic to shellfish.",
-    "photo": "img/photos/vegard-berg.jpg"
-  },
-  {
     "name": "Piotr Mazurkiewicz",
     "member": "Kestria Poland",
     "country": "Poland",
@@ -519,16 +509,6 @@
     "role": "participant",
     "dietary": "",
     "photo": "img/photos/thomas-suter.jpg"
-  },
-  {
-    "name": "Daniel Osmer",
-    "member": "Kestria UK",
-    "country": "UK",
-    "email": "daniel.osmer@spectrum-ehcs.com",
-    "mobile": "+447788416715",
-    "role": "participant",
-    "dietary": "",
-    "photo": "img/photos/daniel-osmer.jpg"
   },
   {
     "name": "Hong Nguyen",
