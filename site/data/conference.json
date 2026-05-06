@@ -337,28 +337,6 @@
               ]
             },
             {
-              "heading": "Baba",
-              "spots": [
-                {
-                  "name": "Baba Chews",
-                  "desc": "All-day modern Asian at Katong Square",
-                  "url": "https://babachews.com.sg/",
-                  "mapsQuery": "Baba Chews Katong Square Singapore"
-                }
-              ]
-            },
-            {
-              "heading": "New spots",
-              "spots": [
-                {
-                  "name": "New Bahru",
-                  "desc": "Trendy lifestyle & food cluster",
-                  "url": "https://www.newbahru.com/",
-                  "mapsQuery": "New Bahru Singapore"
-                }
-              ]
-            },
-            {
               "heading": "Must-try local bites",
               "bites": [
                 {
