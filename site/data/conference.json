@@ -209,12 +209,6 @@
                   "mapsQuery": "Spago Marina Bay Sands Singapore"
                 },
                 {
-                  "name": "Atlas Bar",
-                  "desc": "Walking distance from Andaz; art deco gin palace",
-                  "url": "https://atlasbar.sg/",
-                  "mapsQuery": "Atlas Bar Parkview Square Singapore"
-                },
-                {
                   "name": "Tess Bar & Kitchen",
                   "desc": "36 Seah Street — short drive from Andaz",
                   "url": "https://tesskitchen.sg/",
@@ -345,18 +339,6 @@
             {
               "heading": "Peranakan & heritage",
               "spots": [
-                {
-                  "name": "Violet Oon",
-                  "desc": "ION, National Gallery or Dempsey — Nyonya classics",
-                  "url": "https://violetoon.com/",
-                  "mapsQuery": "Violet Oon National Gallery Singapore"
-                },
-                {
-                  "name": "Candlenut",
-                  "desc": "Michelin-starred Peranakan, Dempsey",
-                  "url": "https://www.comodempsey.sg/restaurant/candlenut",
-                  "mapsQuery": "Candlenut Dempsey Singapore"
-                },
                 {
                   "name": "Baba Chews",
                   "desc": "Katong Square — Peranakan café-style",

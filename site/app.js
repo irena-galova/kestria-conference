@@ -960,6 +960,7 @@
         const details = document.createElement("details");
         details.id = "travel-tip-locals-details";
         details.className = "travel-tip-card travel-tip-card--locals-details fade-in";
+        details.setAttribute("open", "");
         details.style.animationDelay = `${i * 0.04}s`;
         const colsHtml = t.localsColumns
           .map(
@@ -974,7 +975,7 @@
               <span class="travel-tip-card__locals-summary-title">${esc(t.title)}</span>
               <span class="travel-tip-card__locals-summary-chevron" aria-hidden="true"></span>
             </span>
-            <span class="travel-tip-card__locals-summary-hint">Tap to expand · website and map for each place</span>
+            <span class="travel-tip-card__locals-summary-hint">Opens expanded below · tap header to collapse</span>
           </summary>
           <div class="travel-tip-card__locals-body">
             <div class="travel-tip-card__locals-cols">${colsHtml}</div>
