@@ -1222,10 +1222,7 @@ ul { list-style: none; }
   gap: 0.6rem;
 }
 @media (min-width: 520px) {
-  .travel-bites-box__grid { grid-template-columns: 1fr 1fr; }
-}
-@media (min-width: 980px) {
-  .travel-bites-box__grid { grid-template-columns: 1fr 1fr 1fr; }
+  .travel-bites-box__grid { grid-template-columns: 1fr; }
 }
 .travel-bites-box__item {
   display: flex; align-items: center; gap: 0.6rem;
@@ -1252,9 +1249,6 @@ ul { list-style: none; }
   font-size: 0.76rem;
   line-height: 1.35;
   color: var(--grey);
-}
-.travel-tip-card__locals-bites {
-  margin-top: 1.2rem;
 }
 .travel-tip-spot {
   display: flex; align-items: flex-start; justify-content: space-between;

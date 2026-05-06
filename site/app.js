@@ -115,6 +115,9 @@
   function renderTravelLocalsColumn(sections) {
     return sections
       .map((sec) => {
+        if (sec.bites && sec.bites.length) {
+          return `<div class="travel-tip-locals__section">${renderMustTryBites(sec)}</div>`;
+        }
         let html = `<div class="travel-tip-locals__section"><h4 class="travel-tip-locals__heading">${esc(sec.heading)}</h4>`;
         if (sec.intro) html += `<p class="travel-tip-locals__intro">${esc(sec.intro)}</p>`;
         html += (sec.spots || []).map(renderTravelTipSpot).join("");
@@ -985,13 +988,12 @@
         details.className = "travel-tip-card travel-tip-card--locals-details fade-in";
         details.setAttribute("open", "");
         details.style.animationDelay = `${i * 0.04}s`;
-        const biteSections = t.localsColumns
-          .flatMap((col) => col.sections || [])
-          .filter((sec) => sec.bites && sec.bites.length);
-        const localsColumnsNoBites = t.localsColumns.map((col) => ({
-          sections: (col.sections || []).filter((sec) => !(sec.bites && sec.bites.length)),
-        }));
-        const bitesHtml = biteSections.map((sec) => renderMustTryBites(sec)).join("");
+        const colsHtml = t.localsColumns
+          .map(
+            (col) =>
+              `<div class="travel-tip-card__locals-col">${renderTravelLocalsColumn(col.sections || [])}</div>`
+          )
+          .join("");
         details.innerHTML = `
           <summary class="travel-tip-card__locals-summary">
             <span class="travel-tip-card__locals-summary-row">
@@ -1001,13 +1003,7 @@
             </span>
           </summary>
           <div class="travel-tip-card__locals-body">
-            <div class="travel-tip-card__locals-cols">${localsColumnsNoBites
-              .map(
-                (col) =>
-                  `<div class="travel-tip-card__locals-col">${renderTravelLocalsColumn(col.sections || [])}</div>`
-              )
-              .join("")}</div>
-            ${bitesHtml ? `<div class="travel-tip-card__locals-bites">${bitesHtml}</div>` : ""}
+            <div class="travel-tip-card__locals-cols">${colsHtml}</div>
           </div>`;
         grid.appendChild(details);
         return;
