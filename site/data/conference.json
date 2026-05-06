@@ -152,7 +152,7 @@
           "url": "https://www.thecoconutclub.sg/"
         }
       ],
-      "bodyHtml": "See more tips from locals below."
+      "openLocalsDetails": true
     },
     {
       "title": "Top 5 bars",
@@ -184,12 +184,211 @@
           "url": "https://www.tribenative.com/"
         }
       ],
-      "bodyHtml": "See more tips from locals below."
+      "openLocalsDetails": true
     },
     {
       "title": "More local food & nightlife tips",
       "icon": "utensils",
-      "bodyHtml": "<strong>Bars & nightlife</strong><br><a href=\"https://www.sg.celavi.com\" target=\"_blank\" rel=\"noopener\" class=\"travel-tip-card__link\"><strong>Ce La Vi</strong></a> — top of Marina Bay Sands; a must-visit for night views of the CBD.<br><strong>Spago</strong> — rooftop dining and drinks at Marina Bay Sands.<br><a href=\"https://atlasbar.sg/\" target=\"_blank\" rel=\"noopener\" class=\"travel-tip-card__link\"><strong>Atlas Bar</strong></a> — walking distance from Andaz Hotel.<br><strong>Tess Bar & Kitchen</strong> — 36 Seah Street, a short drive from Andaz.<br><br><strong>Restaurants & cafes</strong><br><em>Cantonese food and dim sum:</em><br><strong>Wah Lok</strong> (Carlton Hotel, reservation recommended)<br><strong>Wan Hao</strong> (Marriott Hotel)<br><strong>Hai Tien Lo</strong> (Pan Pacific Hotel)<br><strong>Man Fu Yuan</strong> (InterContinental at Bugis)<br><strong>Majestic Restaurant</strong> (Marina One; not the one at Gardens by the Bay)<br><strong>Cassia</strong> (Sentosa)<br><br><em>Cafes:</em><br><strong>Kreams Café</strong><br><strong>Tiong Bahru Bakery</strong> (multiple outlets)<br><strong>The Stamford Brasserie</strong> (City Hall area)<br><strong>Oh Wunder Café</strong> (City Hall area)<br><strong>Surrey Hills Grocer</strong> (ION, One Holland Village)<br><br><strong>Local delights</strong><br><em>Chicken rice:</em> Tien Tien (Maxwell), Yew Jit (River Valley), Boon Tong Kee (multiple branches).<br><strong>Newton Food Centre</strong> — great for supper or dinner.<br><strong>Zion Riverside Food Centre</strong> — ideal for lunch; try fried carrot cake (white or black), wanton noodles, satay, char kway teow, and grilled chicken wings.<br><em>Peranakan food:</em> Violet Oon (ION/National Gallery/Dempsey), Candlenut (Dempsey), Baba Chews (Katong Square), The Peranakan (Orchard Hotel).<br><strong>New Bahru</strong> — one of Singapore's newest trendy lifestyle/food spots.<br><br><strong>Must-try local food</strong><br>Toast Box / Ya Kun / Killiney Coffee (kaya butter toast, local coffee, laksa), chicken rice, nasi lemak, katong laksa or mee siam, curry puffs and sesame balls from Old Chang Kee, and yong tau foo.<br><br>There are more options than your stomach can handle on one trip!"
+      "localsTipsDetails": true,
+      "localsColumns": [
+        {
+          "sections": [
+            {
+              "heading": "Bars & nightlife",
+              "spots": [
+                {
+                  "name": "Ce La Vi",
+                  "desc": "Top of Marina Bay Sands — night views of the CBD",
+                  "url": "https://www.sg.celavi.com",
+                  "mapsQuery": "Ce La Vi Marina Bay Sands Singapore"
+                },
+                {
+                  "name": "Spago",
+                  "desc": "Rooftop dining and drinks at Marina Bay Sands",
+                  "url": "https://www.marinabaysands.com/restaurants/spago-bar-and-lounge.html",
+                  "mapsQuery": "Spago Marina Bay Sands Singapore"
+                },
+                {
+                  "name": "Atlas Bar",
+                  "desc": "Walking distance from Andaz; art deco gin palace",
+                  "url": "https://atlasbar.sg/",
+                  "mapsQuery": "Atlas Bar Parkview Square Singapore"
+                },
+                {
+                  "name": "Tess Bar & Kitchen",
+                  "desc": "36 Seah Street — short drive from Andaz",
+                  "url": "https://tesskitchen.sg/",
+                  "mapsQuery": "Tess Bar & Kitchen 36 Seah Street Singapore"
+                }
+              ]
+            },
+            {
+              "heading": "Cantonese & dim sum",
+              "spots": [
+                {
+                  "name": "Wah Lok",
+                  "desc": "Carlton Hotel — reservation recommended",
+                  "url": "https://www.carltonhotel.sg/dining/restaurant/wah-lok",
+                  "mapsQuery": "Wah Lok Carlton Hotel Singapore"
+                },
+                {
+                  "name": "Wan Hao",
+                  "desc": "Singapore Marriott Tang Plaza",
+                  "url": "https://singaporemarriott.com/dining/details/wan-hao-chinese-restaurant/",
+                  "mapsQuery": "Wan Hao Chinese Restaurant Singapore Marriott"
+                },
+                {
+                  "name": "Hai Tien Lo",
+                  "desc": "Pan Pacific Singapore",
+                  "url": "https://www.panpacific.com/singapore/restaurants-bar/hai-tien-lo.html",
+                  "mapsQuery": "Hai Tien Lo Pan Pacific Singapore"
+                },
+                {
+                  "name": "Man Fu Yuan",
+                  "desc": "InterContinental Singapore (Bugis)",
+                  "url": "https://singapore.intercontinental.com/dining/man-fu-yuan/",
+                  "mapsQuery": "Man Fu Yuan InterContinental Singapore Bugis"
+                },
+                {
+                  "name": "Majestic Restaurant",
+                  "desc": "Marina One — not the outlet at Gardens by the Bay",
+                  "url": "https://restaurantmajestic.com/",
+                  "mapsQuery": "Majestic Restaurant Marina One Singapore"
+                },
+                {
+                  "name": "Cassia",
+                  "desc": "Capella Sentosa — modern Cantonese",
+                  "url": "https://www.capellahotels.com/en/capella-singapore/dining/cassia",
+                  "mapsQuery": "Cassia Capella Sentosa Singapore"
+                }
+              ]
+            },
+            {
+              "heading": "Cafés",
+              "spots": [
+                {
+                  "name": "Kreams Café",
+                  "desc": "Specialty coffee in Maxwell / Tanjong Pagar area",
+                  "url": "https://www.instagram.com/kreamscf/",
+                  "mapsQuery": "Kreams Cafe Maxwell Singapore"
+                },
+                {
+                  "name": "Tiong Bahru Bakery",
+                  "desc": "Croissants & local bakes — multiple outlets",
+                  "url": "https://www.tiongbahrubakery.com/",
+                  "mapsQuery": "Tiong Bahru Bakery Singapore"
+                },
+                {
+                  "name": "The Stamford Brasserie",
+                  "desc": "City Hall — All-day dining",
+                  "url": "https://www.fairmont-singapore.com/restaurants/stamford-brasserie/",
+                  "mapsQuery": "The Stamford Brasserie Fairmont Singapore"
+                },
+                {
+                  "name": "Oh Wunder Café",
+                  "desc": "City Hall / Civic District café",
+                  "url": "https://www.google.com/maps/search/?api=1&query=Oh%20Wunder%20Cafe%20Singapore",
+                  "mapsQuery": "Oh Wunder Cafe Singapore"
+                },
+                {
+                  "name": "Surrey Hills Grocer",
+                  "desc": "ION Orchard, One Holland Village & more",
+                  "url": "https://www.surreyhillsgrocer.com/",
+                  "mapsQuery": "Surrey Hills Grocer ION Orchard Singapore"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sections": [
+            {
+              "heading": "Hawker & supper",
+              "spots": [
+                {
+                  "name": "Newton Food Centre",
+                  "desc": "Great for supper or dinner — satay, seafood, local classics",
+                  "url": "https://www.google.com/maps/search/?api=1&query=Newton%20Food%20Centre%20Singapore",
+                  "mapsQuery": "Newton Food Centre Singapore"
+                },
+                {
+                  "name": "Zion Riverside Food Centre",
+                  "desc": "Lunch favourite — carrot cake, wanton mee, satay, CKT, wings",
+                  "url": "https://www.google.com/maps/search/?api=1&query=Zion%20Riverside%20Food%20Centre%20Singapore",
+                  "mapsQuery": "Zion Riverside Food Centre Singapore"
+                }
+              ]
+            },
+            {
+              "heading": "Chicken rice picks",
+              "spots": [
+                {
+                  "name": "Tien Tien",
+                  "desc": "Maxwell Food Centre",
+                  "url": "https://www.google.com/maps/search/?api=1&query=Tien%20Tien%20Chicken%20Rice%20Maxwell%20Singapore",
+                  "mapsQuery": "Tien Tien Chicken Rice Maxwell Food Centre"
+                },
+                {
+                  "name": "Yew Jit",
+                  "desc": "River Valley",
+                  "url": "https://www.google.com/maps/search/?api=1&query=Yew%20Jit%20Chicken%20Rice%20Singapore",
+                  "mapsQuery": "Yew Jit Chicken Rice River Valley Singapore"
+                },
+                {
+                  "name": "Boon Tong Kee",
+                  "desc": "Multiple branches — Balestier is the classic",
+                  "url": "https://www.boontongkee.com.sg/",
+                  "mapsQuery": "Boon Tong Kee Balestier Singapore"
+                }
+              ]
+            },
+            {
+              "heading": "Peranakan & heritage",
+              "spots": [
+                {
+                  "name": "Violet Oon",
+                  "desc": "ION, National Gallery or Dempsey — Nyonya classics",
+                  "url": "https://violetoon.com/",
+                  "mapsQuery": "Violet Oon National Gallery Singapore"
+                },
+                {
+                  "name": "Candlenut",
+                  "desc": "Michelin-starred Peranakan, Dempsey",
+                  "url": "https://www.comodempsey.sg/restaurant/candlenut",
+                  "mapsQuery": "Candlenut Dempsey Singapore"
+                },
+                {
+                  "name": "Baba Chews",
+                  "desc": "Katong Square — Peranakan café-style",
+                  "url": "https://www.babachews.sg/",
+                  "mapsQuery": "Baba Chews Katong Square Singapore"
+                },
+                {
+                  "name": "The Peranakan",
+                  "desc": "Orchard Hotel — full Peranakan spread",
+                  "url": "https://www.theperanakan.com.sg/",
+                  "mapsQuery": "The Peranakan Orchard Hotel Singapore"
+                }
+              ]
+            },
+            {
+              "heading": "New spots",
+              "spots": [
+                {
+                  "name": "New Bahru",
+                  "desc": "Trendy lifestyle & food cluster",
+                  "url": "https://www.newbahru.sg/",
+                  "mapsQuery": "New Bahru Singapore"
+                }
+              ]
+            },
+            {
+              "heading": "Must-try local bites",
+              "intro": "Toast Box, Ya Kun or Killiney for kaya butter toast, local kopi and laksa; nasi lemak, Katong laksa or mee siam; curry puffs and snacks from Old Chang Kee; yong tau foo at a hawker stall. There are more options than one trip can hold!"
+            }
+          ]
+        }
+      ]
     }
   ],
   "sightseeing": [

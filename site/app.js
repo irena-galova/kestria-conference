@@ -69,6 +69,46 @@
     return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(query);
   }
 
+  // Small map-pin icon for travel-tip venue rows (Google Maps link).
+  function travelTipMapPinSvg() {
+    return `<svg class="travel-tip-spot__map-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
+  }
+
+  function renderTravelTipSpot(spot) {
+    const mq = spot.mapsQuery || spot.name + " Singapore";
+    const mapHref = mapsUrl(mq);
+    const title =
+      spot.url
+        ? `<a href="${esc(spot.url)}" target="_blank" rel="noopener" class="travel-tip-card__link"><strong>${esc(spot.name)}</strong></a>`
+        : `<strong>${esc(spot.name)}</strong>`;
+    const desc = spot.desc ? ` <span class="travel-tip-spot__desc">– ${esc(spot.desc)}</span>` : "";
+    return `
+      <div class="travel-tip-spot">
+        <div class="travel-tip-spot__text">${title}${desc}</div>
+        <a href="${esc(mapHref)}" target="_blank" rel="noopener" class="travel-tip-spot__map" title="Open in Google Maps: ${esc(spot.name)}" aria-label="Google Maps: ${esc(spot.name)}">${travelTipMapPinSvg()}</a>
+      </div>`;
+  }
+
+  function renderTravelLocalsColumn(sections) {
+    return sections
+      .map((sec) => {
+        let html = `<div class="travel-tip-locals__section"><h4 class="travel-tip-locals__heading">${esc(sec.heading)}</h4>`;
+        if (sec.intro) html += `<p class="travel-tip-locals__intro">${esc(sec.intro)}</p>`;
+        html += (sec.spots || []).map(renderTravelTipSpot).join("");
+        if (sec.footer) html += `<p class="travel-tip-locals__footer">${esc(sec.footer)}</p>`;
+        html += "</div>";
+        return html;
+      })
+      .join("");
+  }
+
+  function openTravelLocalsDetails() {
+    const d = document.getElementById("travel-tip-locals-details");
+    if (!d) return;
+    d.open = true;
+    d.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
   // Parses a short date label like "May 13" into a JS Date object.
   // The year is inferred in priority order: explicit argument → year embedded in
   // conferenceData.dates (extracted with a regex) → current year as last resort.
@@ -902,32 +942,73 @@
     cloud2:   `<path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/>`,
   };
 
-  // Renders travel tip cards. Three content formats are supported, checked in order:
-  //   1. items[]  – a list of {name, url, desc} objects rendered as linked entries.
-  //      Used for restaurant/bar lists where each item needs its own hyperlink.
-  //   2. bodyHtml – raw HTML string injected directly. Used when the content needs
-  //      inline links that cannot be expressed as a simple items array (e.g. the
-  //      Grab/Gojek "Getting around" tip with mixed text and app links).
-  //   3. body     – plain text, newlines converted to <br>. The safe fallback.
-  // After rendering tips, renderSightseeing() is called to populate the grid below.
+  // Renders travel tip cards. Formats:
+  //   - localsTipsDetails + localsColumns[] – full-width expandable `<details>` panel (two-column body).
+  //   - items[] – linked list rows; optional openLocalsDetails appends a button opening that panel.
+  //   - bodyHtml – injected HTML (e.g. mixed links).
+  //   – body – plain text split on newlines.
   function renderTravelTips() {
     const tips = conferenceData?.travelTips || [];
     const grid = document.getElementById("travelTipsGrid");
     if (!grid) return;
     grid.innerHTML = "";
+
     tips.forEach((t, i) => {
       const iconContent = TRAVEL_TIP_ICONS[t.icon] || TRAVEL_TIP_ICONS.map;
+
+      if (t.localsTipsDetails && Array.isArray(t.localsColumns) && t.localsColumns.length) {
+        const details = document.createElement("details");
+        details.id = "travel-tip-locals-details";
+        details.className = "travel-tip-card travel-tip-card--locals-details fade-in";
+        details.style.animationDelay = `${i * 0.04}s`;
+        const colsHtml = t.localsColumns
+          .map(
+            (col) =>
+              `<div class="travel-tip-card__locals-col">${renderTravelLocalsColumn(col.sections || [])}</div>`
+          )
+          .join("");
+        details.innerHTML = `
+          <summary class="travel-tip-card__locals-summary">
+            <span class="travel-tip-card__locals-summary-row">
+              <svg class="travel-tip-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${iconContent}</svg>
+              <span class="travel-tip-card__locals-summary-title">${esc(t.title)}</span>
+              <span class="travel-tip-card__locals-summary-chevron" aria-hidden="true"></span>
+            </span>
+            <span class="travel-tip-card__locals-summary-hint">Tap to expand · website and map for each place</span>
+          </summary>
+          <div class="travel-tip-card__locals-body">
+            <div class="travel-tip-card__locals-cols">${colsHtml}</div>
+          </div>`;
+        grid.appendChild(details);
+        return;
+      }
+
       const el = document.createElement("div");
       el.className = "travel-tip-card fade-in";
       el.style.animationDelay = `${i * 0.04}s`;
       let bodyHtml;
       if (t.items && t.items.length) {
         bodyHtml = t.items
-          .map(
-            (item) =>
-              `<a href="${item.url}" target="_blank" rel="noopener" class="travel-tip-card__link"><strong>${esc(item.name)}</strong></a> – ${esc(item.desc)}`
-          )
-          .join("<br>");
+          .map((item) => {
+            const mq = item.mapsQuery || `${item.name} Singapore`;
+            const mapHref = mapsUrl(mq);
+            const text = `<a href="${esc(item.url)}" target="_blank" rel="noopener" class="travel-tip-card__link"><strong>${esc(item.name)}</strong></a><span class="travel-tip-spot__desc"> – ${esc(item.desc)}</span>`;
+            return `
+      <div class="travel-tip-spot travel-tip-spot--items">
+        <div class="travel-tip-spot__text">${text}</div>
+        <a href="${esc(mapHref)}" target="_blank" rel="noopener" class="travel-tip-spot__map" title="Open in Google Maps: ${esc(item.name)}" aria-label="Google Maps: ${esc(item.name)}">${travelTipMapPinSvg()}</a>
+      </div>`;
+          })
+          .join("");
+        if (t.openLocalsDetails) {
+          bodyHtml += `
+        <div class="travel-tip-card__open-locals-wrap">
+          <button type="button" class="travel-tip-card__open-locals" data-open-locals-details aria-controls="travel-tip-locals-details">
+            See more tips from locals
+            <span class="travel-tip-card__open-locals-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></span>
+          </button>
+        </div>`;
+        }
       } else if (t.bodyHtml) {
         bodyHtml = t.bodyHtml;
       } else {
@@ -937,6 +1018,7 @@
           .filter(Boolean)
           .join("<br>");
       }
+
       el.innerHTML = `
         <div class="travel-tip-card__title">
           <svg class="travel-tip-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -947,6 +1029,11 @@
         <div class="travel-tip-card__body">${bodyHtml}</div>`;
       grid.appendChild(el);
     });
+
+    grid.querySelectorAll("[data-open-locals-details]").forEach((btn) => {
+      btn.addEventListener("click", () => openTravelLocalsDetails());
+    });
+
     renderSightseeing();
   }
 
