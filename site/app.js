@@ -89,9 +89,35 @@
       </div>`;
   }
 
+  function renderMustTryBites(section) {
+    const items = section.bites || [];
+    if (!items.length) return "";
+    return `
+      <div class="travel-bites-box">
+        <h5 class="travel-bites-box__title">${esc(section.heading)}</h5>
+        <div class="travel-bites-box__grid">
+          ${items
+            .map(
+              (bite) => `
+            <div class="travel-bites-box__item">
+              <div class="travel-bites-box__thumb" aria-hidden="true">${esc(bite.emoji || "🍽️")}</div>
+              <div class="travel-bites-box__text">
+                <strong>${esc(bite.name)}</strong>
+                <span>${esc(bite.desc || "")}</span>
+              </div>
+            </div>`
+            )
+            .join("")}
+        </div>
+      </div>`;
+  }
+
   function renderTravelLocalsColumn(sections) {
     return sections
       .map((sec) => {
+        if (sec.bites && sec.bites.length) {
+          return `<div class="travel-tip-locals__section">${renderMustTryBites(sec)}</div>`;
+        }
         let html = `<div class="travel-tip-locals__section"><h4 class="travel-tip-locals__heading">${esc(sec.heading)}</h4>`;
         if (sec.intro) html += `<p class="travel-tip-locals__intro">${esc(sec.intro)}</p>`;
         html += (sec.spots || []).map(renderTravelTipSpot).join("");
@@ -975,7 +1001,6 @@
               <span class="travel-tip-card__locals-summary-title">${esc(t.title)}</span>
               <span class="travel-tip-card__locals-summary-chevron" aria-hidden="true"></span>
             </span>
-            <span class="travel-tip-card__locals-summary-hint">Opens expanded below · tap header to collapse</span>
           </summary>
           <div class="travel-tip-card__locals-body">
             <div class="travel-tip-card__locals-cols">${colsHtml}</div>

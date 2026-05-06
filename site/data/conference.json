@@ -152,7 +152,7 @@
           "url": "https://www.thecoconutclub.sg/"
         }
       ],
-      "openLocalsDetails": true
+      "openLocalsDetails": false
     },
     {
       "title": "Top 5 bars",
@@ -184,10 +184,10 @@
           "url": "https://www.tribenative.com/"
         }
       ],
-      "openLocalsDetails": true
+      "openLocalsDetails": false
     },
     {
-      "title": "More local food & nightlife tips",
+      "title": "More tips from locals",
       "icon": "utensils",
       "localsTipsDetails": true,
       "localsColumns": [
@@ -211,7 +211,7 @@
                 {
                   "name": "Tess Bar & Kitchen",
                   "desc": "36 Seah Street — short drive from Andaz",
-                  "url": "https://tesskitchen.sg/",
+                  "url": "https://tessbar.com/",
                   "mapsQuery": "Tess Bar & Kitchen 36 Seah Street Singapore"
                 }
               ]
@@ -222,7 +222,7 @@
                 {
                   "name": "Wah Lok",
                   "desc": "Carlton Hotel — reservation recommended",
-                  "url": "https://www.carltonhotel.sg/dining/restaurant/wah-lok",
+                  "url": "https://www.carltonhotel.sg/dining/wah-lok",
                   "mapsQuery": "Wah Lok Carlton Hotel Singapore"
                 },
                 {
@@ -240,7 +240,7 @@
                 {
                   "name": "Man Fu Yuan",
                   "desc": "InterContinental Singapore (Bugis)",
-                  "url": "https://singapore.intercontinental.com/dining/man-fu-yuan/",
+                  "url": "https://www.manfuyuansg.com/",
                   "mapsQuery": "Man Fu Yuan InterContinental Singapore Bugis"
                 },
                 {
@@ -263,7 +263,7 @@
                 {
                   "name": "Kreams Café",
                   "desc": "Specialty coffee in Maxwell / Tanjong Pagar area",
-                  "url": "https://www.instagram.com/kreamscf/",
+                  "url": "https://www.kreams.sg/",
                   "mapsQuery": "Kreams Cafe Maxwell Singapore"
                 },
                 {
@@ -275,19 +275,19 @@
                 {
                   "name": "The Stamford Brasserie",
                   "desc": "City Hall — All-day dining",
-                  "url": "https://www.fairmont-singapore.com/restaurants/stamford-brasserie/",
+                  "url": "https://www.swissotel-singapore-stamford.com/restaurants-bars/the-stamford-brasserie/",
                   "mapsQuery": "The Stamford Brasserie Fairmont Singapore"
                 },
                 {
                   "name": "Oh Wunder Café",
                   "desc": "City Hall / Civic District café",
-                  "url": "https://www.google.com/maps/search/?api=1&query=Oh%20Wunder%20Cafe%20Singapore",
+                  "url": "https://www.wunderfolks.com/ohwundercafe",
                   "mapsQuery": "Oh Wunder Cafe Singapore"
                 },
                 {
                   "name": "Surrey Hills Grocer",
                   "desc": "ION Orchard, One Holland Village & more",
-                  "url": "https://www.surreyhillsgrocer.com/",
+                  "url": "https://www.surreyhillsgrocer.sg/",
                   "mapsQuery": "Surrey Hills Grocer ION Orchard Singapore"
                 }
               ]
@@ -323,10 +323,10 @@
                   "mapsQuery": "Tien Tien Chicken Rice Maxwell Food Centre"
                 },
                 {
-                  "name": "Yew Jit",
-                  "desc": "River Valley",
-                  "url": "https://www.google.com/maps/search/?api=1&query=Yew%20Jit%20Chicken%20Rice%20Singapore",
-                  "mapsQuery": "Yew Jit Chicken Rice River Valley Singapore"
+                  "name": "Jew Kit",
+                  "desc": "Classic Hainanese chicken rice spot",
+                  "url": "https://jewkit.com.sg/",
+                  "mapsQuery": "Jew Kit Singapore"
                 },
                 {
                   "name": "Boon Tong Kee",
@@ -337,19 +337,13 @@
               ]
             },
             {
-              "heading": "Peranakan & heritage",
+              "heading": "Baba",
               "spots": [
                 {
                   "name": "Baba Chews",
-                  "desc": "Katong Square — Peranakan café-style",
-                  "url": "https://www.babachews.sg/",
+                  "desc": "All-day modern Asian at Katong Square",
+                  "url": "https://babachews.com.sg/",
                   "mapsQuery": "Baba Chews Katong Square Singapore"
-                },
-                {
-                  "name": "The Peranakan",
-                  "desc": "Orchard Hotel — full Peranakan spread",
-                  "url": "https://www.theperanakan.com.sg/",
-                  "mapsQuery": "The Peranakan Orchard Hotel Singapore"
                 }
               ]
             },
@@ -359,14 +353,45 @@
                 {
                   "name": "New Bahru",
                   "desc": "Trendy lifestyle & food cluster",
-                  "url": "https://www.newbahru.sg/",
+                  "url": "https://www.newbahru.com/",
                   "mapsQuery": "New Bahru Singapore"
                 }
               ]
             },
             {
               "heading": "Must-try local bites",
-              "intro": "Toast Box, Ya Kun or Killiney for kaya butter toast, local kopi and laksa; nasi lemak, Katong laksa or mee siam; curry puffs and snacks from Old Chang Kee; yong tau foo at a hawker stall."
+              "bites": [
+                {
+                  "name": "Kaya toast + kopi",
+                  "desc": "Try at Toast Box, Ya Kun, or Killiney",
+                  "emoji": "🍞"
+                },
+                {
+                  "name": "Laksa",
+                  "desc": "Try Katong laksa for a spicy coconut broth",
+                  "emoji": "🍜"
+                },
+                {
+                  "name": "Nasi lemak",
+                  "desc": "Fragrant coconut rice with sambal and sides",
+                  "emoji": "🍛"
+                },
+                {
+                  "name": "Mee siam",
+                  "desc": "Tangy rice vermicelli in a light spicy gravy",
+                  "emoji": "🥢"
+                },
+                {
+                  "name": "Old Chang Kee snacks",
+                  "desc": "Curry puffs and sesame balls",
+                  "emoji": "🥟"
+                },
+                {
+                  "name": "Yong tau foo",
+                  "desc": "Pick-your-own stuffed tofu and vegetables",
+                  "emoji": "🥬"
+                }
+              ]
             }
           ]
         }
