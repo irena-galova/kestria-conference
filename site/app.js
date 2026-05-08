@@ -195,13 +195,16 @@
       loadJSON("conference.json"),
       loadJSON("agenda.json"),
       loadJSON("participants.json"),
-      loadJSON("seating.json"),
-    ]).then(([c, a, p, s]) => {
-      conferenceData = c;
-      agendaData = a;
-      participantsData = p;
-      seatingData = s;
-    });
+    ])
+      .then(([c, a, p]) => {
+        conferenceData = c;
+        agendaData = a;
+        participantsData = p;
+        return loadJSON("seating.json").catch(() => []);
+      })
+      .then((s) => {
+        seatingData = Array.isArray(s) ? s : [];
+      });
   }
 
   async function init() {
@@ -217,6 +220,7 @@
       renderInfo();
       renderTravelTips();
       initNav();
+      initMySeat();
       document.getElementById("footerYear").textContent =
         new Date().getFullYear();
     } catch (err) {
@@ -240,15 +244,28 @@
 
   // ── My Seat ──
 
+  // Singapore dragon-boat team colours (Boats! column); key = boatsSlug from seating.json
   const TEAM_COLORS = {
-    black: "#333", red: "#C0392B", green: "#27AE60", blue: "#2980B9",
-    brown: "#8B5E3C", orange: "#E67E22", pink: "#E91E90",
+    navy: "#1a237e",
+    red: "#C0392B",
+    "light blue": "#5dade2",
+    black: "#333",
+    green: "#27AE60",
+    blue: "#2980B9",
+    brown: "#8B5E3C",
+    orange: "#E67E22",
+    pink: "#E91E90",
     "violet/yellow": "#8E44AD",
   };
+
+  function seatTableLabel(n) {
+    return n != null ? "Table " + n : "not available";
+  }
 
   function initMySeat() {
     const input = document.getElementById("myseatSearch");
     const sugList = document.getElementById("myseatSuggestions");
+    if (!input || !sugList) return;
 
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
@@ -298,6 +315,7 @@
     // first ArrowDown press.
     input.addEventListener("keydown", (e) => {
       const items = sugList.querySelectorAll(".myseat__suggestion");
+      if (!items.length) return;
       const active = sugList.querySelector(".myseat__suggestion--active");
       let idx = [...items].indexOf(active);
       if (e.key === "ArrowDown") {
@@ -334,52 +352,56 @@
       clearPerson();
     });
 
-    const teamColor = TEAM_COLORS[person.teambuilding] || "var(--grey)";
-    const teamLabel = person.teambuilding
-      ? person.teambuilding.charAt(0).toUpperCase() + person.teambuilding.slice(1)
-      : "N/A";
+    const slug = person.boatsSlug || String(person.boats || "").trim().toLowerCase();
+    const teamColor = TEAM_COLORS[slug] || "var(--grey)";
+    const boatsLabel = person.boats ? esc(person.boats) : "not available";
+
+    const pgRow =
+      person.practiceGroup
+        ? `
+      <div class="myseat__row myseat__row--highlight">
+        <div class="myseat__label">
+          <svg class="myseat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Practice group
+        </div>
+        <div class="myseat__value">${esc(person.practiceGroup)}</div>
+      </div>`
+        : "";
 
     card.hidden = false;
     card.innerHTML = `
       <div class="myseat__row">
         <div class="myseat__label">
           <svg class="myseat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          Wed Teambuilding
+          Wednesday · Dragon boating
         </div>
         <div class="myseat__value">
           <span class="myseat__team-dot" style="background:${teamColor}"></span>
-          Team ${esc(teamLabel)}
+          ${boatsLabel}
         </div>
       </div>
       <div class="myseat__row">
         <div class="myseat__label">
           <svg class="myseat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Thu Morning
+          Thursday
         </div>
-        <div class="myseat__value myseat__value--big">${person.thuAm != null ? "Table " + person.thuAm : "—"}</div>
+        <div class="myseat__value myseat__value--big">${person.thursday != null ? "Table " + person.thursday : "not available"}</div>
+      </div>
+      ${pgRow}
+      <div class="myseat__row">
+        <div class="myseat__label">
+          <svg class="myseat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Friday morning
+        </div>
+        <div class="myseat__value myseat__value--big">${seatTableLabel(person.fridayAm)}</div>
       </div>
       <div class="myseat__row">
         <div class="myseat__label">
           <svg class="myseat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Thu Afternoon
+          Friday afternoon
         </div>
-        <div class="myseat__value myseat__value--big">${person.thuPm != null ? "Table " + person.thuPm : "—"}</div>
-      </div>
-      <div class="myseat__row">
-        <div class="myseat__label">
-          <svg class="myseat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Friday
-        </div>
-        <div class="myseat__value myseat__value--big">${person.friday != null ? "Table " + person.friday : "—"}</div>
-      </div>
-      ${person.fridayPG ? `
-      <div class="myseat__row myseat__row--highlight">
-        <div class="myseat__label">
-          <svg class="myseat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          Fri Practice Group
-        </div>
-        <div class="myseat__value">${esc(person.fridayPG)}</div>
-      </div>` : ""}`;
+        <div class="myseat__value myseat__value--big">${seatTableLabel(person.fridayPm)}</div>
+      </div>`;
 
     if (activeDay >= 0) renderDay(activeDay);
   }
@@ -395,6 +417,20 @@
     if (activeDay >= 0) renderDay(activeDay);
   }
 
+  /** Start hour 0–23 from agenda time cell (first range segment). */
+  function sessionStartHour24(timeStr) {
+    const s = (timeStr || "").trim();
+    if (!s) return null;
+    const start = s.split(/\u2013|\u2014|-/)[0].trim();
+    let hour = parseInt(start.replace(/^0/, ""), 10);
+    if (isNaN(hour)) return null;
+    const isPM = /pm/i.test(start);
+    const isAM = /am/i.test(start);
+    if (isPM && hour !== 12) hour += 12;
+    if (isAM && hour === 12) hour = 0;
+    return hour;
+  }
+
   function getSeatBadge(dayIndex, session) {
     if (!selectedPerson) return "";
     if (session.type === "break" || session.type === "lunch") return "";
@@ -402,28 +438,25 @@
     const title = (session.title || "").toLowerCase();
     if (title.includes("mix beyond") || title.includes("dinner")) return "";
 
-    const timeStr = session.time || "";
-    const hour = parseInt(timeStr.replace(/^0/, ""), 10);
-    const isPM = /pm/i.test(timeStr);
-    const hour24 = isPM && hour !== 12 ? hour + 12 : hour;
+    const hour24 = sessionStartHour24(session.time);
 
-    if (dayIndex === 0 && (session.type === "social" && hour24 >= 14)) {
-      const color = TEAM_COLORS[selectedPerson.teambuilding] || "var(--grey)";
-      const label = selectedPerson.teambuilding || "N/A";
-      return `<span class="seat-badge" style="--badge-color:${color}">Team ${esc(label)}</span>`;
+    if (dayIndex === 0 && session.type === "social" && hour24 != null && hour24 >= 14) {
+      const slug = selectedPerson.boatsSlug || String(selectedPerson.boats || "").trim().toLowerCase();
+      const color = TEAM_COLORS[slug] || "var(--grey)";
+      const label = selectedPerson.boats || "N/A";
+      return `<span class="seat-badge" style="--badge-color:${color}">${esc(label)}</span>`;
     }
-    if (dayIndex === 1) {
-      if (hour24 < 13 && selectedPerson.thuAm != null) {
-        return `<span class="seat-badge">Table ${selectedPerson.thuAm}</span>`;
-      }
-      if (hour24 >= 13 && selectedPerson.thuPm != null) {
-        return `<span class="seat-badge">Table ${selectedPerson.thuPm}</span>`;
-      }
+    if (dayIndex === 1 && session.type === "session" && selectedPerson.thursday != null) {
+      const pg = selectedPerson.practiceGroup
+        ? ` \u00B7 ${esc(selectedPerson.practiceGroup)}`
+        : "";
+      return `<span class="seat-badge">Table ${selectedPerson.thursday}${pg}</span>`;
     }
     if (dayIndex === 2 && session.type === "session") {
-      if (selectedPerson.friday != null) {
-        const pg = selectedPerson.fridayPG ? ` \u00B7 ${esc(selectedPerson.fridayPG)}` : "";
-        return `<span class="seat-badge">Table ${selectedPerson.friday}${pg}</span>`;
+      if (hour24 == null) return "";
+      const slot = hour24 >= 14 ? selectedPerson.fridayPm : selectedPerson.fridayAm;
+      if (slot != null) {
+        return `<span class="seat-badge">Table ${slot}</span>`;
       }
     }
     return "";
@@ -583,7 +616,8 @@
       if (expandable) el.setAttribute("data-expandable", "");
       if (alwaysOpen && (s.description || s.image)) el.classList.add("expanded");
 
-      let html = `<div class="session__time">${esc(s.time)}</div>`;
+      const seatBadge = getSeatBadge(index, s);
+      let html = `<div class="session__time">${esc(s.time)}${seatBadge}</div>`;
       const titleInner = hasUrl
         ? `<a href="${esc(s.url)}" target="_blank" rel="noopener" class="session__title-link" data-session-link>${esc(s.title)} <svg class="session__title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></a>`
         : esc(s.title);
@@ -1255,7 +1289,7 @@
   // scrolled into view wins. "hero" is the default so the Home link is always
   // highlighted when the page first loads.
   function updateActiveLink() {
-    const sections = ["hero", "agenda", "speakers", "directory", "info", "traveltips", "gallery"];
+    const sections = ["hero", "myseat", "agenda", "speakers", "directory", "info", "traveltips", "gallery"];
     const scrollY = window.scrollY + 100;
 
     let current = "hero";

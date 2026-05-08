@@ -1,0 +1,532 @@
+[
+  {
+    "name": "Dr Rohan Carr",
+    "member": "Kestria Australia",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "NGO & NFP",
+    "thursday": 5,
+    "fridayAm": 2,
+    "fridayPm": 2
+  },
+  {
+    "name": "Emily Witts",
+    "member": "Kestria Australia",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Healthcare & Life Sciences",
+    "thursday": 3,
+    "fridayAm": 4,
+    "fridayPm": 3
+  },
+  {
+    "name": "Malcolm Duncan",
+    "member": "Kestria Australia",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "NGO & NFP",
+    "thursday": 5,
+    "fridayAm": 1,
+    "fridayPm": 4
+  },
+  {
+    "name": "Alexander Moser",
+    "member": "Kestria Austria",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "Industrial/Production",
+    "thursday": 2,
+    "fridayAm": 3,
+    "fridayPm": 5
+  },
+  {
+    "name": "Charles Petit",
+    "member": "Kestria Belgium",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": 4,
+    "fridayPm": 6
+  },
+  {
+    "name": "Carlos Eduardo Staut",
+    "member": "Kestria Brazil",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": 5,
+    "fridayPm": 6
+  },
+  {
+    "name": "Vera Staut",
+    "member": "Kestria Brazil",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "Industrial/Production",
+    "thursday": 4,
+    "fridayAm": 6,
+    "fridayPm": 2
+  },
+  {
+    "name": "Celine Chabee",
+    "member": "Kestria Canada & USA",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Healthcare & Life Sciences",
+    "thursday": 3,
+    "fridayAm": 1,
+    "fridayPm": 6
+  },
+  {
+    "name": "Ryan Berrecloth",
+    "member": "Kestria Canada & USA",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Consumer & Retail",
+    "thursday": 2,
+    "fridayAm": 3,
+    "fridayPm": 4
+  },
+  {
+    "name": "Travis Hann",
+    "member": "Kestria Canada & USA",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "Technology",
+    "thursday": 6,
+    "fridayAm": 5,
+    "fridayPm": 5
+  },
+  {
+    "name": "Anders Jorgensen",
+    "member": "Kestria Denmark",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Industrial/Production",
+    "thursday": 4,
+    "fridayAm": 2,
+    "fridayPm": 1
+  },
+  {
+    "name": "Jesper Dambo",
+    "member": "Kestria Denmark",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Industrial/Production",
+    "thursday": 4,
+    "fridayAm": 6,
+    "fridayPm": 5
+  },
+  {
+    "name": "Kari Hausen",
+    "member": "Kestria Finland",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "Industrial/Production",
+    "thursday": 2,
+    "fridayAm": 1,
+    "fridayPm": 3
+  },
+  {
+    "name": "Michael Kantel",
+    "member": "Kestria Germany",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Industrial/Production",
+    "thursday": 4,
+    "fridayAm": 2,
+    "fridayPm": 3
+  },
+  {
+    "name": "Katerina Meimaroglou",
+    "member": "Kestria Greece",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Consumer & Retail",
+    "thursday": 2,
+    "fridayAm": 1,
+    "fridayPm": 1
+  },
+  {
+    "name": "Constanza Ossa",
+    "member": "Kestria Chile",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": 6,
+    "fridayPm": 4
+  },
+  {
+    "name": "Daniela Mercandino",
+    "member": "Kestria Chile",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": 4,
+    "fridayPm": 4
+  },
+  {
+    "name": "Magdalena Reyes",
+    "member": "Kestria Chile",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": 4,
+    "fridayPm": 2
+  },
+  {
+    "name": "Monicca Yan",
+    "member": "Kestria China & Singapore",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "Consumer & Retail",
+    "thursday": 2,
+    "fridayAm": 3,
+    "fridayPm": 3
+  },
+  {
+    "name": "Nine Jee Wu",
+    "member": "Kestria China & Singapore",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Industrial/Production",
+    "thursday": 4,
+    "fridayAm": null,
+    "fridayPm": null
+  },
+  {
+    "name": "Veronica Lee",
+    "member": "Kestria China & Singapore",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": 5,
+    "fridayPm": 2
+  },
+  {
+    "name": "Manveet S. Hora",
+    "member": "Kestria India",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "Technology",
+    "thursday": 6,
+    "fridayAm": 1,
+    "fridayPm": 5
+  },
+  {
+    "name": "Dwitiya Sengupta",
+    "member": "Kestria India",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Healthcare & Life Sciences",
+    "thursday": 3,
+    "fridayAm": 2,
+    "fridayPm": 4
+  },
+  {
+    "name": "Ron Magen",
+    "member": "Kestria Israel",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Technology",
+    "thursday": 6,
+    "fridayAm": 3,
+    "fridayPm": 2
+  },
+  {
+    "name": "Carmelo Spinella",
+    "member": "Kestria Italy",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "Healthcare & Life Sciences",
+    "thursday": 3,
+    "fridayAm": 5,
+    "fridayPm": 1
+  },
+  {
+    "name": "Giorgio Veronelli",
+    "member": "Kestria Italy",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Consumer & Retail",
+    "thursday": 2,
+    "fridayAm": 6,
+    "fridayPm": 6
+  },
+  {
+    "name": "Japheth A. Worthy",
+    "member": "Kestria Japan",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Healthcare & Life Sciences",
+    "thursday": 3,
+    "fridayAm": 4,
+    "fridayPm": 4
+  },
+  {
+    "name": "Iluta Gaile",
+    "member": "Kestria Latvia",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "NGO & NFP",
+    "thursday": 5,
+    "fridayAm": 1,
+    "fridayPm": 1
+  },
+  {
+    "name": "Raj Kumar Paramanathan",
+    "member": "Kestria Malaysia",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Healthcare & Life Sciences",
+    "thursday": 3,
+    "fridayAm": 2,
+    "fridayPm": 5
+  },
+  {
+    "name": "Intan Rosida",
+    "member": "Kestria Malaysia",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Industrial/Production",
+    "thursday": 4,
+    "fridayAm": 3,
+    "fridayPm": 6
+  },
+  {
+    "name": "Shalini Singh",
+    "member": "Kestria Malaysia",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "Technology",
+    "thursday": 6,
+    "fridayAm": 4,
+    "fridayPm": 1
+  },
+  {
+    "name": "Anuradha Patil",
+    "member": "Kestria Malaysia",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": 5,
+    "fridayPm": 4
+  },
+  {
+    "name": "Cees Hagoort",
+    "member": "Kestria Netherlands",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Industrial/Production",
+    "thursday": 4,
+    "fridayAm": null,
+    "fridayPm": null
+  },
+  {
+    "name": "Patrick Westerburger",
+    "member": "Kestria Netherlands",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": null,
+    "fridayPm": null
+  },
+  {
+    "name": "Guy Brew",
+    "member": "Kestria New Zealand",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "NGO & NFP",
+    "thursday": 5,
+    "fridayAm": 6,
+    "fridayPm": 2
+  },
+  {
+    "name": "Ije Jidenma",
+    "member": "Kestria Nigeria",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "NGO & NFP",
+    "thursday": 5,
+    "fridayAm": 1,
+    "fridayPm": 3
+  },
+  {
+    "name": "Tomasz Sokolowski",
+    "member": "Kestria Poland",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "Technology",
+    "thursday": 6,
+    "fridayAm": 2,
+    "fridayPm": 4
+  },
+  {
+    "name": "Piotr Mazurkiewicz",
+    "member": "Kestria Poland",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Technology",
+    "thursday": 6,
+    "fridayAm": 3,
+    "fridayPm": 5
+  },
+  {
+    "name": "João Miguel Antunes",
+    "member": "Kestria Portugal",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": 6,
+    "fridayPm": 6
+  },
+  {
+    "name": "Pedro Antao",
+    "member": "Kestria Portugal",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "Healthcare & Life Sciences",
+    "thursday": 3,
+    "fridayAm": 5,
+    "fridayPm": 1
+  },
+  {
+    "name": "Razvan Eliad",
+    "member": "Kestria Romania",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Technology",
+    "thursday": 6,
+    "fridayAm": 6,
+    "fridayPm": 3
+  },
+  {
+    "name": "Janice Wagner",
+    "member": "Kestria South Africa",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": 2,
+    "fridayPm": 6
+  },
+  {
+    "name": "Kate Modingoana",
+    "member": "Kestria South Africa",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "NGO & NFP",
+    "thursday": 5,
+    "fridayAm": 3,
+    "fridayPm": 1
+  },
+  {
+    "name": "Bryan McKinney",
+    "member": "Kestria South Korea",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "NGO & NFP",
+    "thursday": 5,
+    "fridayAm": 4,
+    "fridayPm": 5
+  },
+  {
+    "name": "Steven B. McKinney",
+    "member": "Kestria South Korea",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Industrial/Production",
+    "thursday": 4,
+    "fridayAm": 5,
+    "fridayPm": 3
+  },
+  {
+    "name": "Edel Arguedas",
+    "member": "Kestria Spain",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "Consumer & Retail",
+    "thursday": 2,
+    "fridayAm": 6,
+    "fridayPm": 1
+  },
+  {
+    "name": "Niklas Claesson",
+    "member": "Kestria Sweden",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Healthcare & Life Sciences",
+    "thursday": 3,
+    "fridayAm": 1,
+    "fridayPm": 2
+  },
+  {
+    "name": "Eveline Muhmenthaler",
+    "member": "Kestria Switzerland",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Healthcare & Life Sciences",
+    "thursday": 3,
+    "fridayAm": 4,
+    "fridayPm": 3
+  },
+  {
+    "name": "Monika Vogt",
+    "member": "Kestria Switzerland",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "",
+    "thursday": null,
+    "fridayAm": 2,
+    "fridayPm": 5
+  },
+  {
+    "name": "Thomas Muhmenthaler",
+    "member": "Kestria Switzerland",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Consumer & Retail",
+    "thursday": 2,
+    "fridayAm": 3,
+    "fridayPm": 4
+  },
+  {
+    "name": "Thomas Suter",
+    "member": "Kestria Switzerland",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Technology",
+    "thursday": 6,
+    "fridayAm": 1,
+    "fridayPm": 2
+  },
+  {
+    "name": "Hong Nguyen",
+    "member": "Kestria Vietnam",
+    "boats": "Navy",
+    "boatsSlug": "navy",
+    "practiceGroup": "Technology",
+    "thursday": 6,
+    "fridayAm": 2,
+    "fridayPm": 6
+  },
+  {
+    "name": "Tom Vovers",
+    "member": "Kestria Vietnam",
+    "boats": "Light blue",
+    "boatsSlug": "light blue",
+    "practiceGroup": "Industrial/Production",
+    "thursday": 4,
+    "fridayAm": 5,
+    "fridayPm": 2
+  }
+]

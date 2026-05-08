@@ -22,6 +22,7 @@
     </button>
     <ul class="nav__links" id="navLinks">
       <li><a href="#hero" data-section="hero">Home</a></li>
+      <li><a href="#myseat" data-section="myseat">My Seat</a></li>
       <li><a href="#agenda" data-section="agenda">Agenda</a></li>
       <li><a href="#speakers" data-section="speakers">Speakers</a></li>
       <li><a href="#directory" data-section="directory">Participants</a></li>
@@ -38,6 +39,22 @@
       <p class="hero__tagline-main" id="heroTaglineMain">Leading with Authenticity. Building with Trust.</p>
       <p class="hero__meta" id="heroMeta"></p>
       <a href="#agenda" class="btn btn--secondary">View Agenda</a>
+    </div>
+  </section>
+
+  <!-- ===== MY SEAT ===== -->
+  <section class="section section--warm myseat" id="myseat">
+    <div class="container">
+      <h2 class="section__title">My Seat</h2>
+      <p class="myseat__intro" id="myseatIntro">Select your name to see your table assignments for each session.</p>
+      <div class="myseat__picker" id="myseatPicker">
+        <div class="search-box">
+          <svg class="search-box__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="myseatSearch" class="search-box__input" placeholder="Type your name&hellip;" autocomplete="off">
+        </div>
+        <ul class="myseat__suggestions" id="myseatSuggestions"></ul>
+      </div>
+      <div class="myseat__card" id="myseatCard" hidden></div>
     </div>
   </section>
 
