@@ -202,11 +202,11 @@
   //      the site work when opened as a file:// URL or from any static CDN.
   //   2. Fetch mode: falls back to individual HTTP requests. Used automatically
   //      during local development when embedded.js has not been regenerated yet.
-  //   3. Agenda overlay: when embedded mode is used over http(s), we still fetch
-  //      agenda.json (cache-busted) and replace the bundled agenda if the request
-  //      succeeds. Static hosts often cache embedded.js aggressively; this keeps
-  //      schedule updates visible without waiting for CDN caches to clear.
-  // seating.json is optional — its absence is handled gracefully downstream.
+  //   3. Live JSON overlays: when embedded mode is used over http(s), we fetch
+  //      agenda.json and seating.json (cache-busted) and replace the bundled copies
+  //      when each request succeeds. CDNs cache embedded.js aggressively; My Seat uses
+  //      seating from the bundle unless we overlay fresh seating.json the same way as
+  //      the agenda.
   function loadData() {
     const embedded = window.__KESTRIA_DATA__;
     if (embedded && embedded.conference && embedded.agenda) {
@@ -214,22 +214,30 @@
       agendaData = embedded.agenda;
       participantsData = embedded.participants || [];
       seatingData = embedded.seating || [];
-      const canOverlayAgenda =
+      const canOverlay =
         typeof location !== "undefined" &&
         location.protocol !== "file:" &&
         location.protocol !== "blob:";
-      if (!canOverlayAgenda) {
+      if (!canOverlay) {
         return Promise.resolve();
       }
-      const agendaUrl = DATA_BASE + "agenda.json?nocache=" + Date.now();
-      return fetch(agendaUrl, { cache: "no-store" })
+      const bust = Date.now();
+      const agendaUrl = DATA_BASE + "agenda.json?nocache=" + bust;
+      const seatingUrl = DATA_BASE + "seating.json?nocache=" + bust;
+      const agendaP = fetch(agendaUrl, { cache: "no-store" })
         .then((resp) => (resp.ok ? resp.json() : null))
-        .catch(() => null)
-        .then((freshAgenda) => {
-          if (freshAgenda && freshAgenda.days && Array.isArray(freshAgenda.days)) {
-            agendaData = freshAgenda;
-          }
-        });
+        .catch(() => null);
+      const seatingP = fetch(seatingUrl, { cache: "no-store" })
+        .then((resp) => (resp.ok ? resp.json() : null))
+        .catch(() => null);
+      return Promise.all([agendaP, seatingP]).then(([freshAgenda, freshSeating]) => {
+        if (freshAgenda && freshAgenda.days && Array.isArray(freshAgenda.days)) {
+          agendaData = freshAgenda;
+        }
+        if (Array.isArray(freshSeating)) {
+          seatingData = freshSeating;
+        }
+      });
     }
     return Promise.all([
       loadJSON("conference.json"),
