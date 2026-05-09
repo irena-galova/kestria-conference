@@ -181,6 +181,10 @@
   //      the site work when opened as a file:// URL or from any static CDN.
   //   2. Fetch mode: falls back to individual HTTP requests. Used automatically
   //      during local development when embedded.js has not been regenerated yet.
+  //   3. Agenda overlay: when embedded mode is used over http(s), we still fetch
+  //      agenda.json (cache-busted) and replace the bundled agenda if the request
+  //      succeeds. Static hosts often cache embedded.js aggressively; this keeps
+  //      schedule updates visible without waiting for CDN caches to clear.
   // seating.json is optional — its absence is handled gracefully downstream.
   function loadData() {
     const embedded = window.__KESTRIA_DATA__;
@@ -189,7 +193,22 @@
       agendaData = embedded.agenda;
       participantsData = embedded.participants || [];
       seatingData = embedded.seating || [];
-      return Promise.resolve();
+      const canOverlayAgenda =
+        typeof location !== "undefined" &&
+        location.protocol !== "file:" &&
+        location.protocol !== "blob:";
+      if (!canOverlayAgenda) {
+        return Promise.resolve();
+      }
+      const agendaUrl = DATA_BASE + "agenda.json?nocache=" + Date.now();
+      return fetch(agendaUrl, { cache: "no-store" })
+        .then((resp) => (resp.ok ? resp.json() : null))
+        .catch(() => null)
+        .then((freshAgenda) => {
+          if (freshAgenda && freshAgenda.days && Array.isArray(freshAgenda.days)) {
+            agendaData = freshAgenda;
+          }
+        });
     }
     return Promise.all([
       loadJSON("conference.json"),
