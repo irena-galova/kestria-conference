@@ -326,8 +326,8 @@
     "boatsSlug": "light blue",
     "practiceGroup": "Industrial/Production",
     "thursday": 4,
-    "fridayAm": null,
-    "fridayPm": null
+    "fridayAm": 4,
+    "fridayPm": 1
   },
   {
     "name": "Patrick Westerburger",
