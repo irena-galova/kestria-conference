@@ -11,7 +11,28 @@
 (function () {
   "use strict";
 
-  const DATA_BASE = "data/";
+  /**
+   * Absolute URL of the `data/` folder (trailing slash). Resolved from this script’s own URL so
+   * `fetch(data/…)` stays correct when the site is deployed in a subfolder or when the browser’s
+   * location omits a trailing slash (in that case relative `data/agenda.json` wrongly resolves to
+   * the domain root). Falls back to `new URL("data/", document.baseURI)` when `currentScript`
+   * is unavailable (e.g. some bundlers).
+   */
+  const DATA_BASE = (function () {
+    try {
+      const cs = document.currentScript;
+      if (cs && cs.src) {
+        const u = new URL(cs.src);
+        u.pathname = u.pathname.replace(/\/[^/]+$/, "/data/");
+        u.search = "";
+        u.hash = "";
+        return u.href;
+      }
+    } catch (e) {
+      /* ignore */
+    }
+    return new URL("data/", document.baseURI).href;
+  })();
   let conferenceData = null;
   let agendaData = null;
   let participantsData = null;
