@@ -404,10 +404,10 @@
     "member": "Kestria Portugal",
     "boats": "Red",
     "boatsSlug": "red",
-    "practiceGroup": "",
-    "thursday": null,
-    "fridayAm": null,
-    "fridayPm": null
+    "practiceGroup": "Consumer & Retail",
+    "thursday": 2,
+    "fridayAm": 3,
+    "fridayPm": 5
   },
   {
     "name": "Razvan Eliad",
