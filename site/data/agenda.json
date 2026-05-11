@@ -65,11 +65,11 @@
         },
         {
           "time": "12:15 pm \u2013 01:30 pm",
-          "title": "Lunch at Alley on 25 (Level 25)",
+          "title": "Lunch at Smoke & Pepper (Andaz hotel, level 2)",
           "subtitle": "",
           "speakers": [],
           "type": "lunch",
-          "description": ""
+          "description": "Lunch takes place at Andaz hotel, level 2, Smoke & Pepper (same as the breakfast room)."
         },
         {
           "time": "02:30 pm \u2013 05:30 pm",
@@ -82,7 +82,7 @@
           "alwaysOpen": true,
           "description": "Embrace one of Singapore\u2019s most beloved traditions \u2014 dragon boating on the water. No experience needed; the boats are wide, stable, and built for first-timers. Whether you paddle or cheer from the shore, every role counts.",
           "bullets": [
-            "\ud83d\udeb6 Meet us at 2:30 pm at street level in front of the hotel for a short bus ride",
+            "\ud83d\udeb6 Meet us at 2:30 pm at the Andaz hotel main entrance, lobby level 2, for a short bus ride",
             "\u2600\ufe0f Sun protection and light, comfortable casual / sports attire recommended",
             "\ud83d\ude8c The bus returns to the hotel by 5:30 pm"
           ]
@@ -94,7 +94,7 @@
           "speakers": [],
           "type": "social",
           "url": "https://www.google.com/maps/search/?api=1&query=Coca+Suntec+City+Singapore",
-          "description": "Meet us at 7:00 pm at street level in front of the Andaz hotel for a short 10-minute walk, or meet us directly at the restaurant at 7:15 pm. Spouses are welcome if registered in advance."
+          "description": "Meet us at 7:00 pm at the Andaz hotel main entrance, lobby level 2, for a short 10-minute walk, or meet us directly at the restaurant at 7:15 pm. Spouses are welcome if registered in advance."
         }
       ]
     },
@@ -171,11 +171,11 @@
         },
         {
           "time": "01:00 pm \u2013 02:30 pm",
-          "title": "Lunch at Alley on 25 (Level 25)",
+          "title": "Lunch at Smoke & Pepper (Andaz hotel, level 2)",
           "subtitle": "",
           "speakers": [],
           "type": "lunch",
-          "description": ""
+          "description": "Lunch takes place at Andaz hotel, level 2, Smoke & Pepper (same as the breakfast room)."
         },
         {
           "time": "",
@@ -200,7 +200,7 @@
           "speakers": [],
           "type": "social",
           "url": "https://www.google.com/maps/search/?api=1&query=Long+Beach+Seafood+East+Coast+Singapore",
-          "description": "Meet us at 7:00 pm at street level in front of the hotel for a 20-minute bus ride, or meet us directly at the restaurant at 7:30 pm. Dinner is for members only. The bus returns to the hotel by 10:00 pm."
+          "description": "Meet us at 7:00 pm at the Andaz hotel main entrance, lobby level 2, for a 20-minute bus ride, or meet us directly at the restaurant at 7:30 pm. Dinner is for members only. The bus returns to the hotel by 10:00 pm."
         }
       ]
     },
@@ -261,11 +261,11 @@
         },
         {
           "time": "12:45 pm \u2013 02:00 pm",
-          "title": "Lunch at Alley on 25 (Level 25)",
+          "title": "Lunch at Smoke & Pepper (Andaz hotel, level 2)",
           "subtitle": "",
           "speakers": [],
           "type": "lunch",
-          "description": ""
+          "description": "Lunch takes place at Andaz hotel, level 2, Smoke & Pepper (same as the breakfast room)."
         },
         {
           "time": "02:00 pm \u2013 03:30 pm",
@@ -306,7 +306,7 @@
           "speakers": [],
           "type": "social",
           "url": "https://www.google.com/maps/search/?api=1&query=Fu+Yuan+Teochew+Dining+Singapore",
-          "description": "Meet us at 7:00 pm at street level in front of the hotel for a 10\u201315 minute bus ride, or meet us directly at the restaurant at 7:30 pm. Spouses are welcome if registered in advance. After dinner, feel free to join us for drinks and dancing at Zouk Club. Too tired for that? Take a taxi or stroll back to the hotel \u2013 please note that no bus service is booked after dinner."
+          "description": "Meet us at 7:00 pm at the Andaz hotel main entrance, lobby level 2, for a 10\u201315 minute bus ride, or meet us directly at the restaurant at 7:30 pm. Spouses are welcome if registered in advance. After dinner, feel free to join us for drinks and dancing at Zouk Club. Too tired for that? Take a taxi or stroll back to the hotel \u2013 please note that no bus service is booked after dinner."
         }
       ]
     },
@@ -331,6 +331,7 @@
           "imageLayout": "left",
           "description": "Step off the beaten path and discover three of Singapore\u2019s most vibrant and culturally rich neighbourhoods on a guided small-bus tour. In Little India, soak up the colours and aromas of flower-garland stalls, spice shops and the ornate Sri Veeramakaliamman Temple. In Chinatown, wander conserved shophouses where a mosque, a Hindu temple and a Buddhist temple stand within metres of each other. In Kampong Gelam, admire the golden domes of Sultan Mosque, browse Arab Street\u2019s textile boutiques and lose yourself in the street-art alleys of Haji Lane.",
           "bullets": [
+            "\ud83d\udeb6 Meeting point: Andaz hotel main entrance, lobby level 2",
             "\ud83d\udcb0 Price: \u20ac85 per person",
             "\ud83d\ude8c Includes: private bus, English-speaking guide and light refreshments",
             "\ud83d\udc65 Spouses welcome if registered in advance"
