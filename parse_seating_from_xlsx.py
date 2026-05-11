@@ -63,6 +63,11 @@ def row_to_record(row) -> dict | None:
     if isinstance(name, str) and name.strip().lower() == "participant":
         return None
 
+    name_clean = normalize_ws(str(name))
+    # Keep known worksheet typo aligned with participant directory/search.
+    if name_clean == "Elsa Camiro":
+        name_clean = "Elsa Casimiro"
+
     boats_raw = row[2] if len(row) > 2 else None
     pg_raw = row[3] if len(row) > 3 else None
     boats = normalize_ws(str(boats_raw)) if boats_raw is not None else ""
@@ -73,7 +78,7 @@ def row_to_record(row) -> dict | None:
     fri_pm = parse_table_cell(row[6]) if len(row) > 6 else None
 
     return {
-        "name": normalize_ws(str(name)),
+        "name": name_clean,
         "member": normalize_ws(str(member)) if member is not None else "",
         "boats": boats,
         "boatsSlug": boats_slug_for_color(boats) if boats else "",
