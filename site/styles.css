@@ -23,13 +23,20 @@
   --font-heading: "Montserrat", "Arial", sans-serif;
   --font-body: "Noto Sans", "Arial", sans-serif;
   --transition: 0.25s ease;
+  /* Approximate nav height: logo 2.75rem + vertical padding 2 * 0.9rem ≈ 4.55rem.
+     Used by .nav__links offset and html scroll-padding so they stay in sync. */
+  --nav-height: 4.55rem;
+}
+@media (min-width: 768px) {
+  /* Logo grows to 3.5rem on tablet/desktop, so nav becomes a bit taller. */
+  :root { --nav-height: 5.3rem; }
 }
 
 /* ===== RESET ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: calc(var(--nav-height) + 0.75rem);
   -webkit-text-size-adjust: 100%;
 }
 body {
@@ -78,14 +85,16 @@ ul { list-style: none; }
 .nav__toggle.active span:nth-child(2) { opacity: 0; }
 .nav__toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 .nav__links {
-  position: fixed; top: 56px; left: 0; right: 0;
+  position: absolute; top: 100%; left: 0; right: 0;
   background: var(--tertiary);
   padding: 0.5rem 0;
   transform: translateY(-120%);
   transition: transform 0.3s ease;
-  max-height: calc(100vh - 56px);
+  max-height: calc(100vh - var(--nav-height));
+  max-height: calc(100svh - var(--nav-height));
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
 }
 .nav__links.open { transform: translateY(0); }
 .nav__links li { text-align: center; }
@@ -116,6 +125,7 @@ ul { list-style: none; }
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex; align-items: center; justify-content: center;
   background: var(--tertiary);
   color: var(--color-light);
@@ -243,7 +253,9 @@ ul { list-style: none; }
   font-family: var(--font-heading); font-weight: 700;
   font-size: 0.95rem; color: var(--heading-emphasis);
   display: flex; align-items: center; gap: 0.5rem;
-  min-width: 0; text-align: right; flex-shrink: 0;
+  min-width: 0; text-align: right; flex-shrink: 1;
+  overflow-wrap: anywhere; word-break: break-word;
+  justify-content: flex-end;
 }
 .myseat__value--big { font-size: 1.15rem; color: var(--primary); }
 .myseat__team-dot {
@@ -1040,6 +1052,7 @@ ul { list-style: none; }
 .lightbox[hidden] { display: none; }
 .lightbox__img {
   max-width: 90vw; max-height: 85vh;
+  max-width: 90dvw; max-height: 85dvh;
   object-fit: contain;
   border-radius: var(--radius);
   box-shadow: 0 0 3rem rgba(0, 0, 0, 0.5);
@@ -1433,7 +1446,7 @@ img, svg, video { max-width: 100%; height: auto; }
 @media (max-width: 430px) {
   .container { padding: 0 0.9rem; }
   .section { padding: 2.75rem 0; }
-  .hero { padding: 5.5rem 1rem 3.5rem; }
+  .hero { padding: 5rem 1rem 3rem; }
   .hero__theme { font-size: clamp(2rem, 8vw, 3.5rem); }
   .hero__tagline-main { font-size: clamp(0.95rem, 3vw, 1.2rem); }
 
@@ -1468,4 +1481,21 @@ img, svg, video { max-width: 100%; height: auto; }
   .partners-banner__logos { gap: 1.5rem; }
   .partners-banner__logo--hogan { height: 22px; }
   .partners-banner__logo--ezekia { height: 22px; }
+}
+
+/* ===== EXTRA-SMALL (Galaxy Fold cover, ≤ 360px) ===== */
+@media (max-width: 360px) {
+  .container { padding: 0 0.75rem; }
+  .hero { padding: 4.5rem 0.85rem 2.5rem; }
+  .hero__theme { font-size: clamp(1.8rem, 8.5vw, 2.6rem); }
+  .hero__tagline-main { font-size: 0.95rem; }
+  .hero__meta { font-size: 0.78rem; }
+  .nav { padding: 0.7rem 1rem; }
+  .nav__logo { height: 2.4rem; }
+  .day-tab { font-size: 0.68rem; padding: 0.4rem 0.45rem; }
+  .myseat__row { padding: 0.6rem 0.85rem; }
+  .session { padding-left: 2rem; }
+  .session::before { left: 0.45rem; }
+  .timeline::before { left: 0.7rem; }
+  .partners-banner__logos { gap: 1rem; }
 }
