@@ -264,6 +264,44 @@ ul { list-style: none; }
   justify-content: flex-end;
 }
 .myseat__value--big { font-size: 1.15rem; color: var(--primary); }
+
+/* Working-session detail (e.g. "Cross-border BD Task Force · led by Manveet")
+   rendered directly under each My Seat row. */
+.myseat__sessions {
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem 1.25rem 0.75rem calc(1.25rem + 18px + 0.5rem);
+  border-bottom: 1px solid var(--grey-border);
+  display: flex; flex-direction: column; gap: 0.25rem;
+  background: rgba(0, 87, 176, 0.02);
+}
+.myseat__sessions:last-child { border-bottom: none; }
+/* Suppress the divider on the row that immediately precedes a session list,
+   so the row and its detail block read as one unit. */
+.myseat__row:has(+ .myseat__sessions) { border-bottom: 0; }
+.myseat__session {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--grey);
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: 0 0.15rem;
+}
+.myseat__session-title {
+  color: var(--heading-emphasis);
+  font-weight: 600;
+}
+.myseat__session strong { color: var(--color-dark); font-weight: 700; }
+@media (max-width: 430px) {
+  .myseat__sessions {
+    padding: 0.3rem 1rem 0.6rem calc(1rem + 18px + 0.4rem);
+  }
+  .myseat__session { font-size: 0.78rem; }
+}
+@media (max-width: 360px) {
+  .myseat__sessions {
+    padding: 0.25rem 0.85rem 0.55rem calc(0.85rem + 16px + 0.35rem);
+  }
+}
 .myseat__team-dot {
   display: inline-block; width: 14px; height: 14px;
   border-radius: 50%; flex-shrink: 0;

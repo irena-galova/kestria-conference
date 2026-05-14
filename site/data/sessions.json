@@ -1,0 +1,56 @@
+{
+  "thursday": [
+    {
+      "key": "xbbd_tf",
+      "title": "Cross-border BD Task Force",
+      "leaders": [
+        "Stepan",
+        "Katerina",
+        "Patrick",
+        "Giorgio",
+        "Manveet",
+        "Céline"
+      ]
+    },
+    {
+      "key": "pgs",
+      "title": "Practice Groups",
+      "leaders": [
+        "Stepan",
+        "Malcolm",
+        "Patrick",
+        "Giorgio",
+        "Manveet",
+        "Céline"
+      ]
+    }
+  ],
+  "fridayAm": [
+    {
+      "key": "ai",
+      "title": "AI Ambassador Session",
+      "leaders": [
+        "Thomas S.",
+        "Monika",
+        "Veron",
+        "Jay",
+        "Travis",
+        "Janice"
+      ]
+    }
+  ],
+  "fridayPm": [
+    {
+      "key": "institute",
+      "title": "Kestria Institute",
+      "leaders": [
+        "Thomas",
+        "Thomas",
+        "Céline/Rohan",
+        "Céline/Rohan",
+        "Raj/Steve",
+        "Raj/Steve"
+      ]
+    }
+  ]
+}

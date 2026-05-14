@@ -10,16 +10,6 @@
     "fridayPm": 2
   },
   {
-    "name": "Emily Witts",
-    "member": "Kestria Australia",
-    "boats": "Red",
-    "boatsSlug": "red",
-    "practiceGroup": "Healthcare & Life Sciences",
-    "thursday": 3,
-    "fridayAm": 4,
-    "fridayPm": 3
-  },
-  {
     "name": "Malcolm Duncan",
     "member": "Kestria Australia",
     "boats": "Orange",
@@ -28,6 +18,16 @@
     "thursday": 5,
     "fridayAm": 1,
     "fridayPm": 4
+  },
+  {
+    "name": "Emily Witts",
+    "member": "Kestria Australia",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Healthcare & Life Sciences",
+    "thursday": 3,
+    "fridayAm": 4,
+    "fridayPm": 3
   },
   {
     "name": "Alexander Moser",
@@ -50,16 +50,6 @@
     "fridayPm": 6
   },
   {
-    "name": "Carlos Eduardo Staut",
-    "member": "Kestria Brazil",
-    "boats": "Orange",
-    "boatsSlug": "orange",
-    "practiceGroup": "Agribusiness & Agriscience",
-    "thursday": 1,
-    "fridayAm": 5,
-    "fridayPm": 6
-  },
-  {
     "name": "Vera Staut",
     "member": "Kestria Brazil",
     "boats": "Blue",
@@ -70,24 +60,14 @@
     "fridayPm": 2
   },
   {
-    "name": "Celine Chabee",
-    "member": "Kestria Canada & USA",
-    "boats": "Red",
-    "boatsSlug": "red",
-    "practiceGroup": "Healthcare & Life Sciences",
-    "thursday": 3,
-    "fridayAm": 1,
-    "fridayPm": 6
-  },
-  {
-    "name": "Ryan Berrecloth",
-    "member": "Kestria Canada & USA",
+    "name": "Carlos Eduardo Staut",
+    "member": "Kestria Brazil",
     "boats": "Orange",
     "boatsSlug": "orange",
-    "practiceGroup": "Consumer & Retail",
-    "thursday": 2,
-    "fridayAm": 3,
-    "fridayPm": 4
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": 5,
+    "fridayPm": 6
   },
   {
     "name": "Travis Hann",
@@ -100,14 +80,84 @@
     "fridayPm": 5
   },
   {
-    "name": "Anders Jorgensen",
-    "member": "Kestria Denmark",
+    "name": "Ryan Berrecloth",
+    "member": "Kestria Canada & USA",
+    "boats": "Orange",
+    "boatsSlug": "orange",
+    "practiceGroup": "Consumer & Retail",
+    "thursday": 2,
+    "fridayAm": 3,
+    "fridayPm": 4
+  },
+  {
+    "name": "Celine Chabee",
+    "member": "Kestria Canada & USA",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Healthcare & Life Sciences",
+    "thursday": 3,
+    "fridayAm": 1,
+    "fridayPm": 6
+  },
+  {
+    "name": "Constanza Ossa",
+    "member": "Kestria Chile",
+    "boats": "Blue",
+    "boatsSlug": "blue",
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": 6,
+    "fridayPm": 4
+  },
+  {
+    "name": "Magdalena Reyes",
+    "member": "Kestria Chile",
+    "boats": "Orange",
+    "boatsSlug": "orange",
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": 4,
+    "fridayPm": 2
+  },
+  {
+    "name": "Daniela Mercandino",
+    "member": "Kestria Chile",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": 4,
+    "fridayPm": 4
+  },
+  {
+    "name": "Monicca Yan",
+    "member": "Kestria China & Singapore",
+    "boats": "Blue",
+    "boatsSlug": "blue",
+    "practiceGroup": "Consumer & Retail",
+    "thursday": 2,
+    "fridayAm": 3,
+    "fridayPm": 3
+  },
+  {
+    "name": "Veronica Lee",
+    "member": "Kestria China & Singapore",
+    "boats": "Orange",
+    "boatsSlug": "orange",
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": 5,
+    "fridayPm": 2
+  },
+  {
+    "name": "Nine Jee Wu",
+    "member": "Kestria China & Singapore",
     "boats": "Red",
     "boatsSlug": "red",
     "practiceGroup": "Industrial/Production",
     "thursday": 4,
-    "fridayAm": 2,
-    "fridayPm": 1
+    "fridayAm": null,
+    "fridayPm": null
   },
   {
     "name": "Jesper Dambo",
@@ -118,6 +168,16 @@
     "thursday": 4,
     "fridayAm": 6,
     "fridayPm": 5
+  },
+  {
+    "name": "Anders Jorgensen",
+    "member": "Kestria Denmark",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Industrial/Production",
+    "thursday": 4,
+    "fridayAm": 2,
+    "fridayPm": 1
   },
   {
     "name": "Kari Hausen",
@@ -148,66 +208,6 @@
     "thursday": 2,
     "fridayAm": 1,
     "fridayPm": 1
-  },
-  {
-    "name": "Constanza Ossa",
-    "member": "Kestria Chile",
-    "boats": "Blue",
-    "boatsSlug": "blue",
-    "practiceGroup": "Agribusiness & Agriscience",
-    "thursday": 1,
-    "fridayAm": 6,
-    "fridayPm": 4
-  },
-  {
-    "name": "Daniela Mercandino",
-    "member": "Kestria Chile",
-    "boats": "Red",
-    "boatsSlug": "red",
-    "practiceGroup": "Agribusiness & Agriscience",
-    "thursday": 1,
-    "fridayAm": 4,
-    "fridayPm": 4
-  },
-  {
-    "name": "Magdalena Reyes",
-    "member": "Kestria Chile",
-    "boats": "Orange",
-    "boatsSlug": "orange",
-    "practiceGroup": "Agribusiness & Agriscience",
-    "thursday": 1,
-    "fridayAm": 4,
-    "fridayPm": 2
-  },
-  {
-    "name": "Monicca Yan",
-    "member": "Kestria China & Singapore",
-    "boats": "Blue",
-    "boatsSlug": "blue",
-    "practiceGroup": "Consumer & Retail",
-    "thursday": 2,
-    "fridayAm": 3,
-    "fridayPm": 3
-  },
-  {
-    "name": "Nine Jee Wu",
-    "member": "Kestria China & Singapore",
-    "boats": "Red",
-    "boatsSlug": "red",
-    "practiceGroup": "Industrial/Production",
-    "thursday": 4,
-    "fridayAm": null,
-    "fridayPm": null
-  },
-  {
-    "name": "Veronica Lee",
-    "member": "Kestria China & Singapore",
-    "boats": "Orange",
-    "boatsSlug": "orange",
-    "practiceGroup": "Agribusiness & Agriscience",
-    "thursday": 1,
-    "fridayAm": 5,
-    "fridayPm": 2
   },
   {
     "name": "Manveet S. Hora",
@@ -280,14 +280,14 @@
     "fridayPm": 1
   },
   {
-    "name": "Raj Kumar Paramanathan",
+    "name": "Shalini Singh",
     "member": "Kestria Malaysia",
-    "boats": "Red",
-    "boatsSlug": "red",
-    "practiceGroup": "Healthcare & Life Sciences",
-    "thursday": 3,
-    "fridayAm": 2,
-    "fridayPm": 5
+    "boats": "Blue",
+    "boatsSlug": "blue",
+    "practiceGroup": "Technology",
+    "thursday": 6,
+    "fridayAm": 4,
+    "fridayPm": 1
   },
   {
     "name": "Intan Rosida",
@@ -300,14 +300,14 @@
     "fridayPm": 6
   },
   {
-    "name": "Shalini Singh",
+    "name": "Raj Kumar Paramanathan",
     "member": "Kestria Malaysia",
-    "boats": "Blue",
-    "boatsSlug": "blue",
-    "practiceGroup": "Technology",
-    "thursday": 6,
-    "fridayAm": 4,
-    "fridayPm": 1
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Healthcare & Life Sciences",
+    "thursday": 3,
+    "fridayAm": 2,
+    "fridayPm": 5
   },
   {
     "name": "Anuradha Patil",
@@ -320,16 +320,6 @@
     "fridayPm": 4
   },
   {
-    "name": "Cees Hagoort",
-    "member": "Kestria Netherlands",
-    "boats": "Orange",
-    "boatsSlug": "orange",
-    "practiceGroup": "Industrial/Production",
-    "thursday": 4,
-    "fridayAm": 4,
-    "fridayPm": 1
-  },
-  {
     "name": "Patrick Westerburger",
     "member": "Kestria Netherlands",
     "boats": "Blue",
@@ -338,6 +328,16 @@
     "thursday": 1,
     "fridayAm": null,
     "fridayPm": null
+  },
+  {
+    "name": "Cees Hagoort",
+    "member": "Kestria Netherlands",
+    "boats": "Orange",
+    "boatsSlug": "orange",
+    "practiceGroup": "Industrial/Production",
+    "thursday": 4,
+    "fridayAm": 4,
+    "fridayPm": 1
   },
   {
     "name": "Guy Brew",
@@ -380,16 +380,6 @@
     "fridayPm": 5
   },
   {
-    "name": "João Miguel Antunes",
-    "member": "Kestria Portugal",
-    "boats": "Orange",
-    "boatsSlug": "orange",
-    "practiceGroup": "Agribusiness & Agriscience",
-    "thursday": 1,
-    "fridayAm": 6,
-    "fridayPm": 6
-  },
-  {
     "name": "Pedro Antao",
     "member": "Kestria Portugal",
     "boats": "Blue",
@@ -398,6 +388,16 @@
     "thursday": 3,
     "fridayAm": 5,
     "fridayPm": 1
+  },
+  {
+    "name": "João Miguel Antunes",
+    "member": "Kestria Portugal",
+    "boats": "Orange",
+    "boatsSlug": "orange",
+    "practiceGroup": "Agribusiness & Agriscience",
+    "thursday": 1,
+    "fridayAm": 6,
+    "fridayPm": 6
   },
   {
     "name": "Elsa Casimiro",
@@ -440,16 +440,6 @@
     "fridayPm": 1
   },
   {
-    "name": "Bryan McKinney",
-    "member": "Kestria South Korea",
-    "boats": "Red",
-    "boatsSlug": "red",
-    "practiceGroup": "NGO & NFP",
-    "thursday": 5,
-    "fridayAm": 4,
-    "fridayPm": 5
-  },
-  {
     "name": "Steven B. McKinney",
     "member": "Kestria South Korea",
     "boats": "Orange",
@@ -458,6 +448,16 @@
     "thursday": 4,
     "fridayAm": 5,
     "fridayPm": 3
+  },
+  {
+    "name": "Bryan McKinney",
+    "member": "Kestria South Korea",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "NGO & NFP",
+    "thursday": 5,
+    "fridayAm": 4,
+    "fridayPm": 5
   },
   {
     "name": "Edel Arguedas",
@@ -480,16 +480,6 @@
     "fridayPm": 2
   },
   {
-    "name": "Eveline Muhmenthaler",
-    "member": "Kestria Switzerland",
-    "boats": "Orange",
-    "boatsSlug": "orange",
-    "practiceGroup": "Healthcare & Life Sciences",
-    "thursday": 3,
-    "fridayAm": 4,
-    "fridayPm": 3
-  },
-  {
     "name": "Monika Vogt",
     "member": "Kestria Switzerland",
     "boats": "Blue",
@@ -500,14 +490,14 @@
     "fridayPm": 5
   },
   {
-    "name": "Thomas Muhmenthaler",
+    "name": "Eveline Muhmenthaler",
     "member": "Kestria Switzerland",
-    "boats": "Red",
-    "boatsSlug": "red",
-    "practiceGroup": "Consumer & Retail",
-    "thursday": 2,
-    "fridayAm": 3,
-    "fridayPm": 4
+    "boats": "Orange",
+    "boatsSlug": "orange",
+    "practiceGroup": "Healthcare & Life Sciences",
+    "thursday": 3,
+    "fridayAm": 4,
+    "fridayPm": 3
   },
   {
     "name": "Thomas Suter",
@@ -518,6 +508,16 @@
     "thursday": 6,
     "fridayAm": 1,
     "fridayPm": 2
+  },
+  {
+    "name": "Thomas Muhmenthaler",
+    "member": "Kestria Switzerland",
+    "boats": "Red",
+    "boatsSlug": "red",
+    "practiceGroup": "Consumer & Retail",
+    "thursday": 2,
+    "fridayAm": 3,
+    "fridayPm": 4
   },
   {
     "name": "Hong Nguyen",

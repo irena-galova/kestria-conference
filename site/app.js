@@ -37,6 +37,7 @@
   let agendaData = null;
   let participantsData = null;
   let seatingData = null;
+  let sessionsData = null;
   let selectedPerson = null;
   let activeDay = 0;
 
@@ -214,6 +215,7 @@
       agendaData = embedded.agenda;
       participantsData = embedded.participants || [];
       seatingData = embedded.seating || [];
+      sessionsData = embedded.sessions || null;
       const canOverlay =
         typeof location !== "undefined" &&
         location.protocol !== "file:" &&
@@ -224,18 +226,25 @@
       const bust = Date.now();
       const agendaUrl = DATA_BASE + "agenda.json?nocache=" + bust;
       const seatingUrl = DATA_BASE + "seating.json?nocache=" + bust;
+      const sessionsUrl = DATA_BASE + "sessions.json?nocache=" + bust;
       const agendaP = fetch(agendaUrl, { cache: "no-store" })
         .then((resp) => (resp.ok ? resp.json() : null))
         .catch(() => null);
       const seatingP = fetch(seatingUrl, { cache: "no-store" })
         .then((resp) => (resp.ok ? resp.json() : null))
         .catch(() => null);
-      return Promise.all([agendaP, seatingP]).then(([freshAgenda, freshSeating]) => {
+      const sessionsP = fetch(sessionsUrl, { cache: "no-store" })
+        .then((resp) => (resp.ok ? resp.json() : null))
+        .catch(() => null);
+      return Promise.all([agendaP, seatingP, sessionsP]).then(([freshAgenda, freshSeating, freshSessions]) => {
         if (freshAgenda && freshAgenda.days && Array.isArray(freshAgenda.days)) {
           agendaData = freshAgenda;
         }
         if (Array.isArray(freshSeating)) {
           seatingData = freshSeating;
+        }
+        if (freshSessions && typeof freshSessions === "object") {
+          sessionsData = freshSessions;
         }
       });
     }
@@ -248,10 +257,14 @@
         conferenceData = c;
         agendaData = a;
         participantsData = p;
-        return loadJSON("seating.json").catch(() => []);
+        return Promise.all([
+          loadJSON("seating.json").catch(() => []),
+          loadJSON("sessions.json").catch(() => null),
+        ]);
       })
-      .then((s) => {
+      .then(([s, ss]) => {
         seatingData = Array.isArray(s) ? s : [];
+        sessionsData = ss && typeof ss === "object" ? ss : null;
       });
   }
 
@@ -387,6 +400,31 @@
     });
   }
 
+  /**
+   * Build a small block listing the working sessions (and their leaders) that
+   * a participant will attend at the given table, for a given slot of the My
+   * Seat card. Returns an empty string when sessions data is unavailable, the
+   * table assignment is missing/"n/a", or no leader is on file for that table.
+   *
+   *   slot     - "thursday" | "fridayAm" | "fridayPm"
+   *   tableNo  - integer 1..6 or null/"n/a"
+   */
+  function sessionsBlock(slot, tableNo) {
+    if (!sessionsData || !sessionsData[slot]) return "";
+    if (tableNo == null || typeof tableNo !== "number") return "";
+    if (tableNo < 1 || tableNo > 6) return "";
+    const items = sessionsData[slot]
+      .map((sess) => {
+        const leader = sess.leaders && sess.leaders[tableNo - 1];
+        if (!leader) return "";
+        return `<li class="myseat__session"><span class="myseat__session-title">${esc(sess.title)}</span><span class="myseat__session-sep"> \u00B7 </span>led by <strong>${esc(leader)}</strong></li>`;
+      })
+      .filter(Boolean)
+      .join("");
+    if (!items) return "";
+    return `<ul class="myseat__sessions">${items}</ul>`;
+  }
+
   function selectPerson(person) {
     selectedPerson = person;
     localStorage.setItem(STORAGE_KEY, person.name);
@@ -430,6 +468,7 @@
         </div>
         <div class="myseat__value myseat__value--big">${person.thursday != null ? "Table " + person.thursday : "not available"}</div>
       </div>
+      ${sessionsBlock("thursday", person.thursday)}
       ${pgRow}
       <div class="myseat__row">
         <div class="myseat__label">
@@ -438,13 +477,15 @@
         </div>
         <div class="myseat__value myseat__value--big">${seatTableLabel(person.fridayAm)}</div>
       </div>
+      ${sessionsBlock("fridayAm", person.fridayAm)}
       <div class="myseat__row">
         <div class="myseat__label">
           <svg class="myseat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           Friday afternoon
         </div>
         <div class="myseat__value myseat__value--big">${seatTableLabel(person.fridayPm)}</div>
-      </div>`;
+      </div>
+      ${sessionsBlock("fridayPm", person.fridayPm)}`;
 
     if (activeDay >= 0) renderDay(activeDay);
   }

@@ -35,7 +35,13 @@ OUT = DATA_DIR / "embedded.js"
 # Files to bundle. The dict key (filename stem) becomes the property name on
 # window.__KESTRIA_DATA__, which must match the property names expected in
 # app.js loadData() (conference, agenda, participants, seating).
-FILES = ["conference.json", "agenda.json", "participants.json", "seating.json"]
+FILES = [
+    "conference.json",
+    "agenda.json",
+    "participants.json",
+    "seating.json",
+    "sessions.json",
+]
 
 data = {}
 for f in FILES:
