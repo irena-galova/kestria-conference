@@ -454,21 +454,14 @@
       </div>`
         : "";
 
-    // Intentionally hide Wednesday rows: morning has no assigned seating
-    // and the afternoon boat-team detail is communicated via the agenda.
-    // The My Seat card focuses on the assigned tables for Thursday and Friday.
+    // Intentionally hide Wednesday and Thursday rows from the My Seat card:
+    // Wednesday morning has no assigned seating and the afternoon boat-team
+    // detail is communicated via the agenda; Thursday table assignments are
+    // not surfaced here. The card focuses on Friday morning and afternoon.
     void teamColor; void boatsLabel;
 
     card.hidden = false;
     card.innerHTML = `
-      <div class="myseat__row">
-        <div class="myseat__label">
-          <svg class="myseat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Thursday
-        </div>
-        <div class="myseat__value myseat__value--big">${person.thursday != null ? "Table " + person.thursday : "not available"}</div>
-      </div>
-      ${sessionsBlock("thursday", person.thursday)}
       ${pgRow}
       <div class="myseat__row">
         <div class="myseat__label">
