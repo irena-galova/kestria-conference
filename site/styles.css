@@ -855,7 +855,10 @@ ul { list-style: none; }
 .search-box__input {
   width: 100%; padding: 0.7rem 0.75rem 0.7rem 2.5rem;
   border: 2px solid var(--grey-border); border-radius: var(--radius);
-  font-family: var(--font-body); font-size: 0.9rem; color: var(--color-dark);
+  font-family: var(--font-body); color: var(--color-dark);
+  /* 16px font size prevents iOS Safari from auto-zooming when the field
+     receives focus. Visually styled smaller on tablet/desktop below. */
+  font-size: 16px;
   background: var(--color-light);
   transition: border-color var(--transition);
 }
@@ -865,8 +868,17 @@ ul { list-style: none; }
 .country-filter {
   padding: 0.7rem 0.75rem; border: 2px solid var(--grey-border);
   border-radius: var(--radius); font-family: var(--font-body);
-  font-size: 0.9rem; color: var(--color-dark); background: var(--color-light);
+  /* See note on .search-box__input — 16px avoids iOS focus auto-zoom. */
+  font-size: 16px;
+  color: var(--color-dark); background: var(--color-light);
   cursor: pointer; min-width: 180px;
+  max-width: 100%;
+}
+@media (min-width: 768px) {
+  /* On desktop we want the original, slightly smaller visual size; the
+     iOS zoom-on-focus issue does not apply there. */
+  .search-box__input,
+  .country-filter { font-size: 0.9rem; }
 }
 .country-filter:focus { outline: none; border-color: var(--primary); }
 
@@ -1551,8 +1563,45 @@ img, svg, video { max-width: 100%; height: auto; }
   .nav__logo { height: 2.4rem; }
   .day-tab { font-size: 0.68rem; padding: 0.4rem 0.45rem; }
   .myseat__row { padding: 0.6rem 0.85rem; }
+  .myseat__label { gap: 0.35rem; }
+  .myseat__icon { width: 16px; height: 16px; }
   .session { padding-left: 2rem; }
   .session::before { left: 0.45rem; }
   .timeline::before { left: 0.7rem; }
+  .partners-banner { padding: 1.25rem 0.75rem; gap: 1rem; }
   .partners-banner__logos { gap: 1rem; }
+  .partners-banner__logo--hogan,
+  .partners-banner__logo--ezekia { height: 20px; }
+  .sat__photos { gap: 0.35rem; }
+  .sat__photo-label { font-size: 0.6rem; padding: 0.5rem 0.3rem 0.25rem; }
+}
+
+/* ===== ULTRA-NARROW (iPhone SE 1st gen, Galaxy Fold cover, ≤ 320px) =====
+   Final safety net so essential controls stay legible and tappable on the
+   smallest mainstream phones still in circulation. */
+@media (max-width: 320px) {
+  .container { padding: 0 0.6rem; }
+  .hero { padding: 4rem 0.7rem 2.25rem; }
+  .hero__theme { font-size: clamp(1.6rem, 8vw, 2.2rem); }
+  .nav { padding: 0.6rem 0.75rem; }
+  .nav__logo { height: 2.1rem; }
+  .section { padding: 2.25rem 0; }
+  .section__title { margin-bottom: 1.5rem; font-size: 1.3rem; }
+  .day-tabs { gap: 0.25rem; }
+  .day-tab { font-size: 0.62rem; padding: 0.35rem 0.3rem; letter-spacing: 0; }
+  .myseat__row { padding: 0.55rem 0.7rem; gap: 0.35rem; }
+  .myseat__label { font-size: 0.68rem; letter-spacing: 0.02em; }
+  .myseat__value { font-size: 0.8rem; }
+  .myseat__value--big { font-size: 0.95rem; }
+  .session { padding-left: 1.85rem; padding-right: 0.4rem; }
+  .session__title { font-size: 0.92rem; }
+  .session__subtitle { font-size: 0.78rem; }
+  .info-card, .travel-tip-card { padding: 1rem; }
+  .sat__photos { grid-template-columns: repeat(2, 1fr); }
+  .partners-banner__divider { display: none; }
+  .partners-banner__logos { gap: 0.85rem; flex-direction: column; }
+  .footer { padding: 1.25rem 0.75rem; font-size: 0.75rem; }
+  .speaker-card__header { padding: 1rem 1rem 0; gap: 0.75rem; }
+  .speaker-card__avatar { width: 52px; height: 52px; font-size: 1rem; }
+  .speaker-card__body { padding: 0.65rem 1rem 1rem; }
 }
