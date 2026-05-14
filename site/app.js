@@ -438,31 +438,18 @@
       clearPerson();
     });
 
+    // The My Seat card intentionally surfaces only the Friday morning and
+    // afternoon table assignments. Wednesday, Thursday and the practice
+    // group (which was tied to the Thursday Practice Groups session) are
+    // not shown here. We keep slug/teamColor/boatsLabel computations above
+    // available for future use; the void statements silence "unused" hints.
     const slug = person.boatsSlug || String(person.boats || "").trim().toLowerCase();
     const teamColor = TEAM_COLORS[slug] || "var(--grey)";
     const boatsLabel = person.boats ? esc(person.boats) : "not available";
-
-    const pgRow =
-      person.practiceGroup
-        ? `
-      <div class="myseat__row myseat__row--highlight">
-        <div class="myseat__label">
-          <svg class="myseat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          Practice group
-        </div>
-        <div class="myseat__value">${esc(person.practiceGroup)}</div>
-      </div>`
-        : "";
-
-    // Intentionally hide Wednesday and Thursday rows from the My Seat card:
-    // Wednesday morning has no assigned seating and the afternoon boat-team
-    // detail is communicated via the agenda; Thursday table assignments are
-    // not surfaced here. The card focuses on Friday morning and afternoon.
     void teamColor; void boatsLabel;
 
     card.hidden = false;
     card.innerHTML = `
-      ${pgRow}
       <div class="myseat__row">
         <div class="myseat__label">
           <svg class="myseat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
