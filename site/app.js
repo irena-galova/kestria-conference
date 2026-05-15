@@ -438,11 +438,12 @@
       clearPerson();
     });
 
-    // The My Seat card intentionally surfaces only the Friday morning and
-    // afternoon table assignments. Wednesday, Thursday and the practice
-    // group (which was tied to the Thursday Practice Groups session) are
-    // not shown here. We keep slug/teamColor/boatsLabel computations above
-    // available for future use; the void statements silence "unused" hints.
+    // The My Seat card intentionally surfaces only the Friday afternoon
+    // table assignment. Wednesday, Thursday, Friday morning and the practice
+    // group are not shown here. The session name and leader are also
+    // omitted — only the day label and the table number are displayed.
+    // The slug/teamColor/boatsLabel values are kept for potential future
+    // use (boat-team rendering); void statements silence "unused" hints.
     const slug = person.boatsSlug || String(person.boats || "").trim().toLowerCase();
     const teamColor = TEAM_COLORS[slug] || "var(--grey)";
     const boatsLabel = person.boats ? esc(person.boats) : "not available";
@@ -453,19 +454,10 @@
       <div class="myseat__row">
         <div class="myseat__label">
           <svg class="myseat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Friday morning
-        </div>
-        <div class="myseat__value myseat__value--big">${seatTableLabel(person.fridayAm)}</div>
-      </div>
-      ${sessionsBlock("fridayAm", person.fridayAm)}
-      <div class="myseat__row">
-        <div class="myseat__label">
-          <svg class="myseat__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           Friday afternoon
         </div>
         <div class="myseat__value myseat__value--big">${seatTableLabel(person.fridayPm)}</div>
-      </div>
-      ${sessionsBlock("fridayPm", person.fridayPm)}`;
+      </div>`;
 
     if (activeDay >= 0) renderDay(activeDay);
   }
